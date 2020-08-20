@@ -1,5 +1,17 @@
 ﻿  BaseObject.cpp
   CommonFunction.cpp
+<<<<<<< Updated upstream
   main.cpp
+=======
+  ThreatsObject.cpp
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(301,20): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(13,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(78,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(125,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(158,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(169,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
+>>>>>>> Stashed changes
   Generating Code...
-  Bang Bang Chiu.vcxproj -> D:\OOP Project\Debug\Bang Bang Chiu.exe
+  Bang Bang Chiu.vcxproj -> C:\Users\Desktop\Desktop\OOP-Project\Debug\Bang Bang Chiu.exe
