@@ -24,12 +24,24 @@
     <ClCompile Include="CommonFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AmoObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Present.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CommonFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AmoObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Present.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
