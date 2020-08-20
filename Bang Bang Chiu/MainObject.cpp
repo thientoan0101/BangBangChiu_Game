@@ -16,6 +16,7 @@ MainObject::~MainObject(){
 	// do something
 }
 
+//set type of mainObject
 void MainObject::setType(const int& type) { _mainType = type; }
 
 // handle user input
@@ -43,6 +44,67 @@ void MainObject::handleInput(SDL_Event events) {
 			_xVal += WIDTH_MAIN_OBJECT / 20;
 			break;
 		}
+		case SDLK_w: {
+			_yVal -= HEIGHT_MAIN_OBJECT / 20;
+			break;
+		}
+					//move down
+		case SDLK_s: {
+			_yVal += HEIGHT_MAIN_OBJECT / 20;
+			break;
+		}
+					  //move left
+		case SDLK_a: {
+			_xVal -= WIDTH_MAIN_OBJECT / 20;
+			break;
+		}
+					  //move right
+		case SDLK_d: {
+			_xVal += WIDTH_MAIN_OBJECT / 20;
+			break;
+		}
+		// normal fire
+		case SDLK_SPACE: {
+			// create an amo
+			AmoObject* pAmo = new AmoObject();
+
+			// button left pushed main can fire
+			// set width and height of amo
+			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+			// load image of amo
+			pAmo->loadImgObject("laser.png");
+			// set type of amo
+			pAmo->setType(AmoObject::LAZER);
+			// set rect of amo
+			pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
+			// let amo move
+			pAmo->setIsMove(true);
+			// set speed of amo
+			pAmo->setX_Val(20);
+			// push new amo to listAmo
+			_pAmoList.push_back(pAmo);
+		}
+		// rocket fire
+		case SDLK_e: {
+			//// create an amo
+			//AmoObject* pAmo = new AmoObject();
+
+			//// button left pushed main can fire
+			//// set width and height of amo
+			//pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+			//// load image of amo
+			//pAmo->loadImgObject("laser2.png");
+			//// set type of amo
+			//pAmo->setType(AmoObject::LAZER);
+			//// set rect of amo
+			//pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
+			//// let amo move
+			//pAmo->setIsMove(true);
+			//// set speed of amo
+			//pAmo->setX_Val(20);
+			//// push new amo to listAmo
+			//_pAmoList.push_back(pAmo);
+		}
 		}
 	}
 	// when user do not push
@@ -62,35 +124,24 @@ void MainObject::handleInput(SDL_Event events) {
 			_xVal -= WIDTH_MAIN_OBJECT / 20;
 			break;
 		}
+		case SDLK_w: {
+			_yVal += HEIGHT_MAIN_OBJECT / 20;
+			break;
+		} case SDLK_s: {
+			_yVal -= HEIGHT_MAIN_OBJECT / 20;
+			break;
+		} case SDLK_a: {
+			_xVal += WIDTH_MAIN_OBJECT / 20;
+			break;
+		} case SDLK_d: {
+			_xVal -= WIDTH_MAIN_OBJECT / 20;
+			break;
 		}
-	}
-	// when get mouse event main can fire
-	else if (events.type == SDL_MOUSEBUTTONDOWN) {
-		
-		// create an amo
-		AmoObject* pAmo = new AmoObject();
-		
-		// button left pushed main can fire
-		if (events.button.button == SDL_BUTTON_LEFT) {
-			// set width and height of amo
-			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			// load image of amo
-			pAmo->loadImg("laser2.png");
-			// set type of amo
-			pAmo->setType(AmoObject::LAZER);
 		}
-		// set rect of amo
-		pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
-		// let amo move
-		pAmo->setIsMove(true);
-		// set speed of amo
-		pAmo->setX_Val(20);
-		// push new amo to listAmo
-		_pAmoList.push_back(pAmo);
 	}
 }
 
-// handle moves of mainObject when user input from keyboard
+// handle moves of mainObject when main out of range of screen
 void MainObject::handleMove() {
 	rect_.x += _xVal;
 	// if main position out of range of screen this line make it till on screen range
@@ -116,7 +167,7 @@ void MainObject::makeAmo(SDL_Surface* g_something) {
 			// check amo still moving
 			if (p_amo->getIsMove()) {
 				// if amo is moving, show amo on the screen
-				p_amo->show(g_Something);
+				p_amo->showObject(g_something);
 				// let amo move
 				p_amo->handleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 			}
@@ -130,6 +181,13 @@ void MainObject::makeAmo(SDL_Surface* g_something) {
 			}
 		}
 	}
+}
+
+// create mainObject
+void createMainObject(MainObject& mainObject) {
+	mainObject.setRect(100, SCREEN_HEIGHT / 2);
+	bool ret = mainObject.loadImgObject("main.png");
+	if (!ret) return;
 }
 
 // delete an amo

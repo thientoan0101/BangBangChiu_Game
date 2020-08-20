@@ -1,5 +1,5 @@
-#ifndef _MAINOBJECT_H_
-#define _MAINOBJECT_H_
+#ifndef _MAIN_OBJECT_H_
+#define _MAIN_OBJECT_H_
 
 // include library
 #include<vector>
@@ -54,6 +54,9 @@ private:
 	unsigned int _mainType;
 	vector<AmoObject*> _pAmoList;
 };
+
+
+void createMainObject(MainObject& mainObject);
 
 #endif // !_MAINOBJECT_H_
 #pragma once

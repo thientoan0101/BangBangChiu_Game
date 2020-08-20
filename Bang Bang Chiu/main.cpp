@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "CommonFunction.h"
+#include"MainObject.h"
 #undef main
 
 
@@ -28,14 +29,17 @@ int main(int arc, char* argv[])
 	if (Init() == false)
 		return 0;
 
-	g_bkground = SDLCommonFunc::loadImage("background.png");
+	g_bkground = SDLCommonFunc::loadImage("bkgr.png");
 	if (g_bkground == NULL)
 	{
 		cout << "ko load background dc" << endl;
 		return 0;
 	}
 
-	SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
+	// create mainObject===========================
+	MainObject mainObject;
+	createMainObject(mainObject);
+	//=============================================
 
 	while (!is_quit)
 	{
@@ -45,10 +49,26 @@ int main(int arc, char* argv[])
 			{
 				is_quit = true;
 				break;
-			}
+			} 
+			//handle when user input========
+			mainObject.handleInput(g_event);
+			//==============================
 		}
+		
+		SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
+
+		// load mainObject to screen============================
+		mainObject.handleMove();
+
+		mainObject.showObject(g_screen);
+
+		// load amo 
+		mainObject.makeAmo(g_screen);
+		//======================================================
+
 		if (SDL_Flip(g_screen) == -1)
 			return 0;
+
 	}
 
 

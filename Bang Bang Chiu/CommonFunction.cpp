@@ -44,7 +44,7 @@ SDL_Surface* SDLCommonFunc::loadImage(string file)
 
 		if (optimize_image != NULL)
 		{
-			UINT32 color_key = SDL_MapRGB(optimize_image->format, 0, 0xFF, 0xFF);	// ma mau xanh lam: 0,255,255
+			UINT32 color_key = SDL_MapRGB(optimize_image->format, 255, 255, 255);	// ma mau xanh lam: 0,255,255
 			SDL_SetColorKey(optimize_image, SDL_SRCCOLORKEY, color_key);
 		}
 	}

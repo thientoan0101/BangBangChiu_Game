@@ -27,6 +27,9 @@
     <ClCompile Include="MainObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AmoObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AmoObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
