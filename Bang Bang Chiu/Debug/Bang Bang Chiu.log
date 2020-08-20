@@ -1,5 +1,6 @@
-﻿  BaseObject.cpp
-  CommonFunction.cpp
+﻿  ThreatsObject.cpp
+d:\oop project\bang bang chiu\threatsobject.cpp(301): warning C4018: '<': signed/unsigned mismatch
   main.cpp
+d:\oop project\bang bang chiu\main.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating Code...
   Bang Bang Chiu.vcxproj -> D:\OOP Project\Debug\Bang Bang Chiu.exe
