@@ -1,4 +1,4 @@
-#include "CommonFunction.h"
+﻿#include "CommonFunction.h"
 
 
 
@@ -138,4 +138,27 @@ bool SDLCommonFunc::checkCollision(const SDL_Rect& object1, const SDL_Rect& obje
 	}
 
 	return false;
+}
+
+
+bool SDLCommonFunc::Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
+{
+	// Khởi tạo thư viện SDL
+	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
+	{
+		return false;
+	}
+
+	g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);		// Thiet lap che do dinh dang video SDL trong windows.
+
+	if (g_screen == NULL)
+		return false;
+
+	// Khởi tạo đạn dược
+	/*amos.push_back(new BulletObject());*/
+
+	// Khởi tạo vật phẩm
+	/*gifts.push_back(new PowerObject());*/
+
+	return true;
 }

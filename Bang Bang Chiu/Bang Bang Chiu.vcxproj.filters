@@ -24,10 +24,10 @@
     <ClCompile Include="CommonFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AmoObject.cpp">
+    <ClCompile Include="BulletObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Present.cpp">
+    <ClCompile Include="PowerObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,13 @@
     <ClInclude Include="AmoObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Present.h">
+    <ClInclude Include="BulletObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GiftObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

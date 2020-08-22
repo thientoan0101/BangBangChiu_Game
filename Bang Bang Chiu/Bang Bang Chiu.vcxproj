@@ -127,17 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AmoObject.cpp" />
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BulletObject.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Present.cpp" />
+    <ClCompile Include="PowerObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmoObject.h" />
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BulletObject.h" />
     <ClInclude Include="CommonFunction.h" />
-    <ClInclude Include="Present.h" />
+    <ClInclude Include="GiftObject.h" />
+    <ClInclude Include="PowerObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

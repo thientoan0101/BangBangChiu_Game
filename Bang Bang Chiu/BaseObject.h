@@ -1,10 +1,13 @@
 #pragma once
 
+
+#ifndef BASE_OBJECT_H_
+#define BASE_OBJECT_H_
+
 #include "CommonFunction.h"
 
 
-class BaseObject
-{
+class BaseObject {
 public:
 	BaseObject();
 	~BaseObject();
@@ -16,9 +19,9 @@ public:
 	SDL_Rect getRect() const { return rect_; }
 	SDL_Surface* getObject() { return p_object_; }
 
-
 protected:
 	SDL_Rect rect_;
 	SDL_Surface* p_object_;
-
 };
+
+#endif
