@@ -37,7 +37,10 @@ void BaseObject::showObject(SDL_Surface *des)
 
 
 
-
+void BaseObject::setWidthHeight(const int &width, const int &height)
+{
+	rect_.w = width;	rect_.h = height;
+}
 
 
 
