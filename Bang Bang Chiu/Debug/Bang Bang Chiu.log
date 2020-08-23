@@ -1,6 +1,9 @@
-﻿  ThreatsObject.cpp
-d:\oop project\bang bang chiu\threatsobject.cpp(301): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
+﻿  main.cpp
 d:\oop project\bang bang chiu\main.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
+d:\oop project\bang bang chiu\main.cpp(78): warning C4018: '<': signed/unsigned mismatch
+d:\oop project\bang bang chiu\main.cpp(125): warning C4018: '<': signed/unsigned mismatch
+d:\oop project\bang bang chiu\main.cpp(158): warning C4018: '<': signed/unsigned mismatch
+d:\oop project\bang bang chiu\main.cpp(169): warning C4018: '<': signed/unsigned mismatch
+d:\oop project\bang bang chiu\main.cpp(174): warning C4018: '<': signed/unsigned mismatch
+  LINK : D:\OOP Project\Debug\Bang Bang Chiu.exe not found or not built by the last incremental link; performing full link
   Bang Bang Chiu.vcxproj -> D:\OOP Project\Debug\Bang Bang Chiu.exe
