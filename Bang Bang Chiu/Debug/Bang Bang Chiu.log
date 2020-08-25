@@ -1,9 +1,13 @@
-﻿  main.cpp
-d:\oop project\bang bang chiu\main.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\oop project\bang bang chiu\main.cpp(78): warning C4018: '<': signed/unsigned mismatch
-d:\oop project\bang bang chiu\main.cpp(125): warning C4018: '<': signed/unsigned mismatch
-d:\oop project\bang bang chiu\main.cpp(158): warning C4018: '<': signed/unsigned mismatch
-d:\oop project\bang bang chiu\main.cpp(169): warning C4018: '<': signed/unsigned mismatch
-d:\oop project\bang bang chiu\main.cpp(174): warning C4018: '<': signed/unsigned mismatch
-  LINK : D:\OOP Project\Debug\Bang Bang Chiu.exe not found or not built by the last incremental link; performing full link
-  Bang Bang Chiu.vcxproj -> D:\OOP Project\Debug\Bang Bang Chiu.exe
+﻿  BaseObject.cpp
+  CommonFunction.cpp
+  main.cpp
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(13,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(78,20): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(125,21): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(158,22): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(169,20): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
+  ThreatsObject.cpp
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(301,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Bang Bang Chiu.vcxproj -> E:\New folder\GitHub\OOP-Project\Debug\Bang Bang Chiu.exe
