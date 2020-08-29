@@ -23,7 +23,7 @@
 #define AMO_MAIN_SPEED 30
 
 #include"BaseObject.h"
-#include"Header.h"
+#include"CommonFunction.h"
 
 class AmoObject : public BaseObject {
 private:
