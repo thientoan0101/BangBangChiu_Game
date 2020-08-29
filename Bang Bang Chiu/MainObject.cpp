@@ -1,207 +1,174 @@
-#include"MainObject.h"
+#include "MainObject.h"
 
-// constructor
-// initialize position of main
-MainObject::MainObject() {
+
+MainObject::MainObject()
+{ 
 	rect_.x = 0;
 	rect_.y = 0;
 	rect_.w = WIDTH_MAIN_OBJECT;
 	rect_.h = HEIGHT_MAIN_OBJECT;
-	_xVal = 0;
-	_yVal = 0;
+
+	x_val_ = 0;
+	y_val_ = 0;
 }
 
-// destructor
-MainObject::~MainObject(){
-	// do something
+
+
+MainObject::~MainObject()
+{
+	;
 }
 
-//set type of mainObject
-void MainObject::setType(const int& type) { _mainType = type; }
+void MainObject::HandleInputAction(SDL_Event events)
+{
+	if (events.type == SDL_KEYDOWN)
+	{
+		switch (events.key.keysym.sym)
+		{
+		case SDLK_UP: case SDLK_w:
+			//todo
+			y_val_ -= HEIGHT_MAIN_OBJECT / 4;
+			break;
+		case SDLK_DOWN: case SDLK_s:
+			//todo
+			y_val_ += HEIGHT_MAIN_OBJECT / 4;
+			break;
+		case SDLK_RIGHT: case SDLK_d:
+			//todo
+			x_val_ += WIDTH_MAIN_OBJECT/4;
+			break;
+		case SDLK_LEFT: case SDLK_a:
+			//todo
+			x_val_ -= WIDTH_MAIN_OBJECT / 4;
+			break;
 
-// handle user input
-void MainObject::handleInput(SDL_Event events) {
-	// get key from keyboard
-	if (events.type == SDL_KEYDOWN) {
-		switch (events.key.keysym.sym) {
-		//move up
-		case SDLK_UP: {
-			_yVal -= HEIGHT_MAIN_OBJECT / 20;
+		default:
 			break;
-		} 
-		//move down
-		case SDLK_DOWN: {
-			_yVal += HEIGHT_MAIN_OBJECT / 20;
-			break;
-		} 
-		//move left
-		case SDLK_LEFT: {
-			_xVal -= WIDTH_MAIN_OBJECT / 20;
-			break;
-		} 
-		//move right
-		case SDLK_RIGHT: {
-			_xVal += WIDTH_MAIN_OBJECT / 20;
-			break;
-		}
-		case SDLK_w: {
-			_yVal -= HEIGHT_MAIN_OBJECT / 20;
-			break;
-		}
-					//move down
-		case SDLK_s: {
-			_yVal += HEIGHT_MAIN_OBJECT / 20;
-			break;
-		}
-					  //move left
-		case SDLK_a: {
-			_xVal -= WIDTH_MAIN_OBJECT / 20;
-			break;
-		}
-					  //move right
-		case SDLK_d: {
-			_xVal += WIDTH_MAIN_OBJECT / 20;
-			break;
-		}
-		// normal fire
-		case SDLK_SPACE: {
-			// create an amo
-			AmoObject* pAmo = new AmoObject();
-
-			// button left pushed main can fire
-			// set width and height of amo
-			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			// load image of amo
-			pAmo->loadImgObject("laser.png");
-			// set type of amo
-			pAmo->setType(AmoObject::LAZER);
-			// set rect of amo
-			pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
-			// let amo move
-			pAmo->setIsMove(true);
-			// set speed of amo
-			pAmo->setX_Val(20);
-			// push new amo to listAmo
-			_pAmoList.push_back(pAmo);
-		}
-		// rocket fire
-		case SDLK_e: {
-			//// create an amo
-			//AmoObject* pAmo = new AmoObject();
-
-			//// button left pushed main can fire
-			//// set width and height of amo
-			//pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			//// load image of amo
-			//pAmo->loadImgObject("laser2.png");
-			//// set type of amo
-			//pAmo->setType(AmoObject::LAZER);
-			//// set rect of amo
-			//pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
-			//// let amo move
-			//pAmo->setIsMove(true);
-			//// set speed of amo
-			//pAmo->setX_Val(20);
-			//// push new amo to listAmo
-			//_pAmoList.push_back(pAmo);
-		}
 		}
 	}
-	// when user do not push
-	else if (events.type == SDL_KEYUP) {
-		// all of these to keep the position of main
-		switch (events.key.keysym.sym) {
-		case SDLK_UP: {
-			_yVal += HEIGHT_MAIN_OBJECT / 20;
+	else if (events.type == SDL_KEYUP)
+	{
+		switch (events.key.keysym.sym)
+		{
+		case SDLK_UP: case SDLK_w:
+			//todo
+			y_val_ += HEIGHT_MAIN_OBJECT / 4;
 			break;
-		} case SDLK_DOWN: {
-			_yVal -= HEIGHT_MAIN_OBJECT / 20;
+		case SDLK_DOWN: case SDLK_s:
+			//todo
+			y_val_ -= HEIGHT_MAIN_OBJECT / 4;
 			break;
-		} case SDLK_LEFT: {
-			_xVal += WIDTH_MAIN_OBJECT / 20;
+		case SDLK_RIGHT: case SDLK_d:
+			//todo
+			x_val_ -= WIDTH_MAIN_OBJECT / 4;
 			break;
-		} case SDLK_RIGHT: {
-			_xVal -= WIDTH_MAIN_OBJECT / 20;
+		case SDLK_LEFT: case SDLK_a:
+			//todo
+			x_val_ += WIDTH_MAIN_OBJECT / 4;
 			break;
-		}
-		case SDLK_w: {
-			_yVal += HEIGHT_MAIN_OBJECT / 20;
-			break;
-		} case SDLK_s: {
-			_yVal -= HEIGHT_MAIN_OBJECT / 20;
-			break;
-		} case SDLK_a: {
-			_xVal += WIDTH_MAIN_OBJECT / 20;
-			break;
-		} case SDLK_d: {
-			_xVal -= WIDTH_MAIN_OBJECT / 20;
+
+		default:
 			break;
 		}
+	}
+	else if (events.type == SDL_MOUSEBUTTONDOWN)
+	{
+		AmoObject* p_amo = new AmoObject();
+		if (events.button.button == SDL_BUTTON_LEFT)
+		{
+			p_amo->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+			p_amo->loadImgObject("laser.png");
+			p_amo->set_type(AmoObject::LASER);
+			Mix_PlayChannel(-1, g_sound_bullet[0], 0);					// chay ko lap.
 		}
+		else if (events.button.button == SDL_BUTTON_RIGHT)
+		{
+			p_amo->SetWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
+			p_amo->loadImgObject("sphere.png");
+			p_amo->set_type(AmoObject::SPHERE);
+			Mix_PlayChannel(-1, g_sound_bullet[1], 0);	
+		}
+
+		p_amo->setRect(this->rect_.x + WIDTH_MAIN_OBJECT, this->rect_.y + HEIGHT_MAIN_OBJECT / 2);
+		p_amo->set_is_move(true);
+		p_amo->set_x_val(20);
+		p_amo_list.push_back(p_amo);
+
+	}
+	else if (events.type == SDL_MOUSEBUTTONUP)
+	{
+
+	}
+
+}
+
+
+void MainObject::HandleMove()
+{
+	rect_.x += x_val_;
+	if (rect_.x <0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH)
+	{
+		rect_.x -= x_val_;
+	}
+
+	rect_.y += y_val_;
+	if (rect_.y <0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT - 100)
+	{
+		rect_.y -= y_val_;
 	}
 }
 
-// handle moves of mainObject when main out of range of screen
-void MainObject::handleMove() {
-	rect_.x += _xVal;
-	// if main position out of range of screen this line make it till on screen range
-	if (rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH) rect_.x -= _xVal;
-	rect_.y += _yVal;
-	// if main position out of range of screen this line make it till on screen range
-	if (rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT) rect_.y -= _yVal;
-}
-
-// an amolist ready for war
-void MainObject::setAmoList(vector<AmoObject*> amoList) { _pAmoList = amoList; }
-
-// get list of amo after handled by using function (setAmoList)
-vector<AmoObject*> MainObject::getAmoList() const { return _pAmoList; }
-
-// create an amo
-void MainObject::makeAmo(SDL_Surface* g_something) {
-	for (int i = 0; i < _pAmoList.size(); i++) {
-		// p_amo point to an amo at position i in listAmo
-		AmoObject* p_amo = _pAmoList.at(i);
-		// make sure that p_amo can create and have no bug
-		if (p_amo) {
-			// check amo still moving
-			if (p_amo->getIsMove()) {
-				// if amo is moving, show amo on the screen
-				p_amo->showObject(g_something);
-				// let amo move
-				p_amo->handleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+void MainObject::MakeAmo(SDL_Surface* des)
+{
+	for (int i = 0; i < p_amo_list.size(); i++)
+	{
+		AmoObject* p_amo = p_amo_list.at(i);
+		if (p_amo != NULL)
+		{
+			if (p_amo->get_is_move())
+			{
+				p_amo->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+				p_amo->showObject(des);
 			}
-
-			// if amo doesn't move mean when it come out of screen
-			else {
-				// delete amo come out of screen
-				_pAmoList.erase(_pAmoList.begin() + i);
-				// free amo
-				delete p_amo;
+			else
+			{
+				if (p_amo != NULL)
+				{
+					p_amo_list.erase(p_amo_list.begin() + i);
+				 	delete p_amo;
+					p_amo = NULL;
+				}
 			}
 		}
 	}
+
 }
 
-// create mainObject
-void createMainObject(MainObject& mainObject) {
-	mainObject.setRect(100, SCREEN_HEIGHT / 2);
-	bool ret = mainObject.loadImgObject("main.png");
-	if (!ret) return;
-}
 
-// delete an amo
-void MainObject::removeAmo(const int& index) {
-	// this function use to delete amolist
-	for (int i = 0; i < _pAmoList.size(); i++)
-		if (index < _pAmoList.size()) {
-			// delete each element of list
-			AmoObject* p_amo = _pAmoList.at(index);
-			_pAmoList.erase(_pAmoList.begin() + index);
-			// if p_amo != null, detele it
-			if (p_amo) {
+
+void MainObject::RemoveAmo(const int &idx)
+{
+	for (int i = 0; i < p_amo_list.size(); i++)
+	{
+		if (idx < p_amo_list.size())
+		{
+			AmoObject* p_amo = p_amo_list.at(idx);
+			p_amo_list.erase(p_amo_list.begin() + idx);
+
+			if (p_amo != NULL)
+			{
 				delete p_amo;
 				p_amo = NULL;
 			}
 		}
+	}
 }
+
+
+
+
+
+
+
+
+

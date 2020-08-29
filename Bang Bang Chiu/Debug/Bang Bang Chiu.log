@@ -1,13 +1,12 @@
-﻿  BaseObject.cpp
-  CommonFunction.cpp
+﻿  Audio.cpp
+d:\oop project\bang bang chiu\audio.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Explosion.cpp
+d:\oop project\bang bang chiu\amoobject.h(26): fatal error C1083: Cannot open include file: 'Header.h': No such file or directory
   main.cpp
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(13,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(78,20): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(125,21): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(158,22): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(169,20): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\main.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
+d:\oop project\bang bang chiu\amoobject.h(26): fatal error C1083: Cannot open include file: 'Header.h': No such file or directory
+  MainObject.cpp
+d:\oop project\bang bang chiu\audio.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\oop project\bang bang chiu\amoobject.h(26): fatal error C1083: Cannot open include file: 'Header.h': No such file or directory
   ThreatsObject.cpp
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(301,20): warning C4018: '<': signed/unsigned mismatch
+d:\oop project\bang bang chiu\amoobject.h(26): fatal error C1083: Cannot open include file: 'Header.h': No such file or directory
   Generating Code...
-  Bang Bang Chiu.vcxproj -> E:\New folder\GitHub\OOP-Project\Debug\Bang Bang Chiu.exe

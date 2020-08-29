@@ -1,37 +1,62 @@
-﻿#pragma once
+#ifndef _AMOOBJECT_H_
+#define _AMOOBJECT_H_
 
-#ifndef AMO_OBJECT_H_
-#define AMO_OBJECT_H_
+#define WIDTH_LASER 38
+#define HEIGHT_LASER 7
 
-#include "BaseObject.h"
+#define WIDTH_SPHERE 10
+#define HEIGHT_SPHERE 10
 
+#define WIDTH_RED_SLASH 94
+#define HEIGHT_RED_SLASH 44
 
-class AmoObject :public BaseObject {
+#define WIDTH_BLUE_SLASH 61
+#define HEIGHT_BLUE_SLASH 66
+
+#define WIDTH_ROCKET 104
+#define HEIGHT_ROCKET 46
+
+#define WIDTH_BOMB_ATOM 83
+#define HEIGHT_BOMB_ATOM 28
+
+#define AMO_THREAT_SPEED 10
+#define AMO_MAIN_SPEED 30
+
+#include"BaseObject.h"
+#include"Header.h"
+
+class AmoObject : public BaseObject {
+private:
+	int _xVal, _yVal;
+	unsigned int _amoType;
+	bool _isMove;
 public:
-	virtual void handleInputAction(SDL_Event events) {}									// Xử lý các sự kiện (chưa cài đặt)
-	virtual void handleMove(const int& x_border, const int& y_border) {}				// Xử lý việc đạn dược di chuyển từ trái sang phải (được dùng cho nhân vật chính), có biên để biết khi nào nên dừng
-	virtual void handleMoveRightToLeft() {}												// Xử lý việc đạn dược di chuyển từ phải sang trái (được dùng cho thread)
+	enum amoType {
+		NONE, LAZER, SPHERE, RED_SLASH, BLUE_SLASH, ROCKET, BOMB_ATOM
+	};
 
-	virtual int type() { return -1; }																	// Lấy kiểu của đạn dược
-	void setType(const int& val) { type_ = val; }											// Đặt kiểu của đạn dược
+	AmoObject();
+	~AmoObject();
 
-	bool isMove() { return is_move_; }														// Lấy giá trị có cho phép di chuyển hay không
-	void setIsMove(const bool& val) { is_move_ = val; }										// Đặt giá trị có được phép di chuyển hay không
-	void setXVal(const int& val) { x_val_ = val; }											// Đặt tốc độ di chuyển của đạn dược theo chiều ngang
-	void setYVal(const int& val) { y_val_ = val; }											// Đặt tốc độ di chuyển của đạn dược theo chiều dọc
-	int xVal() { return x_val_; }															// Lấy tốc độ di chuyển của đạn dược theo chiều ngang
-	int yVal() { return y_val_; }															// Lấy tốc độ di chuyển của đạn dược theo chiều ngang
-	
-	void setWidthHeight(int width, int height) { rect_.w = width; rect_.h = height; }		// Đặt kích thước chiều dài và rộng cho kiểu đạn dược
+	bool getIsMove() const;
+	void handleMove(const int&, const int&);
+	void handleMoveRToL();
 
-	virtual AmoObject* create() { return NULL; }														// Tạo đối tượng mới
+	int getType() const;
+	void handleInput(SDL_Event);
 
-	void destroy() { is_move_ = false; }													// Khi đụng vào các đối tượng khác thì biến mất (biến mất chứ chưa được hủy vùng nhớ)
+	void setIsMove(bool);
+	void setType(const int&);
 
-protected:
-	int x_val_, y_val_;																		// Giá trị tốc độ di chuyển của đạn dược
-	bool is_move_;																			// Giá trị cho biết có được phép di chuyển hay không
-	int type_;																				// Kiểu của đạn dược
+	void setWidthHeight(const int&, const int&);
+	static void freeAmo(AmoObject*);
+
+	void setX_Val(const int& val) { _xVal = val; }
+	void setY_Val(const int& val) { _yVal = val; }
+
+	int x_Val() { return _xVal; }
+	int y_Val() { return _yVal; }
 };
 
-#endif
+#endif // !
+#pragma once
