@@ -84,7 +84,7 @@ public: // Methods - Behaviors:
 	//dat lai vi tri:
 	void Reset(const int &xboder);
 	void ResetAmo(AmoObject* p_amo);
-
+	
 public: // friend functions:
 
 	friend void createListThreatObjects(vector<ThreatObject*> &list, const int &level, int &numThreats);

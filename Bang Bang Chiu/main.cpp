@@ -170,6 +170,7 @@ int main(int arc, char* argv[])
 			listThreats[i]->showObject(g_screen);
 			listThreats[i]->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);							// moi them 
 
+			// Xử lý amo của threat tới main:
 
 			vector<AmoObject*> amoList1 = listThreats[i]->GetAmoList();
 			for (int k = 0; k < amoList1.size(); k++) {
@@ -209,14 +210,17 @@ int main(int arc, char* argv[])
 								return 1;
 							}
 							// delete threat_amo when it collision main
-							listThreats[i]->Reset(listThreats[i]->getRect().x);
+						
+							listThreats[i]->ResetAmo(p_amo);
 						}//===============HP==================
 					}
 				}
 			}
 			//------------------------------------------------------------------------
 
-			// Xu ly main va cham voi subBoss
+
+
+			// Xu ly main va cham voi threat
 			//check collision
 			bool isColi = SDLCommonFunc::checkCollision(mainObject.getRect(), listThreats[i]->getRect());
 			if (isColi) {
@@ -259,54 +263,12 @@ int main(int arc, char* argv[])
 						SDL_Quit();
 						return 1;
 					}
-					listThreats[i]->Reset(SCREEN_WIDTH + i * 100 * 2);
+					int rng_y = rand() % SCREEN_HEIGHT;
+					listThreats[i]->Reset(SCREEN_WIDTH + i * rng_y);
 				}//=========hp===========
 			}
 
-			vector<AmoObject*> amoList2 = listThreats[i]->GetAmoList();
-			for (int k = 0; k < amoList1.size(); k++) {
-				AmoObject* p_amo = amoList1.at(k);
-				if (p_amo) {
-					bool ret_col = SDLCommonFunc::checkCollision(p_amo->getRect(), mainObject.getRect());
-					if (ret_col) {
-						for (int ex = 0; ex < 4; ex++) {
-
-							int x_explo = (mainObject.getRect().x + mainObject.getRect().w * 0.5) - EXP_WIDTH * 0.5;
-							int y_explo = (mainObject.getRect().y + mainObject.getRect().h * 0.5) - EXP_HEIGHT * 0.5;
-
-							//upload explosion
-							explo_main.set_frame(ex);
-							explo_main.setRect(x_explo, y_explo);
-							explo_main.showEx(g_screen);
-
-							//update screen
-							if (SDL_Flip(g_screen) == -1) return 0;
-						}
-
-						// check hp
-						die_num += DAME_OF_THREAT;
-						if (die_num >= LIFE) {
-							if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
-								//free memory
-								SDL_Quit();
-								return 1;
-							}
-						}
-						else {
-							for (int i = 0; i < DAME_OF_THREAT; i++) hp.decreaseHP();
-							hp.render(g_screen);
-							if (SDL_Flip(g_screen) == -1) {
-								//free memory
-								SDL_Quit();
-								return 1;
-							}
-							// delete threat_amo when it collision main
-							listThreats[i]->Reset(listThreats[i]->getRect().x);
-						}//===============HP==================
-					}
-				}
-			}
-
+	
 			//------------------------------------------------------------------------
 			// Xu ly amo cua Main vs Threat:
 			vector<AmoObject*> amo_list = mainObject.getAmoList();
@@ -358,6 +320,57 @@ int main(int arc, char* argv[])
 			}
 			pBoss->showObject(g_screen);
 			pBoss->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+			MainObject* pMain = &mainObject;
+
+
+			//main vs đạn boss ở cuối trận	   
+			vector<AmoObject*> amoList3 = pBoss->GetAmoList();
+			for (int k = 0; k < amoList3.size(); k++) {
+				AmoObject* p_amo = amoList3.at(k);
+				if (p_amo) {
+					bool ret_col = SDLCommonFunc::checkCollision(p_amo->getRect(), pMain->getRect());
+					if (ret_col) {
+						for (int ex = 0; ex < 4; ex++) {
+
+							int x_explo = (pMain->getRect().x + pMain->getRect().w * 0.5) - EXP_WIDTH * 0.5;
+							int y_explo = (pMain->getRect().y + pMain->getRect().h * 0.5) - EXP_HEIGHT * 0.5;
+
+							//upload explosion
+							explo_main.set_frame(ex);
+							explo_main.setRect(x_explo, y_explo);
+							explo_main.showEx(g_screen);
+
+							//update screen
+							if (SDL_Flip(g_screen) == -1) return 0;
+						}
+
+						// check hp
+						die_num += DAME_OF_BOSS;
+						if (die_num >= LIFE) {
+							if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
+								//free memory
+								SDL_Quit();
+								return 1;
+							}
+						}
+						else {
+							for (int i = 0; i < DAME_OF_BOSS; i++) hp.decreaseHP();
+							hp.render(g_screen);
+							if (SDL_Flip(g_screen) == -1) {
+								//free memory
+								SDL_Quit();
+								return 1;
+							}
+							// delete threat_amo when it collision main
+							//pBoss->Reset(pBoss->getRect().x);
+							pBoss->ResetAmo(p_amo);
+						}//===============HP==================
+					}
+				}
+			}
+
 		}
 
 
@@ -413,52 +426,9 @@ int main(int arc, char* argv[])
 									return 1;
 								}
 								// delete threat_amo when it collision main
-								listSub[i]->Reset(listSub[i]->getRect().x);
-							}//===============HP==================
-						}
-					}
-				}
-
-				//main vs đạn boss ở cuối trận	   
-				vector<AmoObject*> amoList3 = pBoss->GetAmoList();
-				for (int k = 0; k < amoList3.size(); k++) {
-					AmoObject* p_amo = amoList3.at(k);
-					if (p_amo) {
-						bool ret_col = SDLCommonFunc::checkCollision(p_amo->getRect(), pMain->getRect());
-						if (ret_col) {
-							for (int ex = 0; ex < 4; ex++) {
-
-								int x_explo = (pMain->getRect().x + pMain->getRect().w * 0.5) - EXP_WIDTH * 0.5;
-								int y_explo = (pMain->getRect().y + pMain->getRect().h * 0.5) - EXP_HEIGHT * 0.5;
-
-								//upload explosion
-								explo_main.set_frame(ex);
-								explo_main.setRect(x_explo, y_explo);
-								explo_main.showEx(g_screen);
-
-								//update screen
-								if (SDL_Flip(g_screen) == -1) return 0;
-							}
-
-							// check hp
-							die_num += DAME_OF_BOSS;
-							if (die_num >= LIFE) {
-								if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
-									//free memory
-									SDL_Quit();
-									return 1;
-								}
-							}
-							else {
-								for (int i = 0; i < DAME_OF_BOSS; i++) hp.decreaseHP();
-								hp.render(g_screen);
-								if (SDL_Flip(g_screen) == -1) {
-									//free memory
-									SDL_Quit();
-									return 1;
-								}
-								// delete threat_amo when it collision main
-								pBoss->Reset(pBoss->getRect().x);
+								//listSub[i]->Reset(listSub[i]->getRect().x);
+								listSub[i]->ResetAmo(p_amo);
+								
 							}//===============HP==================
 						}
 					}
@@ -502,6 +472,9 @@ int main(int arc, char* argv[])
 
 			}
 		}
+	
+		
+		
 		if (SDL_Flip(g_screen) == -1)
 			return 0;
 	}

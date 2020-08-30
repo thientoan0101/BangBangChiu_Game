@@ -240,17 +240,17 @@ void ThreatObject::MakeAmo(SDL_Surface* des, const int &x_limit, const int &y_li
 void ThreatObject::Reset(const int &xboder)
 {
 	rect_.x = xboder;
-	srand(time(NULL));
+	//srand(time(NULL));
 	rect_.y = rand() % SCREEN_HEIGHT;
 
-	for (int i = 0; i < _p_amo_list.size(); i++)
-	{
-		AmoObject* p_amo = _p_amo_list.at(i);
-		if (p_amo)
-		{
-			ResetAmo(p_amo);
-		}
-	}
+	//for (int i = 0; i < _p_amo_list.size(); i++)
+	//{
+	//	AmoObject* p_amo = _p_amo_list.at(i);
+	//	if (p_amo)
+	//	{
+	//		ResetAmo(p_amo);
+	//	}
+	//}
 }
 
 
@@ -258,6 +258,13 @@ void ThreatObject::ResetAmo(AmoObject* p_amo)
 {
 	p_amo->setRect(rect_.x, rect_.y + rect_.h*0.5);
 }
+
+
+
+
+
+
+
 
 
 
