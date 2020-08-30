@@ -6,8 +6,8 @@
 #include<vector>
 
 #define LIFE 300
-#define DAME_OF_THREAT 2   
-#define DAME_OF_BOSS 10
+#define DAME_OF_THREAT 1   
+#define DAME_OF_BOSS 2
 
 class HP :public BaseObject {
 public:

@@ -127,30 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
-    <ClCompile Include="BaseObject.cpp" />
-    <ClCompile Include="CommonFunction.cpp" />
-=======
     <ClCompile Include="AmoObject.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
     <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="HPObject.cpp" />
->>>>>>> Stashed changes
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainObject.cpp" />
     <ClCompile Include="ThreatsObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmoObject.h" />
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="CommonFunction.h" />
-<<<<<<< Updated upstream
-=======
     <ClInclude Include="ExplosionObject.h" />
     <ClInclude Include="GiftObject.h" />
     <ClInclude Include="HPObject.h" />
     <ClInclude Include="MainObject.h" />
->>>>>>> Stashed changes
     <ClInclude Include="ThreatsObject.h" />
   </ItemGroup>
   <ItemGroup>

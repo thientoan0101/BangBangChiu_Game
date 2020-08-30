@@ -3,7 +3,8 @@
 
 #include "CommonFunction.h"
 #include "BaseObject.h"
-//#include "AmoObject.h"
+#include "AmoObject.h"
+#include "MainObject.h"
 #include <vector>
 
 
@@ -27,10 +28,10 @@
 class ThreatObject : public BaseObject
 {
 private:
-
+	
 	int _x_delta;
 	int _y_delta;
-	//vector<AmoObject*> p_amo_list_;
+	vector<AmoObject*> _p_amo_list;
 	int _threat_type;
 	
 	bool _active_oscillation;
@@ -73,11 +74,11 @@ public: // Methods - Behaviors:
 	void HandleMoveOscilate(const int &x_border, const int &y_border);
 	void HandleInputAction(SDL_Event events);
 	
-	//void SetAmoList(vector<AmoObject*> amo_list) { p_amo_list_ = amo_list; }
-	//vector<AmoObject*> GetAmoList() const { return p_amo_list_; }
+	void SetAmoList(vector<AmoObject*> amo_list) { _p_amo_list = amo_list; }
+	vector<AmoObject*> GetAmoList() const { return _p_amo_list; }
 
-	//void InitAmo(AmoObject *p_amo);
-	//void MakeAmo(SDL_Surface* des, const int &x_limit, const int &y_limit);
+	void initAmo(AmoObject *p_amo);
+	void MakeAmo(SDL_Surface* des, const int &x_limit, const int &y_limit);
 
 
 	//dat lai vi tri:

@@ -27,8 +27,6 @@
     <ClCompile Include="ThreatsObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< Updated upstream
-=======
     <ClCompile Include="MainObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,7 +42,6 @@
     <ClCompile Include="HPObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h">
@@ -56,8 +53,6 @@
     <ClInclude Include="ThreatsObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< Updated upstream
-=======
     <ClInclude Include="MainObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,7 +71,6 @@
     <ClInclude Include="HPObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />

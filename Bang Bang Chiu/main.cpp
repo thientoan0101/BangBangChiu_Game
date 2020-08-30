@@ -1,21 +1,19 @@
-#include <Windows.h>
+﻿#include <Windows.h>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
 #include "CommonFunction.h"
-<<<<<<< Updated upstream
-#include"MainObject.h"
-=======
 #include "ExplosionObject.h"
 #include "ThreatsObject.h"
 #include "Audio.h"
 #include"HPObject.h"
->>>>>>> Stashed changes
 #undef main
 
 
 bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
 {														// Sau nay, nhung ham khoi tao font, audio se duoc tao o day.
+
+	srand(time(NULL));
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
 	{
 		return false;
@@ -26,30 +24,34 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 	if (g_screen == NULL)
 		return false;
 
+	AudioFunction::prepareAudioFile();
+
+	
+
+
 	return true;
 }
 
 
 int main(int arc, char* argv[])
 {
+	bool activeBoss = false;
+	bool activeSubBoss = false;
+	int bkgn_x = 0;
+	bool is_run_screen = true;
 	bool is_quit = false;
 	if (Init() == false)
 		return 0;
 
-	g_bkground = SDLCommonFunc::loadImage("bkgr.png");
+
+	
+
+	g_bkground = SDLCommonFunc::loadImage("bg4800.png");
 	if (g_bkground == NULL)
 	{
 		cout << "ko load background dc" << endl;
 		return 0;
 	}
-<<<<<<< Updated upstream
-
-	// create mainObject===========================
-	MainObject mainObject;
-	createMainObject(mainObject);
-	//=============================================
-
-=======
 	SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
 
 	// create main HP
@@ -108,7 +110,6 @@ int main(int arc, char* argv[])
 	unsigned int die_num = 0;
 
 	// Trong luc play game:
->>>>>>> Stashed changes
 	while (!is_quit)
 	{
 		while (SDL_PollEvent(&g_event))
@@ -117,12 +118,6 @@ int main(int arc, char* argv[])
 			{
 				is_quit = true;
 				break;
-<<<<<<< Updated upstream
-			} 
-			//handle when user input========
-			mainObject.handleInput(g_event);
-			//==============================
-=======
 			}
 			mainObject.handleInput(g_event);
 		}
@@ -363,21 +358,9 @@ int main(int arc, char* argv[])
 			}
 			pBoss->showObject(g_screen);
 			pBoss->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
->>>>>>> Stashed changes
 		}
-		
-		SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
 
-		// load mainObject to screen============================
-		mainObject.handleMove();
 
-<<<<<<< Updated upstream
-		mainObject.showObject(g_screen);
-
-		// load amo 
-		mainObject.makeAmo(g_screen);
-		//======================================================
-=======
 		// xu ly Sub Boss:
 		if (activeSubBoss)
 		{
@@ -492,29 +475,51 @@ int main(int arc, char* argv[])
 						if (ret_col)
 						{
 							// moi them:
->>>>>>> Stashed changes
 
-		if (SDL_Flip(g_screen) == -1)
-			return 0;
+							Mix_PlayChannel(-1, g_sound_injured, 0);
 
-	}
+							for (int ex = 0; ex < 4; ex++)
+							{
+								int x_pos = (listSub[i]->getRect().x + listSub[i]->getRect().w*0.5) - SMALL_EXP_WIDTH * 0.5;
+								int y_pos = (listSub[i]->getRect().y + listSub[i]->getRect().h*0.5) - SMALL_EXP_HEIGHT * 0.5;
 
-<<<<<<< Updated upstream
-=======
+								exp_subboss.set_frame(ex);
+								exp_subboss.setRect(x_pos, y_pos);
+								exp_subboss.showExSmall(g_screen);
+								SDL_Delay(1);
+
+								if (SDL_Flip(g_screen) == -1)
+									return 0;
+							}
+
 							SDL_Rect tempRect = pBoss->getRect();
 							listSub[i]->setRect(tempRect.x - tempRect.w / 5, tempRect.y + tempRect.h / 2);
 							pMain->removeAmo(im);
 						}
 					}
 				}
->>>>>>> Stashed changes
 
 
+			}
+		}
+		if (SDL_Flip(g_screen) == -1)
+			return 0;
+	}
 
+	for (int i = 0; i < listThreats.size(); i++)
+	{
+		delete listThreats[i];
+	}
 
+	for (int i = 0; i < listSub.size(); i++)
+	{
+		delete listSub[i];
+	}
+	delete pBoss;
 
 
 	// SDL_Delay(10000);
+	
 	SDLCommonFunc::cleanUp();	
 	SDL_Quit();
 	return 1;
