@@ -1,67 +1,50 @@
-#pragma once
+#ifndef _MAINOBJECT_H_
+#define _MAINOBJECT_H_
+
+// include library
+#include<vector>
+
+#include"CommonFunction.h"
+#include"BaseObject.h"
+#include"AmoObject.h"
 
 
-#include "CommonFunction.h"
-#include "Audio.h"
-#include "BaseObject.h"
-#include "AmoObject.h"
-#include <vector>
+// define some const
+#define WIDTH_MAIN_OBJECT 146
+#define HEIGHT_MAIN_OBJECT 70
 
+#define MAIN_SPEED 20
 
-//soldier
-//#define WIDTH_MAIN_OBJECT 64	
-//#define HEIGHT_MAIN_OBJECT 91
-
-//helicopter
-//#define WIDTH_MAIN_OBJECT 80
-//#define HEIGHT_MAIN_OBJECT 46
-
-//fly_plane
-#define WIDTH_MAIN_OBJECT 77
-#define HEIGHT_MAIN_OBJECT 52
-
-class MainObject : public BaseObject
-{
+class MainObject :public BaseObject {
 public:
+
+	// constructor
 	MainObject();
+	// destructor
 	~MainObject();
 
-	void HandleInputAction(SDL_Event events);
-	void HandleMove();
-	void SetAmoList(vector<AmoObject*> amo_list) { p_amo_list = amo_list; }
-	vector<AmoObject*> GetAmoList() const { return p_amo_list; }
-	void MakeAmo(SDL_Surface* des);
-	void RemoveAmo(const int &idx);
+	// handle user input
+	void handleInput(SDL_Event/*, Mix_Chunk* bullet_sound[NUM_AUDIO_EXPLOSION]*/);
+
+	// handle moves of mainObject when user input from keyboard
+	void handleMove();
+
+	// an amolist ready for war
+	void setAmoList(vector<AmoObject*>);
+
+	// get list of amo after handled by using function (setAmoList)
+	vector<AmoObject*> getAmoList() const;
+
+	// create an amo
+	void makeAmo(SDL_Surface*);
+
+	// delete an amo
+	void removeAmo(const int&);
+
 private:
-	int x_val_;
-	int y_val_;
-	vector<AmoObject*> p_amo_list;
+	int _xVal, _yVal;
+	vector<AmoObject*> _pAmoList;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif // !_MAINOBJECT_H_
+#pragma once

@@ -83,7 +83,7 @@ public: // Methods - Behaviors:
 
 	//dat lai vi tri:
 	void Reset(const int &xboder);
-	//void ResetAmo(AmoObject* p_amo);
+	void ResetAmo(AmoObject* p_amo);
 
 public: // friend functions:
 

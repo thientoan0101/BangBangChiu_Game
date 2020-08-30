@@ -1,174 +1,127 @@
-#include "MainObject.h"
+#include"MainObject.h"
 
+void MainObject::setAmoList(vector<AmoObject*> amoList) { _pAmoList = amoList; }
 
-MainObject::MainObject()
-{ 
+vector<AmoObject*> MainObject::getAmoList() const { return _pAmoList; }
+
+MainObject::MainObject() {
 	rect_.x = 0;
 	rect_.y = 0;
 	rect_.w = WIDTH_MAIN_OBJECT;
 	rect_.h = HEIGHT_MAIN_OBJECT;
-
-	x_val_ = 0;
-	y_val_ = 0;
+	_xVal = 0;
+	_yVal = 0;
 }
-
-
-
-MainObject::~MainObject()
-{
-	;
-}
-
-void MainObject::HandleInputAction(SDL_Event events)
-{
-	if (events.type == SDL_KEYDOWN)
-	{
-		switch (events.key.keysym.sym)
-		{
-		case SDLK_UP: case SDLK_w:
-			//todo
-			y_val_ -= HEIGHT_MAIN_OBJECT / 4;
-			break;
-		case SDLK_DOWN: case SDLK_s:
-			//todo
-			y_val_ += HEIGHT_MAIN_OBJECT / 4;
-			break;
-		case SDLK_RIGHT: case SDLK_d:
-			//todo
-			x_val_ += WIDTH_MAIN_OBJECT/4;
-			break;
-		case SDLK_LEFT: case SDLK_a:
-			//todo
-			x_val_ -= WIDTH_MAIN_OBJECT / 4;
-			break;
-
-		default:
-			break;
-		}
-	}
-	else if (events.type == SDL_KEYUP)
-	{
-		switch (events.key.keysym.sym)
-		{
-		case SDLK_UP: case SDLK_w:
-			//todo
-			y_val_ += HEIGHT_MAIN_OBJECT / 4;
-			break;
-		case SDLK_DOWN: case SDLK_s:
-			//todo
-			y_val_ -= HEIGHT_MAIN_OBJECT / 4;
-			break;
-		case SDLK_RIGHT: case SDLK_d:
-			//todo
-			x_val_ -= WIDTH_MAIN_OBJECT / 4;
-			break;
-		case SDLK_LEFT: case SDLK_a:
-			//todo
-			x_val_ += WIDTH_MAIN_OBJECT / 4;
-			break;
-
-		default:
-			break;
-		}
-	}
-	else if (events.type == SDL_MOUSEBUTTONDOWN)
-	{
-		AmoObject* p_amo = new AmoObject();
-		if (events.button.button == SDL_BUTTON_LEFT)
-		{
-			p_amo->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			p_amo->loadImgObject("laser.png");
-			p_amo->set_type(AmoObject::LASER);
-			Mix_PlayChannel(-1, g_sound_bullet[0], 0);					// chay ko lap.
-		}
-		else if (events.button.button == SDL_BUTTON_RIGHT)
-		{
-			p_amo->SetWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
-			p_amo->loadImgObject("sphere.png");
-			p_amo->set_type(AmoObject::SPHERE);
-			Mix_PlayChannel(-1, g_sound_bullet[1], 0);	
-		}
-
-		p_amo->setRect(this->rect_.x + WIDTH_MAIN_OBJECT, this->rect_.y + HEIGHT_MAIN_OBJECT / 2);
-		p_amo->set_is_move(true);
-		p_amo->set_x_val(20);
-		p_amo_list.push_back(p_amo);
-
-	}
-	else if (events.type == SDL_MOUSEBUTTONUP)
-	{
-
-	}
+MainObject::~MainObject() {
 
 }
 
+void MainObject::handleInput(SDL_Event events/*, Mix_Chunk* bullet_sound[NUM_AUDIO_EXPLOSION]*/) {
+	if (events.type == SDL_KEYDOWN) {
+		switch (events.key.keysym.sym) {
+		case SDLK_UP: {
+			_yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_DOWN: {
+			_yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_LEFT: {
+			_xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_RIGHT: {
+			_xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_SPACE: {
+			/*AmoObject* pAmo = new AmoObject();
+			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+			pAmo->loadImg("laser2.png");
+			pAmo->setType(AmoObject::LAZER);
 
-void MainObject::HandleMove()
-{
-	rect_.x += x_val_;
-	if (rect_.x <0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH)
-	{
-		rect_.x -= x_val_;
-	}
+			Mix_PlayChannel(-1, bullet_sound[0], 0);
 
-	rect_.y += y_val_;
-	if (rect_.y <0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT - 100)
-	{
-		rect_.y -= y_val_;
+			pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
+			pAmo->setIsMove(true);
+			pAmo->setX_Val(AMO_MAIN_SPEED);
+			_pAmoList.push_back(pAmo);*/
+
+
+
+			AmoObject* pAmo = new AmoObject();
+			pAmo->setWidthHeight(WIDTH_BLUE_SLASH, HEIGHT_BLUE_SLASH);
+			pAmo->loadImgObject("blue_slash.png");
+			pAmo->setType(AmoObject::BLUE_SLASH);
+
+			/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+
+			pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
+			pAmo->setIsMove(true);
+			pAmo->setX_Val(AMO_MAIN_SPEED);
+			_pAmoList.push_back(pAmo);
+		}
+		}
 	}
+	else if (events.type == SDL_KEYUP) {
+		switch (events.key.keysym.sym) {
+		case SDLK_UP: {
+			_yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_DOWN: {
+			_yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_LEFT: {
+			_xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		} case SDLK_RIGHT: {
+			_xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			break;
+		}
+		}
+	} /*else if (events.type == SDL_MOUSEBUTTONDOWN) {
+		AmoObject* pAmo = new AmoObject();
+		if(events.button.button == SDL_BUTTON_LEFT){
+			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+			pAmo->loadImg("laser2.png");
+			pAmo->setType(AmoObject::LAZER);
+		}
+		pAmo->setRect(this->rect_.x + this->rect_.w *0.7, this->rect_.y + this->rect_.h * 0.02);
+		pAmo->setIsMove(true);
+		pAmo->setX_Val(20);
+		_pAmoList.push_back(pAmo);
+	}*/
 }
 
-void MainObject::MakeAmo(SDL_Surface* des)
-{
-	for (int i = 0; i < p_amo_list.size(); i++)
-	{
-		AmoObject* p_amo = p_amo_list.at(i);
-		if (p_amo != NULL)
-		{
-			if (p_amo->get_is_move())
-			{
-				p_amo->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
-				p_amo->showObject(des);
+void MainObject::makeAmo(SDL_Surface* g_Something) {
+	for (int i = 0; i < _pAmoList.size(); i++) {
+		AmoObject* p_amo = _pAmoList.at(i);
+		if (p_amo) {
+			if (p_amo->getIsMove()) {
+				p_amo->showObject(g_Something);
+				p_amo->handleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 			}
-			else
-			{
-				if (p_amo != NULL)
-				{
-					p_amo_list.erase(p_amo_list.begin() + i);
-				 	delete p_amo;
-					p_amo = NULL;
-				}
+			else {
+				_pAmoList.erase(_pAmoList.begin() + i);
+				// free amo
+				AmoObject::freeAmo(p_amo);
 			}
 		}
 	}
-
 }
 
+void MainObject::handleMove() {
+	rect_.x += _xVal;
+	if (rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH) rect_.x -= _xVal;
+	rect_.y += _yVal;
+	if (rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT) rect_.y -= _yVal;
+}
 
-
-void MainObject::RemoveAmo(const int &idx)
-{
-	for (int i = 0; i < p_amo_list.size(); i++)
-	{
-		if (idx < p_amo_list.size())
-		{
-			AmoObject* p_amo = p_amo_list.at(idx);
-			p_amo_list.erase(p_amo_list.begin() + idx);
-
-			if (p_amo != NULL)
-			{
+void MainObject::removeAmo(const int& index) {
+	for (int i = 0; i < _pAmoList.size(); i++)
+		if (index < _pAmoList.size()) {
+			AmoObject* p_amo = _pAmoList.at(index);
+			_pAmoList.erase(_pAmoList.begin() + index);
+			if (p_amo) {
 				delete p_amo;
 				p_amo = NULL;
 			}
 		}
-	}
 }
-
-
-
-
-
-
-
-
-
