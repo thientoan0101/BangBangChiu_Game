@@ -1,19 +1,54 @@
 ﻿  AmoObject.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Audio.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   BaseObject.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   CommonFunction.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Explosion.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   HPObject.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   main.cpp
-E:\OOP-Project\Bang Bang Chiu\main.cpp(2,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(182,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(183,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(226,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(227,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(233,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(234,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(274,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(275,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(327,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(328,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(386,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(387,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(431,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(432,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(483,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(484,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   MainObject.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(56,69): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(56,32): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
   ThreatsObject.cpp
-E:\OOP-Project\Bang Bang Chiu\CommonFunction.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(201,36): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(232,37): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(243,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(259,34): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(350,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
+Audio.obj : error LNK2019: unresolved external symbol SDL_RWFromFile referenced in function "void __cdecl AudioFunction::prepareAudioFile(void)" (?prepareAudioFile@AudioFunction@@YAXXZ)
+Audio.obj : error LNK2019: unresolved external symbol Mix_OpenAudio referenced in function "void __cdecl AudioFunction::prepareAudioFile(void)" (?prepareAudioFile@AudioFunction@@YAXXZ)
+Audio.obj : error LNK2019: unresolved external symbol Mix_LoadWAV_RW referenced in function "void __cdecl AudioFunction::prepareAudioFile(void)" (?prepareAudioFile@AudioFunction@@YAXXZ)
+BaseObject.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: __cdecl BaseObject::~BaseObject(void)" (??1BaseObject@@QEAA@XZ)
+CommonFunction.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
+CommonFunction.obj : error LNK2019: unresolved external symbol SDL_MapRGB referenced in function "struct SDL_Surface * __cdecl SDLCommonFunc::loadImage(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadImage@SDLCommonFunc@@YAPEAUSDL_Surface@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+CommonFunction.obj : error LNK2019: unresolved external symbol SDL_SetColorKey referenced in function "struct SDL_Surface * __cdecl SDLCommonFunc::loadImage(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadImage@SDLCommonFunc@@YAPEAUSDL_Surface@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+CommonFunction.obj : error LNK2019: unresolved external symbol SDL_UpperBlit referenced in function "void __cdecl SDLCommonFunc::applySurface(struct SDL_Surface *,struct SDL_Surface *,int,int)" (?applySurface@SDLCommonFunc@@YAXPEAUSDL_Surface@@0HH@Z)
+CommonFunction.obj : error LNK2019: unresolved external symbol SDL_DisplayFormat referenced in function "struct SDL_Surface * __cdecl SDLCommonFunc::loadImage(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadImage@SDLCommonFunc@@YAPEAUSDL_Surface@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+CommonFunction.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "struct SDL_Surface * __cdecl SDLCommonFunc::loadImage(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadImage@SDLCommonFunc@@YAPEAUSDL_Surface@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+main.obj : error LNK2019: unresolved external symbol SDL_SetVideoMode referenced in function "bool __cdecl Init(void)" (?Init@@YA_NXZ)
+main.obj : error LNK2019: unresolved external symbol SDL_Flip referenced in function main
+main.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function main
+main.obj : error LNK2019: unresolved external symbol SDL_Delay referenced in function main
+main.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "bool __cdecl Init(void)" (?Init@@YA_NXZ)
+main.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function main
+main.obj : error LNK2019: unresolved external symbol Mix_PlayChannelTimed referenced in function main
+C:\Users\84918\Desktop\add\OOP-Project\x64\Debug\Bang Bang Chiu.exe : fatal error LNK1120: 16 unresolved externals

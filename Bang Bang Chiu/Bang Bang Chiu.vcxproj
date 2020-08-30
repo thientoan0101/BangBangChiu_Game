@@ -73,6 +73,10 @@
     <IncludePath>$(SolutionDir)SDL_lib\SDL_1_2_15\include;$(SolutionDir)SDL_lib\SDL_image_1_2_4\include;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\include;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL_lib\SDL_1_2_15\lib\x86;$(SolutionDir)SDL_lib\SDL_image_1_2_4\lib;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\lib\x86;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)SDL_lib\SDL_1_2_15\include;$(SolutionDir)SDL_lib\SDL_image_1_2_4\include;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\include;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)SDL_lib\SDL_1_2_15\lib\x86;$(SolutionDir)SDL_lib\SDL_image_1_2_4\lib;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\lib\x86;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>

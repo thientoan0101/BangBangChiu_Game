@@ -1,34 +1,55 @@
-﻿  HPObject.cpp
-E:\OOP-Project\Bang Bang Chiu\HPObject.cpp(13,21): warning C4018: '<': signed/unsigned mismatch
+﻿  AmoObject.cpp
+  Audio.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  BaseObject.cpp
+  CommonFunction.cpp
+  Explosion.cpp
+  HPObject.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\HPObject.cpp(13,21): warning C4018: '<': signed/unsigned mismatch
   main.cpp
-E:\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-E:\OOP-Project\Bang Bang Chiu\main.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(87,20): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(160,21): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(175,22): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(182,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(183,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(226,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(227,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(233,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(234,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(267,22): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(274,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(275,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(313,24): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(327,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(328,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(367,22): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(379,23): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(386,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(387,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(424,23): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(431,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(432,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(469,25): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(483,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(484,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\OOP-Project\Bang Bang Chiu\main.cpp(509,20): warning C4018: '<': signed/unsigned mismatch
-E:\OOP-Project\Bang Bang Chiu\main.cpp(514,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(87,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(160,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(175,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(182,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(183,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(226,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(227,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(233,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(234,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(267,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(274,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(275,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(313,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(327,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(328,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(367,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(379,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(386,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(387,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(424,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(431,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(432,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(469,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(483,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(484,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(509,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(514,20): warning C4018: '<': signed/unsigned mismatch
+  MainObject.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(56,69): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(56,32): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(94,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(118,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(119,13): warning C4018: '<': signed/unsigned mismatch
+  ThreatsObject.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(25,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(201,36): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(219,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(232,37): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(243,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(246,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(259,34): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(357,20): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  Bang Bang Chiu.vcxproj -> E:\OOP-Project\Debug\Bang Bang Chiu.exe
+  Bang Bang Chiu.vcxproj -> C:\Users\84918\Desktop\add\OOP-Project\Debug\Bang Bang Chiu.exe
