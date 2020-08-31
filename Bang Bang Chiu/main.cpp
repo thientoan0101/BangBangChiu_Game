@@ -3,14 +3,8 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "CommonFunction.h"
-<<<<<<< Updated upstream
-=======
-#include "ThreatsObject.h"
-#include "TextObject.h"
->>>>>>> Stashed changes
 #undef main
 
-TTF_Font* g_font_text = NULL;
 
 bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
 {														// Sau nay, nhung ham khoi tao font, audio se duoc tao o day.
@@ -23,15 +17,6 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 
 	if (g_screen == NULL)
 		return false;
-
-	if (TTF_Init() == -1) {
-		return false;
-	}
-
-	g_font_text = TTF_OpenFont("RobotoMono-Bold.ttf", 20);
-	if (g_font_text == NULL) {
-		return false;
-	}
 
 	return true;
 }
@@ -50,13 +35,12 @@ int main(int arc, char* argv[])
 >>>>>>> Stashed changes
 	if (g_bkground == NULL)
 	{
-		cout << "Load background bi loi! Vui long kiem tra lai!" << endl;
+		cout << "ko load background dc" << endl;
 		return 0;
 	}
 
 	SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
 
-<<<<<<< Updated upstream
 	while (!is_quit)
 	{
 		while (SDL_PollEvent(&g_event))
@@ -72,11 +56,6 @@ int main(int arc, char* argv[])
 	}
 
 
-=======
-	TextObject mark_game;
-	mark_game.setColor(TextObject::RED_TEXT);
-	 
->>>>>>> Stashed changes
 
 
 <<<<<<< Updated upstream
@@ -116,16 +95,7 @@ int main(int arc, char* argv[])
 		createSubBoss(listSub[i], pBoss);
 	}
 
-	//show Menu
-	int ret_menu = SDLCommonFunc::ShowMenu(g_screen, g_font_text);
-	if (ret_menu == outmenu) {
-		is_quit = true;
-	}
-
-
-
 	// Trong luc play game:
-	unsigned int mark_value = 0;
 	while (!is_quit)
 	{
 		while (SDL_PollEvent(&g_event))
@@ -147,6 +117,7 @@ int main(int arc, char* argv[])
 			{
 				is_run_screen = false;
 				activeBoss = true;
+			
 			}
 			else SDLCommonFunc::applySurface(g_bkground, g_screen, bkgn_x, 0);
 		}
@@ -204,14 +175,6 @@ int main(int arc, char* argv[])
 				listSub[i]->showObject(g_screen);
 			}
 		}
-
-		//Show mark value Screen
-		string val_str_mark = to_string(mark_value);
-		string strMark("Mark: ");
-		strMark += val_str_mark;
-		mark_game.setText(strMark);
-		mark_game.CreateGameText(g_font_text, g_screen);
-
 
 		if (SDL_Flip(g_screen) == -1)
 			return 0;

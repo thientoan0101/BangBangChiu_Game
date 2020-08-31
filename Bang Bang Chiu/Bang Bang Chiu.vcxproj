@@ -130,23 +130,10 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
     <ClCompile Include="main.cpp" />
-<<<<<<< Updated upstream
-=======
-    <ClCompile Include="TextObject.cpp" />
-    <ClCompile Include="ThreatsObject.cpp" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="CommonFunction.h" />
-<<<<<<< Updated upstream
-=======
-    <ClInclude Include="TextObject.h" />
-    <ClInclude Include="ThreatsObject.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Text.txt" />
->>>>>>> Stashed changes
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
