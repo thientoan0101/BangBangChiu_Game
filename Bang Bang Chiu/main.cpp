@@ -7,9 +7,10 @@
 #include "ThreatsObject.h"
 #include "Audio.h"
 #include"HPObject.h"
+#include"TextObject.h"
 #undef main
 
-
+TTF_Font* g_font_text = NULL;
 bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
 {														// Sau nay, nhung ham khoi tao font, audio se duoc tao o day.
 
@@ -26,11 +27,15 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 
 	AudioFunction::prepareAudioFile();
 
-	
+	g_font_text = TTF_OpenFont("RobotoMono-Bold.ttf", 20);
+	if (g_font_text == NULL) {
+		return false;
+	}
 
 
 	return true;
 }
+
 
 
 int main(int arc, char* argv[])
@@ -108,6 +113,13 @@ int main(int arc, char* argv[])
 
 	// biến đếm số lần main trúng đạn
 	unsigned int die_num = 0;
+
+
+	//show menu
+	int ret_menu = SDLCommonFunc::ShowMenu(g_screen, g_font_text);
+	if (ret_menu == outmenu) {
+		is_quit = true;
+	}
 
 	// Trong luc play game:
 	while (!is_quit)

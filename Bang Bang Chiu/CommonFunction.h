@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include <Windows.h>
 #include <SDL.h>
 #include <vector>
@@ -22,8 +20,9 @@ const int SPEED_BACKGROUND = 2;
 
 static SDL_Surface* g_screen = NULL;					//quan ly man hinh
 static SDL_Surface* g_bkground = NULL;					//quan ly background
-static SDL_Event	g_event;						
-
+static SDL_Event	g_event;
+static SDL_Surface* g_img_menu = NULL;                  // Background
+const int outmenu = 2;
 
 namespace SDLCommonFunc
 {
@@ -32,4 +31,6 @@ namespace SDLCommonFunc
 	void applySurfaceClip(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip, int x, int y);
 	void cleanUp();
 	bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2);
+	int ShowMenu(SDL_Surface* des, TTF_Font* font);
+	bool CheckFocusWithRect(const int& x, const int& y, const SDL_Rect& rect);
 }
