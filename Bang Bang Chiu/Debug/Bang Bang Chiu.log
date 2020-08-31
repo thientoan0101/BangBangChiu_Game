@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿  BaseObject.cpp
   CommonFunction.cpp
 <<<<<<< Updated upstream
@@ -14,4 +15,7 @@ C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(169,20): warning C4
 C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
 >>>>>>> Stashed changes
   Generating Code...
+=======
+﻿  CommonFunction.cpp
+>>>>>>> Stashed changes
   Bang Bang Chiu.vcxproj -> C:\Users\Desktop\Desktop\OOP-Project\Debug\Bang Bang Chiu.exe
