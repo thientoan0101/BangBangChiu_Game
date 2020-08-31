@@ -14,6 +14,10 @@ const int BIG_EXP_HEIGHT = 208;
 const int SMALL_EXP_WIDTH = 99;
 const int SMALL_EXP_HEIGHT = 99;
 
+const int UPGRADE_WIDTH = 150;
+const int UPGRADE_HEIGHT = 125;
+
+
 class ExplosionObject : public BaseObject
 {
 private:
@@ -37,7 +41,8 @@ public:
 	void set_clip_small();
 	void showExSmall(SDL_Surface *des);
 
-
+	void set_clip_upgrade();
+	void showUpgrade(SDL_Surface *des);
 	// moi them nua:
 	
 

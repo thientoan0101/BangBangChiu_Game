@@ -1,4 +1,4 @@
-#include "ThreatsObject.h"
+﻿#include "ThreatsObject.h"
 
 
 
@@ -35,6 +35,22 @@ ThreatObject::~ThreatObject()
 	}
 }
 
+
+void ThreatObject::Move()
+{
+	bool checkOscillation = this->getOscillation();
+	if (checkOscillation)
+	{
+		this->HandleMoveOscilate(SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
+	else {
+		this->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
+	this->showObject(g_screen);
+	this->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+}
+
+
 void ThreatObject::HandleMove(const int &x_border, const int &y_border)
 {
 	//todo
@@ -70,7 +86,7 @@ void ThreatObject::HandleMove(const int &x_border, const int &y_border)
 		{
 			rect_.x = SCREEN_WIDTH;
 			//srand(time(NULL));
-			rect_.y = rand() % SCREEN_HEIGHT;
+			rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;
 		}
 	}
 	else {
@@ -100,7 +116,7 @@ void ThreatObject::HandleMoveOscilate(const int &x_border, const int &y_border)
 		tempX  += _x_delta + SPEED_BACKGROUND;
 		 tempY += _y_delta;
 	//} 
-		 if (tempX < SCREEN_WIDTH - rect_.w/2 &&  tempY > 0 && tempY < (SCREEN_HEIGHT - rect_.h*1.5))
+		 if (tempX < SCREEN_WIDTH - rect_.w &&  tempY > 0 && tempY < (SCREEN_HEIGHT - rect_.h))
 		 {
 			 rect_.x = tempX;
 			 rect_.y = tempY;
@@ -109,8 +125,8 @@ void ThreatObject::HandleMoveOscilate(const int &x_border, const int &y_border)
 	_step++;
 	if (rect_.x < 0 || rect_.x > SCREEN_WIDTH || rect_.y < 0 || rect_.y > SCREEN_HEIGHT)
 	{
-		rect_.x = SCREEN_WIDTH + SCREEN_WIDTH/4;
-		rect_.y = rand() % SCREEN_HEIGHT;
+		rect_.x = SCREEN_WIDTH + SCREEN_WIDTH/10;
+		rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;;
 		_active_oscillation = false;
 	}
 	
@@ -241,7 +257,7 @@ void ThreatObject::Reset(const int &xboder)
 {
 	rect_.x = xboder;
 	//srand(time(NULL));
-	rect_.y = rand() % SCREEN_HEIGHT;
+	rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;
 
 	//for (int i = 0; i < _p_amo_list.size(); i++)
 	//{
@@ -310,7 +326,7 @@ void createThreat(ThreatObject* &pThreat, const int &type, const int &index)
 }
 
 
-
+// LEVEL ở đây:
 
 void createListThreatObjects(vector<ThreatObject*> &listThreats, const int &level, int &numThreats)
 {

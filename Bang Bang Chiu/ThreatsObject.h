@@ -69,7 +69,7 @@ public: // Properties:
 	void setType(const int &type) { _threat_type = type; }
 
 public: // Methods - Behaviors:
-
+	void Move();
 	void HandleMove(const int &x_border, const int &y_border);
 	void HandleMoveOscilate(const int &x_border, const int &y_border);
 	void HandleInputAction(SDL_Event events);

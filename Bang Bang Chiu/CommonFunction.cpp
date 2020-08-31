@@ -1,6 +1,8 @@
 #include "CommonFunction.h"
 
-
+SDL_Surface* g_screen = NULL;					//quan ly man hinh
+SDL_Surface* g_bkground = NULL;					//quan ly background
+SDL_Event	g_event;
 
 
 

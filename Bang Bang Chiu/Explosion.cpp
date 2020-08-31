@@ -117,3 +117,28 @@ void ExplosionObject::showExSmall(SDL_Surface *des)
 
 	SDLCommonFunc::applySurfaceClip(this->p_object_, des, &clip_[frame_], rect_.x, rect_.y);
 }
+
+
+void ExplosionObject::set_clip_upgrade()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		clip_[i].x = i * UPGRADE_WIDTH;
+		clip_[i].y = 0;
+		clip_[i].w = UPGRADE_WIDTH;
+		clip_[i].h = UPGRADE_HEIGHT;
+	}
+
+
+}
+
+
+void ExplosionObject::showUpgrade(SDL_Surface *des)
+{
+	if (frame_ >= 4)
+	{
+		frame_ = 0;
+	}
+
+	SDLCommonFunc::applySurfaceClip(this->p_object_, des, &clip_[frame_], rect_.x, rect_.y);
+}

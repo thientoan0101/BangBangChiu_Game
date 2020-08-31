@@ -35,6 +35,11 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 
 int main(int arc, char* argv[])
 {
+	int level;
+	cout << "chon level: ";	cin >> level;		// 1->4
+
+	//int level = 4;
+
 	bool activeBoss = false;
 	bool activeSubBoss = false;
 	int bkgn_x = 0;
@@ -75,7 +80,7 @@ int main(int arc, char* argv[])
 
 	// tao nhieu enermy:
 	int numThreats;
-	int level = 4;
+
 	vector<ThreatObject*> listThreats;
 	ThreatObject* pBoss = new ThreatObject;
 
@@ -102,6 +107,7 @@ int main(int arc, char* argv[])
 	ExplosionObject explo_main;
 	ret = explo_main.loadImgObject("expo_small.png");
 	explo_main.set_clip_small();
+	
 	if (!ret) return 0;
 
 	Mix_PlayChannel(-1, g_sound_ready, 0);
@@ -156,20 +162,10 @@ int main(int arc, char* argv[])
 
 
 		// nhieu threat:
-		// có thẻ tao thành ham Move():
+	
 		for (int i = 0; i < listThreats.size(); i++)
 		{
-			bool checkOscillation = listThreats[i]->getOscillation();
-			if (checkOscillation)
-			{
-				listThreats[i]->HandleMoveOscilate(SCREEN_WIDTH, SCREEN_HEIGHT);
-			}
-			else {				
-				listThreats[i]->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
-			}		
-			listThreats[i]->showObject(g_screen);
-			listThreats[i]->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);							// moi them 
-
+			listThreats[i]->Move();
 			// Xử lý amo của threat tới main:
 
 			vector<AmoObject*> amoList1 = listThreats[i]->GetAmoList();
@@ -186,8 +182,8 @@ int main(int arc, char* argv[])
 							//upload explosion
 							explo_main.set_frame(ex);
 							explo_main.setRect(x_explo, y_explo);
-							explo_main.showEx(g_screen);
-
+							//explo_main.showEx(g_screen);
+							explo_main.showUpgrade(g_screen);
 							//update screen
 							if (SDL_Flip(g_screen) == -1) return 0;
 						}
@@ -309,18 +305,10 @@ int main(int arc, char* argv[])
 		// kich hoat boss:
 		if (activeBoss)
 		{
-			bool checkOscillation = pBoss->getOscillation();
-			if (checkOscillation)
-			{
-				pBoss->HandleMoveOscilate(SCREEN_WIDTH, SCREEN_HEIGHT);
-				activeSubBoss = true;
-			}
-			else {
-				pBoss->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
-			}
+			pBoss->Move();
 			pBoss->showObject(g_screen);
 			pBoss->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
-
+			activeSubBoss = true;
 
 			MainObject* pMain = &mainObject;
 
@@ -382,12 +370,11 @@ int main(int arc, char* argv[])
 				listSub[i]->HandleMoveSub(pBoss);
 				listSub[i]->showObject(g_screen);
 				listSub[i]->MakeAmo(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+			
 				
-				//-------------------------------------------------------------------------   draft:
 				MainObject* pMain = &mainObject;
-				//listSub[i]->MakeAmoSpecial(g_screen, pMain);
-				
 				//main vs đạn subboss ở cuối trận	   
+				
 				vector<AmoObject*> amoList2 = listSub[i]->GetAmoList();
 				for (int k = 0; k < amoList2.size(); k++) {
 					AmoObject* p_amo = amoList2.at(k);

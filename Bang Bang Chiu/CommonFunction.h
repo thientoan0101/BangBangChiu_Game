@@ -20,10 +20,13 @@ const int SCREEN_BPP = 32;								// chi so bit per pixel
 const int NUM_THREAT = 3;
 const int SPEED_BACKGROUND = 2;
 
-static SDL_Surface* g_screen = NULL;					//quan ly man hinh
-static SDL_Surface* g_bkground = NULL;					//quan ly background
-static SDL_Event	g_event;						
+//static SDL_Surface* g_screen = NULL;					//quan ly man hinh
+//static SDL_Surface* g_bkground = NULL;					//quan ly background
+//static SDL_Event	g_event;						
 
+extern SDL_Surface* g_screen;					//quan ly man hinh
+extern SDL_Surface* g_bkground;					//quan ly background
+extern SDL_Event	g_event;
 
 namespace SDLCommonFunc
 {
