@@ -4,8 +4,8 @@
 #define WIDTH_LASER 38
 #define HEIGHT_LASER 7
 
-#define WIDTH_SPHERE 10
-#define HEIGHT_SPHERE 10
+#define WIDTH_SPHERE 20
+#define HEIGHT_SPHERE 20
 
 #define WIDTH_RED_SLASH 94
 #define HEIGHT_RED_SLASH 44
@@ -13,14 +13,19 @@
 #define WIDTH_BLUE_SLASH 61
 #define HEIGHT_BLUE_SLASH 66
 
-#define WIDTH_ROCKET 104
-#define HEIGHT_ROCKET 46
+#define WIDTH_ROCKET 144
+#define HEIGHT_ROCKET 126
 
 #define WIDTH_BOMB_ATOM 83
 #define HEIGHT_BOMB_ATOM 28
 
+#define WIDTH_BULLET 90
+#define HEIGHT_BULLET 29
+
 #define AMO_THREAT_SPEED 10
-#define AMO_MAIN_SPEED 30
+#define AMO_BOSS_SPEED 10
+#define AMO_MAIN_SPEED 15
+#define NUM_ROCKET 3
 
 #include"BaseObject.h"
 #include"CommonFunction.h"
@@ -32,7 +37,7 @@ private:
 	bool _isMove;
 public:
 	enum amoType {
-		NONE, LAZER, SPHERE, RED_SLASH, BLUE_SLASH, ROCKET, BOMB_ATOM
+		NONE, LAZER, SPHERE, RED_SLASH, BLUE_SLASH, ROCKET, BOMB_ATOM, BULLET
 	};
 
 	AmoObject();

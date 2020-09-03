@@ -22,13 +22,13 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{C646078B-5A7E-4163-A837-698129E7EFE9}</ProjectGuid>
     <RootNamespace>BangBangChiu</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -70,10 +70,6 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)SDL_lib\SDL_1_2_15\include;$(SolutionDir)SDL_lib\SDL_image_1_2_4\include;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\include;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)SDL_lib\SDL_1_2_15\lib\x86;$(SolutionDir)SDL_lib\SDL_image_1_2_4\lib;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\lib\x86;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\lib\x86;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)SDL_lib\SDL_1_2_15\include;$(SolutionDir)SDL_lib\SDL_image_1_2_4\include;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\include;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL_lib\SDL_1_2_15\lib\x86;$(SolutionDir)SDL_lib\SDL_image_1_2_4\lib;$(SolutionDir)SDL_lib\SDL_mixer_1_2_12\lib\x86;$(SolutionDir)SDL_lib\SDL2_ttf_2_0_11\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -136,6 +132,7 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
     <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="Gift.cpp" />
     <ClCompile Include="HPObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
@@ -147,9 +144,10 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="CommonFunction.h" />
     <ClInclude Include="ExplosionObject.h" />
-    <ClInclude Include="GiftObject.h" />
+    <ClInclude Include="Gift.h" />
     <ClInclude Include="HPObject.h" />
     <ClInclude Include="MainObject.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="ThreatsObject.h" />
   </ItemGroup>
   <ItemGroup>

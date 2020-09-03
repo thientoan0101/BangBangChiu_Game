@@ -42,6 +42,9 @@
     <ClCompile Include="HPObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Gift.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h">
@@ -59,9 +62,6 @@
     <ClInclude Include="AmoObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GiftObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -69,6 +69,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HPObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gift.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

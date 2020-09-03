@@ -10,10 +10,10 @@
 
 
 // define some const
-#define WIDTH_MAIN_OBJECT 146
-#define HEIGHT_MAIN_OBJECT 70
+#define WIDTH_MAIN_OBJECT 155
+#define HEIGHT_MAIN_OBJECT 80
 
-#define MAIN_SPEED 20
+#define MAIN_SPEED 10
 
 class MainObject :public BaseObject {
 public:
@@ -24,7 +24,7 @@ public:
 	~MainObject();
 
 	// handle user input
-	void handleInput(SDL_Event/*, Mix_Chunk* bullet_sound[NUM_AUDIO_EXPLOSION]*/);
+	void handleInput(SDL_Event, int&, int&, int&);
 
 	// handle moves of mainObject when user input from keyboard
 	void handleMove();

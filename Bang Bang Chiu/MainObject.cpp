@@ -16,7 +16,7 @@ MainObject::~MainObject() {
 
 }
 
-void MainObject::handleInput(SDL_Event events/*, Mix_Chunk* bullet_sound[NUM_AUDIO_EXPLOSION]*/) {
+void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, int& DAME_OF_MAIN) {
 	if (events.type == SDL_KEYDOWN) {
 		switch (events.key.keysym.sym) {
 		case SDLK_UP: {
@@ -32,31 +32,44 @@ void MainObject::handleInput(SDL_Event events/*, Mix_Chunk* bullet_sound[NUM_AUD
 			_xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_SPACE: {
-			/*AmoObject* pAmo = new AmoObject();
-			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			pAmo->loadImg("laser2.png");
-			pAmo->setType(AmoObject::LAZER);
-
-			Mix_PlayChannel(-1, bullet_sound[0], 0);
-
-			pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
-			pAmo->setIsMove(true);
-			pAmo->setX_Val(AMO_MAIN_SPEED);
-			_pAmoList.push_back(pAmo);*/
-
-
-
+			DAME_OF_MAIN = 1;
 			AmoObject* pAmo = new AmoObject();
-			pAmo->setWidthHeight(WIDTH_BLUE_SLASH, HEIGHT_BLUE_SLASH);
-			pAmo->loadImgObject("blue_slash.png");
-			pAmo->setType(AmoObject::BLUE_SLASH);
+			pAmo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
+			pAmo->loadImgObject("bullet.png");
+			pAmo->setType(AmoObject::BULLET);
 
 			/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
 
-			pAmo->setRect(this->rect_.x + this->rect_.w * 0.7, this->rect_.y + this->rect_.h * 0.02);
+			pAmo->setRect(this->rect_.x + this->rect_.w , this->rect_.y + this->rect_.h * 0.5);
 			pAmo->setIsMove(true);
 			pAmo->setX_Val(AMO_MAIN_SPEED);
 			_pAmoList.push_back(pAmo);
+			break;
+		}
+		case SDLK_e: {
+			if (rocket_num > 0) {
+				DAME_OF_MAIN = 1;
+				AmoObject* pAmo = new AmoObject();
+				pAmo->setWidthHeight(WIDTH_ROCKET, HEIGHT_ROCKET);
+				pAmo->loadImgObject("rocket.png");
+				pAmo->setType(AmoObject::ROCKET);
+
+				/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+
+				pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y * 0.9);
+				pAmo->setIsMove(true);
+				pAmo->setX_Val(AMO_MAIN_SPEED);
+				_pAmoList.push_back(pAmo);
+				rocket_num--;
+			}
+			break;
+		}
+		case SDLK_r: {
+			//++++++++++++++++++++++++++++++++++++++++++++++++
+			//if (blood_num > 0) {
+			//	//do some thing
+			//}
+			break;
 		}
 		}
 	}

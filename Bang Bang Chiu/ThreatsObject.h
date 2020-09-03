@@ -8,23 +8,25 @@
 #include <vector>
 
 
-#define WIDTH_THREAT_0 50
-#define HEIGHT_THREAT_0 32
-#define WIDTH_THREAT_1 80
-#define HEIGHT_THREAT_1 33
-#define WIDTH_THREAT_2 80
-#define HEIGHT_THREAT_2 33
-#define WIDTH_THREAT_3 83
-#define HEIGHT_THREAT_3 52
-#define WIDTH_BOSS_4 120
-#define HEIGHT_BOSS_4 60
+#define WIDTH_THREAT_0 100
+#define HEIGHT_THREAT_0 66
+#define WIDTH_THREAT_1 140
+#define HEIGHT_THREAT_1 127
+#define WIDTH_THREAT_2 100
+#define HEIGHT_THREAT_2 73
+#define WIDTH_THREAT_3 100
+#define HEIGHT_THREAT_3 66
+#define WIDTH_BOSS_4 250
+#define HEIGHT_BOSS_4 212
 #define WIDTH_BOSS_5 202
 #define HEIGHT_BOSS_5 101
 #define WIDTH_BOSS_6 80
 #define HEIGHT_BOSS_6 33
-#define WIDTH_SUB_BOSS 60
-#define HEIGHT_SUB_BOSS 43
+#define WIDTH_SUB_BOSS 95
+#define HEIGHT_SUB_BOSS 45
+
 #define MAX_STEP 30
+#define NUM_THREAT 4
 class ThreatObject : public BaseObject
 {
 private:
@@ -69,6 +71,7 @@ public: // Properties:
 	void setType(const int &type) { _threat_type = type; }
 
 public: // Methods - Behaviors:
+
 	void Move();
 	void HandleMove(const int &x_border, const int &y_border);
 	void HandleMoveOscilate(const int &x_border, const int &y_border);
@@ -78,13 +81,14 @@ public: // Methods - Behaviors:
 	vector<AmoObject*> GetAmoList() const { return _p_amo_list; }
 
 	void initAmo(AmoObject *p_amo);
+	void initAmo_boss(AmoObject* p_amo);
 	void MakeAmo(SDL_Surface* des, const int &x_limit, const int &y_limit);
 
 
 	//dat lai vi tri:
 	void Reset(const int &xboder);
 	void ResetAmo(AmoObject* p_amo);
-	
+
 public: // friend functions:
 
 	friend void createListThreatObjects(vector<ThreatObject*> &list, const int &level, int &numThreats);

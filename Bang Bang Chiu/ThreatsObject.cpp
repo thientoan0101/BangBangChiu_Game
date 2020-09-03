@@ -35,7 +35,6 @@ ThreatObject::~ThreatObject()
 	}
 }
 
-
 void ThreatObject::Move()
 {
 	bool checkOscillation = this->getOscillation();
@@ -64,7 +63,7 @@ void ThreatObject::HandleMove(const int &x_border, const int &y_border)
 	case 2:
 		this->set_x_delta(2 + SPEED_BACKGROUND);		this->set_y_delta(2);	letRunToEnd = false;	break;
 	case 3:
-		this->set_x_delta(3 +SPEED_BACKGROUND);			this->set_y_delta(2);	letRunToEnd = false;	break;
+		this->set_x_delta(3 + SPEED_BACKGROUND);		this->set_y_delta(2);	letRunToEnd = false;	break;
 	case 4:
 		this->set_x_delta(2 + SPEED_BACKGROUND);		this->set_y_delta(2);	letRunToEnd = false;	break;
 	case 5:
@@ -114,9 +113,9 @@ void ThreatObject::HandleMoveOscilate(const int &x_border, const int &y_border)
 			_step = 0;
 		}
 		tempX  += _x_delta + SPEED_BACKGROUND;
-		 tempY += _y_delta;
+		tempY += _y_delta;
 	//} 
-		 if (tempX < SCREEN_WIDTH - rect_.w &&  tempY > 0 && tempY < (SCREEN_HEIGHT - rect_.h))
+		 if (tempX < SCREEN_WIDTH - rect_.w && tempY > 0 && tempY < (SCREEN_HEIGHT - rect_.h))
 		 {
 			 rect_.x = tempX;
 			 rect_.y = tempY;
@@ -125,8 +124,8 @@ void ThreatObject::HandleMoveOscilate(const int &x_border, const int &y_border)
 	_step++;
 	if (rect_.x < 0 || rect_.x > SCREEN_WIDTH || rect_.y < 0 || rect_.y > SCREEN_HEIGHT)
 	{
-		rect_.x = SCREEN_WIDTH + SCREEN_WIDTH/10;
-		rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;;
+		rect_.x = SCREEN_WIDTH + SCREEN_WIDTH / 10;
+		rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;
 		_active_oscillation = false;
 	}
 	
@@ -185,16 +184,16 @@ void ThreatObject::initAmo(AmoObject *p_amo)
 		ret = p_amo->loadImgObject("33.png");
 		break;
 	case 3:
-		ret = p_amo->loadImgObject("31.png");
+		ret = p_amo->loadImgObject("33.png");
 		break;
 	case 4:
-		ret = p_amo->loadImgObject("30.png");
-		break;
-	case 5:
 		ret = p_amo->loadImgObject("31.png");
 		break;
+	case 5:
+		ret = p_amo->loadImgObject("33.png");
+		break;
 	case 6:
-		ret = p_amo->loadImgObject("30.png");
+		ret = p_amo->loadImgObject("31.png");
 		break;
 	case 10:
 		ret = p_amo->loadImgObject("32.png");
@@ -215,12 +214,65 @@ void ThreatObject::initAmo(AmoObject *p_amo)
 			p_amo->setWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
 			p_amo->setType(AmoObject::SPHERE);
 			p_amo->setRect(rect_.x, rect_.y + rect_.h*0.5);
-			p_amo->setX_Val(8);
+			p_amo->setX_Val(AMO_THREAT_SPEED);
 			_p_amo_list.push_back(p_amo);
 		}
 	}
 }
 
+
+
+
+void ThreatObject::initAmo_boss(AmoObject* p_amo)
+{
+	bool ret;
+	switch (_threat_type)
+	{
+	case 0:
+		ret = p_amo->loadImgObject("32.png");
+		break;
+	case 1:
+		ret = p_amo->loadImgObject("33.png");
+		break;
+	case 2:
+		ret = p_amo->loadImgObject("33.png");
+		break;
+	case 3:
+		ret = p_amo->loadImgObject("33.png");
+		break;
+	case 4:
+		ret = p_amo->loadImgObject("31.png");
+		break;
+	case 5:
+		ret = p_amo->loadImgObject("33.png");
+		break;
+	case 6:
+		ret = p_amo->loadImgObject("31.png");
+		break;
+	case 10:
+		ret = p_amo->loadImgObject("32.png");
+		break;
+	default:
+		break;
+	}
+
+
+
+	if (p_amo)
+	{
+		/*	bool ret = p_amo->loadImgObject("sphere2.png");*/
+			/*bool ret = p_amo->loadImgObject("33.png");*/
+		if (ret)
+		{
+			p_amo->setIsMove(true);
+			p_amo->setWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
+			p_amo->setType(AmoObject::SPHERE);
+			p_amo->setRect(rect_.x, rect_.y + rect_.h * 0.5);
+			p_amo->setX_Val(AMO_BOSS_SPEED);
+			_p_amo_list.push_back(p_amo);
+		}
+	}
+}
 
 
 
@@ -259,14 +311,14 @@ void ThreatObject::Reset(const int &xboder)
 	//srand(time(NULL));
 	rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;
 
-	//for (int i = 0; i < _p_amo_list.size(); i++)
-	//{
-	//	AmoObject* p_amo = _p_amo_list.at(i);
-	//	if (p_amo)
-	//	{
-	//		ResetAmo(p_amo);
-	//	}
-	//}
+	/*for (int i = 0; i < _p_amo_list.size(); i++)
+	{
+		AmoObject* p_amo = _p_amo_list.at(i);
+		if (p_amo)
+		{
+			ResetAmo(p_amo);
+		}
+	}*/
 }
 
 
@@ -276,18 +328,11 @@ void ThreatObject::ResetAmo(AmoObject* p_amo)
 }
 
 
-
-
-
-
-
-
-
-
+// LEVEL ở đây:
 //-----------------------------------------------------------------------------------------
 void createThreat(ThreatObject* &pThreat, const int &type, const int &index)
 {
-	int width, height;
+	int width = 0, height = 0;
 	switch (type)
 	{
 	case 0:
@@ -326,7 +371,7 @@ void createThreat(ThreatObject* &pThreat, const int &type, const int &index)
 }
 
 
-// LEVEL ở đây:
+
 
 void createListThreatObjects(vector<ThreatObject*> &listThreats, const int &level, int &numThreats)
 {
@@ -426,7 +471,7 @@ void createBoss(ThreatObject* &pBoss, const int &type)
 	pBoss->setRect(SCREEN_WIDTH + 2 * rng_y, rng_y);
 	pBoss->set_x_delta(2 + SPEED_BACKGROUND);
 	AmoObject *p_amo = new AmoObject();
-	pBoss->initAmo(p_amo);
+	pBoss->initAmo_boss(p_amo);
 }
 
 

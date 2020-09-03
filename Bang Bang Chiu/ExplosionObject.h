@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CommonFunction.h"
 #include "BaseObject.h"
@@ -16,6 +16,10 @@ const int SMALL_EXP_HEIGHT = 99;
 
 const int UPGRADE_WIDTH = 150;
 const int UPGRADE_HEIGHT = 125;
+
+#define EAT_EXP_WIDTH 249
+#define EAT_EXP_HEIGHT 256
+
 
 
 class ExplosionObject : public BaseObject
@@ -42,7 +46,8 @@ public:
 	void showExSmall(SDL_Surface *des);
 
 	void set_clip_upgrade();
-	void showUpgrade(SDL_Surface *des);
+	void set_clip_eat_item(); // đăng sửa 
+	void showUpgrade(SDL_Surface* des);
 	// moi them nua:
 	
 
