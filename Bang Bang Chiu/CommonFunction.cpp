@@ -6,12 +6,13 @@ SDL_Event	g_event;
 
 
 
-void SDLCommonFunc::applySurface(SDL_Surface* src, SDL_Surface* des, int x, int y)			// Load image vao screen.
+SDL_Rect SDLCommonFunc::applySurface(SDL_Surface* src, SDL_Surface* des, int x, int y)			// Load image vao screen.
 {
 	SDL_Rect offset;
 	offset.x = x;
 	offset.y = y;
 	SDL_BlitSurface(src, NULL, des, &offset);
+	return offset;
 }
 
 

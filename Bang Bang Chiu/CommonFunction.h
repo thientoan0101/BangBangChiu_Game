@@ -27,7 +27,7 @@ extern SDL_Event	g_event;
 namespace SDLCommonFunc
 {
 	SDL_Surface* loadImage(string file);
-	void applySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
+	SDL_Rect applySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
 	void applySurfaceClip(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip, int x, int y);
 	void cleanUp();
 	bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2);

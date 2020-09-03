@@ -136,6 +136,8 @@
     <ClCompile Include="HPObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ThreatsObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +149,9 @@
     <ClInclude Include="Gift.h" />
     <ClInclude Include="HPObject.h" />
     <ClInclude Include="MainObject.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="TextObject.h" />
     <ClInclude Include="ThreatsObject.h" />
   </ItemGroup>
   <ItemGroup>

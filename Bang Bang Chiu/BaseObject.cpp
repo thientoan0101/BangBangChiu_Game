@@ -31,7 +31,7 @@ void BaseObject::showObject(SDL_Surface *des)
 {
 	if (p_object_ != NULL)
 	{
-		SDLCommonFunc::applySurface(p_object_, des, rect_.x, rect_.y);
+		rect_ = SDLCommonFunc::applySurface(p_object_, des, rect_.x, rect_.y);
 	}
 }
 

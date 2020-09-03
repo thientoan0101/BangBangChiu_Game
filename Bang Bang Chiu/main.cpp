@@ -9,6 +9,8 @@
 #include"HPObject.h"
 #include"Gift.h"
 #include"Random.h"
+#include"TextObject.h"
+#include"Menu.h"
 
 #undef main
 
@@ -37,6 +39,17 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 
 	AudioFunction::prepareAudioFile();
 
+	//==================Font==================
+	if (TTF_Init() == -1) {
+		cout << "\nKhong the Init Font\n";
+		return false;
+	}
+	//Import font to Programming
+	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
+	if (g_font_text == NULL) {
+		cout << "\n=================Loi font=================\n";
+		return false;
+	}
 	
 
 
@@ -162,7 +175,13 @@ int main(int arc, char* argv[])
 	unsigned int die_num = 0;
 	unsigned int die_num_boss = 0;
 
-	
+	//Truoc khi choi game => can show menu
+	int ret_menu = Menu::showMenu(g_screen, g_font_text);
+
+	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh 0 la exit
+		is_quit = true;
+	}
+
 	// --------------------------- THEM GIFT ---------------------------
 
 	// Tao Gift rocket
