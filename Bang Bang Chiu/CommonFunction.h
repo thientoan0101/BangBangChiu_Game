@@ -11,7 +11,7 @@
 #undef main
 using namespace std;
 
-const int WIDTH_LONG_BACKGROUND = 7680;					// background lon
+const int WIDTH_LONG_BACKGROUND = 7200;					// background lon
 const int WIDTH_SHORT_BACKGROUND = 1200;				// background nho
 const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_HEIGHT = 600;

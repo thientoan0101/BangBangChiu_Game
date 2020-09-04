@@ -2,7 +2,7 @@
 #include"BaseObject.h"
 #include<string>
 #include<SDL_ttf.h>
-
+#include<iostream>
 using namespace std;
 
 static TTF_Font* g_font_text = NULL;
@@ -23,5 +23,6 @@ public:
 	void setText(const string& text) { str_val_ = text; }
 	void setColor(const int& type);
 	void CreateGameText(TTF_Font* font, SDL_Surface* des);
+	static int InitFont();
 
 };

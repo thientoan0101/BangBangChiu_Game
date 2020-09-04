@@ -1,24 +1,2 @@
-﻿  main.cpp
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(28,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(70,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(150,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(308,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(309,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(341,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(342,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(371,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(381,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(440,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(441,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(447,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(448,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(491,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(548,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(563,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(611,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(659,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(694,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(755,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Desktop\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(760,20): warning C4018: '<': signed/unsigned mismatch
+﻿  Menu.cpp
   Bang Bang Chiu.vcxproj -> C:\Users\Desktop\Desktop\OOP-Project\Debug\Bang Bang Chiu.exe

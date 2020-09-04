@@ -22,3 +22,17 @@ void TextObject::CreateGameText(TTF_Font* font, SDL_Surface* des) {
 	p_object_ = TTF_RenderText_Solid(font, str_val_.c_str(), text_color_);
 	showObject(des);
 }
+
+int TextObject::InitFont() {
+	//==================Font==================
+	if (TTF_Init() == -1) {
+		cout << "\n=================Khong the Init Font=================\n";
+		return false;
+	}
+	//Import font to Programming
+	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
+	if (g_font_text == NULL) {
+		cout << "\n=================Loi font=================\n";
+		return false;
+	}
+}

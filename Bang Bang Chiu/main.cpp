@@ -39,20 +39,9 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 
 	AudioFunction::prepareAudioFile();
 
-	//==================Font==================
-	if (TTF_Init() == -1) {
-		cout << "\nKhong the Init Font\n";
-		return false;
-	}
-	//Import font to Programming
-	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
-	if (g_font_text == NULL) {
-		cout << "\n=================Loi font=================\n";
-		return false;
-	}
+	////==================Font==================
+	TextObject::InitFont();
 	
-
-
 	return true;
 }
 
@@ -61,7 +50,7 @@ int main(int arc, char* argv[])
 {
 
 	int level;
-	cout << "chon level: ";	cin >> level;		// 1->4
+	//cout << "chon level: ";	cin >> level;		// 1->4 Ham nay da duoc di chuyen den Menu dong 179
 
 	//int level = 4;
 
@@ -76,14 +65,34 @@ int main(int arc, char* argv[])
 	bool is_quit = false;
 	if (Init() == false)
 		return 0;
+	Menu:
+	//Truoc khi choi game => can show menu
+	int ret_menu = Menu::showMenu(g_screen);
 
+	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh totalItem la exit
+		is_quit = true;
+	}
+	else if (ret_menu == 0) {//Play game
+		level = 1; // Khi bam Play Game mac dinh se choi level 1
+	}
+	else if (ret_menu == 1) {//Load game
 
+	}
+	else if (ret_menu == 2) {//Options
+		int ret_menu_option = Menu::showMenuOption(g_screen);
+		if (ret_menu_option == totalItemOption - 1) {
+			goto Menu;
+		}
+		else if (ret_menu_option == 0) level = 1;
+		else if (ret_menu_option == 1) level = 2;
+		else if (ret_menu_option == 2) level = 3;
+		else if (ret_menu_option == 3) level = 4;
+	}
 	
-
-	g_bkground = SDLCommonFunc::loadImage("galaxybk_7680x600.png");
+	g_bkground = SDLCommonFunc::loadImage("galaxybk1.png");
 	if (g_bkground == NULL)
 	{
-		cout << "ko load background dc" << endl;
+		cout << "\n=============Khong load duoc background=============" << endl;
 		return 0;
 	}
 	SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
@@ -97,7 +106,7 @@ int main(int arc, char* argv[])
 	SDL_Surface * hp_border = SDLCommonFunc::loadImage("HP_border.png");
 	if (hp_border == NULL)
 	{
-		cout << "ko load background dc" << endl;
+		cout << "\n=============Khong load duoc HP border=============" << endl;
 		return 0;
 	}
 	/*SDLCommonFunc::applySurface(hp_border, g_screen, X_POS_HP_MAIN, Y_POS_HP_MAIN);*/
@@ -118,7 +127,7 @@ int main(int arc, char* argv[])
 	SDL_Surface* hp_border_boss = SDLCommonFunc::loadImage("HP_border_boss.png");
 	if (hp_border_boss == NULL)
 	{
-		cout << "ko load background dc" << endl;
+		cout << "\n=============Khong load duoc image HP Boss=============" << endl;
 		return 0;
 	}
 
@@ -175,12 +184,8 @@ int main(int arc, char* argv[])
 	unsigned int die_num = 0;
 	unsigned int die_num_boss = 0;
 
-	//Truoc khi choi game => can show menu
-	int ret_menu = Menu::showMenu(g_screen, g_font_text);
 
-	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh 0 la exit
-		is_quit = true;
-	}
+
 
 	// --------------------------- THEM GIFT ---------------------------
 
