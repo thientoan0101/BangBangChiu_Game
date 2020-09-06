@@ -12,14 +12,18 @@
 #include"TextObject.h"
 #include"Menu.h"
 
+
+// toan them:
+#include "Control.h"
+#include"Background.h"
 #undef main
 
-bool create = false;
-// số lượng rocket
-int num_rocket = 0;
-int num_blood = 0;
-int DAME_OF_MAIN = 1;
-const int LIFE_OF_THREAT = DAME_OF_MAIN * 2; // mau cua threat
+//bool create = false;
+//// số lượng rocket
+//int num_rocket = 0;
+//int num_blood = 0;
+//int DAME_OF_MAIN = 1;
+//const int LIFE_OF_THREAT = DAME_OF_MAIN * 2; // mau cua threat
 
 
 bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
@@ -37,11 +41,22 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 	if (g_screen == NULL)
 		return false;
 
-	AudioFunction::prepareAudioFile();
 
-	////==================Font==================
-	TextObject::InitFont();
+
+	//==================Font==================
+	if (TTF_Init() == -1) {
+		cout << "\nKhong the Init Font\n";
+		return false;
+	}
+	//Import font to Programming
+	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
+	if (g_font_text == NULL) {
+		cout << "\n=================Loi font=================\n";
+		return false;
+	}
 	
+	AudioFunction::prepareAudioFile();										// khoi tao file audio
+
 	return true;
 }
 
@@ -49,34 +64,172 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 int main(int arc, char* argv[])
 {
 
-	int level;
-	//cout << "chon level: ";	cin >> level;		// 1->4 Ham nay da duoc di chuyen den Menu dong 179
+	//int level = 1;
+	//cout << "chon level: ";	cin >> level;		// 1->4
 
-	//int level = 4;
 
 
 	// khởi tạo thời gian thực
 	srand(time(NULL));
 
-	bool activeBoss = false;
-	bool activeSubBoss = false;
-	int bkgn_x = 0;
-	bool is_run_screen = true;
-	bool is_quit = false;
+	//bool activeBoss = false;
+	//bool activeSubBoss = false;
+	//int bkgn_x = 0;
+	//bool is_run_screen = true;
+	//bool is_quit = false;
 	if (Init() == false)
 		return 0;
+
+/*
+	g_bkground = SDLCommonFunc::loadImage("galaxybk_7680x600.png");
+	if (g_bkground == NULL)
+	{
+		cout << "ko load background dc" << endl;
+		return 0;
+	}
+	SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);*/
+//	BackgroundFunc::prepareBackground(level);							//moi comment 5/9
+
+
+
+
+	// create main HP
+	//HP hp;
+	/*hp.init();
+	hp.setRect(X_POS_HP_MAIN , Y_POS_HP_MAIN);*/
+//	HpFunc::prepareHpMain();											//moi comment 5/9
+
+
+
+
+	//SDL_Surface * hp_border = SDLCommonFunc::loadImage("HP_border.png");
+	//if (hp_border == NULL)
+	//{
+	//	cout << "ko load background dc" << endl;
+	//	return 0;
+	//}
+//	HpFunc::prepareMainHpBorder();										//moi comment 5/9
+
+	
+	/*SDLCommonFunc::applySurface(hp_border, g_screen, X_POS_HP_MAIN, Y_POS_HP_MAIN);*/   //ko co
+
+
+
+	// create BOSS HP											
+	//HP hp_boss;
+	/*hp_boss.init_BOSS();
+	hp_boss.setRect(X_POS_HP_BOSS, Y_POS_HP_BOSS + 1);*/
+//	HpFunc::prepareHpBoss();												//moi comment 5/9
+
+
+
+
+	//// create THREAT HP
+	//HP hp_threat;
+	//hp_threat.init_threat();
+	//hp_threat.setRect(X_POS_HP_BOSS, Y_POS_HP_BOSS);//++++++++++++++++++++++++++++++
+	
+
+	/*SDL_Surface* hp_border_boss = SDLCommonFunc::loadImage("HP_border_boss.png");
+	if (hp_border_boss == NULL)
+	{
+		cout << "ko load background dc" << endl;
+		return 0;
+	}*/
+//	HpFunc::prepareBossHpBorder();												//moi comment 5/9
+
+
+
+	// tao MainObject:
+	//MainObject mainObject;
+
+	//mainObject.setRect(100, SCREEN_HEIGHT / 2);
+	//bool ret = mainObject.loadImgObject("main.png");					//main
+	//if (!ret)
+	//{
+	//	return 0;
+	//}
+
+//	MainFunc::prepareMain();														//moi comment 5/9
+
+
+
+	
+
+	//// tao nhieu enermy:
+	////int numThreats;
+	///*vector<ThreatObject*> listThreats;
+	//ThreatObject* pBoss = new ThreatObject;*/
+	//pBoss = new ThreatObject;
+
+
+
+	//createListThreatObjects(listThreats, level, numThreats);
+	//createBoss(pBoss, level);
+
+	////vector<ThreatObject*> listSub(2);
+
+	//for (int i = 0; i < listSub.size(); i++)
+	//{
+	//	listSub[i] = new ThreatObject;
+	//	createSubBoss(listSub[i], pBoss);
+	//}
+
+//	ThreatFunc::prepareThreats();						// setup threat, boss, subboss.				//moi comment 5/9
+
+
+	// Init Explosion Object:
+	
+	//this is for subBoss
+	//ExplosionObject exp_subboss;
+	/*bool	ret = exp_subboss.loadImgObject("expo_small.png");
+	exp_subboss.set_clip_small();
+	if (ret == false)	return false;*/
+
+//ExplosionFunc::prepareExpSub();																//moi comment 5/9
+
+
+
+
+
+	//this for main
+	//ExplosionObject explo_main;
+	/*bool ret = explo_main.loadImgObject("expo_small.png");
+	explo_main.set_clip_small();
+	if (!ret) return 0;*/
+//	ExplosionFunc::prepareExpMain();															// moi comment 5/9
+
+
+	//Mix_PlayChannel(-1, g_sound_ready, 0);
+
+	//// biến đếm số lần main trúng đạn
+	//unsigned int die_num = 0;
+	//unsigned int die_num_boss = 0;
+
 	Menu:
 	//Truoc khi choi game => can show menu
 	int ret_menu = Menu::showMenu(g_screen);
 
 	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh totalItem la exit
+		if (Mix_Playing(-1))																		// dung phat soundtrack
+		{
+			Mix_HaltChannel(-1);
+		}
 		is_quit = true;
 	}
 	else if (ret_menu == 0) {//Play game
 		level = 1; // Khi bam Play Game mac dinh se choi level 1
+		if (Mix_Playing(-1))																		// tam dung phat soundtrack
+		{	
+			Mix_Pause(-1);
+		}
 	}
 	else if (ret_menu == 1) {//Load game
-
+		//todo
+		if (Mix_Playing(-1))																		// tam dung phat soundtrack
+		{
+			Mix_Pause(-1);
+		}
 	}
 	else if (ret_menu == 2) {//Options
 		int ret_menu_option = Menu::showMenuOption(g_screen);
@@ -87,102 +240,17 @@ int main(int arc, char* argv[])
 		else if (ret_menu_option == 1) level = 2;
 		else if (ret_menu_option == 2) level = 3;
 		else if (ret_menu_option == 3) level = 4;
-	}
-	
-	g_bkground = SDLCommonFunc::loadImage("galaxybk1.png");
-	if (g_bkground == NULL)
-	{
-		cout << "\n=============Khong load duoc background=============" << endl;
-		return 0;
-	}
-	SDLCommonFunc::applySurface(g_bkground, g_screen, 0, 0);
-
-
-	// create main HP
-	HP hp;
-	hp.init();
-	hp.setRect(X_POS_HP_MAIN , Y_POS_HP_MAIN);
-
-	SDL_Surface * hp_border = SDLCommonFunc::loadImage("HP_border.png");
-	if (hp_border == NULL)
-	{
-		cout << "\n=============Khong load duoc HP border=============" << endl;
-		return 0;
-	}
-	/*SDLCommonFunc::applySurface(hp_border, g_screen, X_POS_HP_MAIN, Y_POS_HP_MAIN);*/
-
-
-
-	// create BOSS HP
-	HP hp_boss;
-	hp_boss.init_BOSS();
-	hp_boss.setRect(X_POS_HP_BOSS, Y_POS_HP_BOSS + 1);
-
-	//// create THREAT HP
-	//HP hp_threat;
-	//hp_threat.init_threat();
-	//hp_threat.setRect(X_POS_HP_BOSS, Y_POS_HP_BOSS);//++++++++++++++++++++++++++++++
-
-
-	SDL_Surface* hp_border_boss = SDLCommonFunc::loadImage("HP_border_boss.png");
-	if (hp_border_boss == NULL)
-	{
-		cout << "\n=============Khong load duoc image HP Boss=============" << endl;
-		return 0;
+		if (Mix_Playing(-1))																		// tam dung phat soundtrack
+		{
+			Mix_Paused(-1);
+		}
 	}
 
 
 
-	// tao MainObject:
-	MainObject mainObject;
-
-	mainObject.setRect(100, SCREEN_HEIGHT / 2);
-	bool ret = mainObject.loadImgObject("main.png");					//main
-	if (!ret)
-	{
-		return 0;
-	}
 
 
-	
-
-	// tao nhieu enermy:
-	int numThreats;
-	vector<ThreatObject*> listThreats;
-	ThreatObject* pBoss = new ThreatObject;
-
-	createListThreatObjects(listThreats, level, numThreats);
-	createBoss(pBoss, 4);
-
-	vector<ThreatObject*> listSub(2);
-
-	for (int i = 0; i < listSub.size(); i++)
-	{
-		listSub[i] = new ThreatObject;
-		createSubBoss(listSub[i], pBoss);
-	}
-
-
-
-	// Init Explosion Object:
-	
-	//this is for subBoss
-	ExplosionObject exp_subboss;
-	ret = exp_subboss.loadImgObject("expo_small.png");
-	exp_subboss.set_clip_small();
-	if (ret == false)	return false;
-
-	//this for main
-	ExplosionObject explo_main;
-	ret = explo_main.loadImgObject("expo_small.png");
-	explo_main.set_clip_small();
-	if (!ret) return 0;
-
-	Mix_PlayChannel(-1, g_sound_ready, 0);
-
-	// biến đếm số lần main trúng đạn
-	unsigned int die_num = 0;
-	unsigned int die_num_boss = 0;
+	if (ControlFunc::prepareGame() == false)	return 0;
 
 
 
@@ -190,24 +258,26 @@ int main(int arc, char* argv[])
 	// --------------------------- THEM GIFT ---------------------------
 
 	// Tao Gift rocket
-	Gift* gift_rocket = new Gift();
+	/*Gift* gift_rocket = new Gift();
 	gift_rocket->loadImgObject("gift.png");
 	gift_rocket->setIsMove(true);
 	gift_rocket->setXVal(GIFT_SPEED);
 	gift_rocket->setType(Gift::UPGRADE_AMO);
 	gift_rocket->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200));
-
+*/
 	
+//	GiftFunc::prepareGiftRocket();															//moi comment 5/9
+
 
 	// tạo gift hp
-	Gift* gift_hp = new Gift();
+	/*Gift* gift_hp = new Gift();
 	gift_hp->loadImgObject("HP_gift.png");
 	gift_hp->setIsMove(true);
 	gift_hp->setXVal(GIFT_SPEED);
 	gift_hp->setType(Gift::HP);
-	gift_hp->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200));
+	gift_hp->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200));*/
 
-
+//	GiftFunc::prepareGiftHP();																//moi comment 5/9
 
 
 
@@ -292,7 +362,7 @@ int main(int arc, char* argv[])
 
 
 
-
+		bool ret;
 
 		// hiệu ứng ăn item rocket
 		if (SDLCommonFunc::checkCollision(mainObject.getRect(), gift_rocket->getRect())) {
@@ -351,7 +421,7 @@ int main(int arc, char* argv[])
 				main_eat_item.setRect(x_explo, y_explo);
 				main_eat_item.showEx(g_screen);
 
-				//update screen
+				//update screen	
 				if (SDL_Flip(g_screen) == -1) return 0;
 			}
 			gift_hp->setRect(rand() % GIFT_HP_WIDTH + SCREEN_WIDTH + DELTA_DROP_HP, rand() % (SCREEN_HEIGHT - GIFT_HP_HEIGHT));
@@ -406,6 +476,7 @@ int main(int arc, char* argv[])
 						// check hp
 						die_num += DAME_OF_THREAT;
 						if (die_num >= LIFE) {
+							Mix_PlayChannel(-1, g_sound_ex_main, 0);
 							if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
 								//free memory
 								SDL_Quit();
@@ -464,6 +535,7 @@ int main(int arc, char* argv[])
 				// check hp
 				die_num += DAME_COLLISION;
 				if (die_num >= LIFE) {
+					Mix_PlayChannel(-1, g_sound_ex_main, 0);
 					if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
 						//free memory
 						SDL_Quit();
@@ -587,6 +659,7 @@ int main(int arc, char* argv[])
 							// check hp
 							die_num += DAME_OF_THREAT;
 							if (die_num >= LIFE) {
+								Mix_PlayChannel(-1, g_sound_ex_main, 0);
 								if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
 									//free memory
 									SDL_Quit();
@@ -635,6 +708,7 @@ int main(int arc, char* argv[])
 							// check hp
 							die_num += DAME_OF_BOSS;
 							if (die_num >= LIFE) {
+								Mix_PlayChannel(-1, g_sound_ex_main, 0);
 								if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
 									//free memory
 									SDL_Quit();
@@ -707,7 +781,7 @@ int main(int arc, char* argv[])
 							// moi them:
 							die_num_boss += DAME_OF_MAIN;
 
-							Mix_PlayChannel(-1, g_sound_injured, 0);
+							
 
 							for (int ex = 0; ex < 4; ex++)
 							{
@@ -724,7 +798,7 @@ int main(int arc, char* argv[])
 							if (p_amo->getType() != AmoObject::ROCKET) pMain->removeAmo(im);
 
 							if (die_num_boss >= LIFE_BOSS) {
-
+								Mix_PlayChannel(-1, g_sound_ex_boss, 0);
 								if (MessageBox(NULL, "", "YOU WIN", MB_OK) == IDOK) {
 									//free memory
 									SDL_Quit();
@@ -739,6 +813,7 @@ int main(int arc, char* argv[])
 									SDL_Quit();
 									return 1;
 								}
+								Mix_PlayChannel(-1, g_sound_injured, 0);
 							}//===============HP==================
 						}
 					}
@@ -771,7 +846,7 @@ int main(int arc, char* argv[])
 
 
 
-
+	Mix_CloseAudio();												// giai phong SDL_mixer
 
 
 	

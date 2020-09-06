@@ -1,2 +1,3 @@
-﻿  Menu.cpp
-  Bang Bang Chiu.vcxproj -> C:\Users\Desktop\Desktop\OOP-Project\Debug\Bang Bang Chiu.exe
+﻿  Audio.cpp
+d:\oop project\bang bang chiu\audio.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Bang Bang Chiu.vcxproj -> D:\OOP Project\Debug\Bang Bang Chiu.exe

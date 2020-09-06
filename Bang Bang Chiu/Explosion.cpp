@@ -1,6 +1,25 @@
 #include "ExplosionObject.h"
 
 
+const int EXP_WIDTH = 165;
+const int EXP_HEIGHT = 165;
+
+const int BIG_EXP_WIDTH = 159;
+const int BIG_EXP_HEIGHT = 208;
+
+const int SMALL_EXP_WIDTH = 99;
+const int SMALL_EXP_HEIGHT = 99;
+
+const int UPGRADE_WIDTH = 150;
+const int UPGRADE_HEIGHT = 125;
+
+
+
+ExplosionObject exp_subboss;
+ExplosionObject explo_main;
+
+
+
 ExplosionObject::ExplosionObject()
 {
 
@@ -120,3 +139,28 @@ void ExplosionObject::showUpgrade(SDL_Surface* des)
 
 	SDLCommonFunc::applySurfaceClip(this->p_object_, des, &clip_[frame_], rect_.x, rect_.y);
 }
+
+
+
+//----------------------------------------------------------------------//
+bool ExplosionFunc::prepareExpSub()
+{
+	bool ret;
+	ret = exp_subboss.loadImgObject("expo_small.png");
+	exp_subboss.set_clip_small();
+	return ret;
+}
+
+
+bool ExplosionFunc::prepareExpMain()
+{
+	bool ret;
+	ret = explo_main.loadImgObject("expo_small.png");
+	explo_main.set_clip_small();
+	return ret;
+}
+
+
+
+
+

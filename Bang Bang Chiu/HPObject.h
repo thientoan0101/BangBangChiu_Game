@@ -14,13 +14,18 @@
 #define X_POS_HP_BORDER_MAIN 0// X CỦA THANH MÁU MAIN
 #define Y_POS_HP_BORDER_MAIN 0 // Y CUA THANH MAU MAIN
 #define DAME_COLLISION 7
-
-const int X_POS_HP_BORDER_BOSS = SCREEN_WIDTH - 350;// X CỦA THANH MÁU BOSS
 #define Y_POS_HP_BORDER_BOSS 0 // Y CUA THANH MAU BOSS
 
-const int X_POS_HP_BOSS = SCREEN_WIDTH - 344; // X CỦA THANH MÁU BOSS
-const int Y_POS_HP_BOSS = Y_POS_HP_MAIN; // Y CUA THANH MAU BOSS
 
+extern const int X_POS_HP_BORDER_BOSS;					// X CỦA THANH MÁU BOSS
+extern const int X_POS_HP_BOSS;						    // X CỦA THANH MÁU BOSS
+extern const int Y_POS_HP_BOSS;							// Y CUA THANH MAU BOSS
+	
+extern unsigned int die_num;							// biến đếm số lần main trúng đạn
+extern unsigned int die_num_boss;
+
+extern int DAME_OF_MAIN;
+extern const int LIFE_OF_THREAT;						// mau cua threat
 
 class HP :public BaseObject {
 public:
@@ -57,3 +62,33 @@ private:
 };
 
 #endif // !_HP_OBJECT_
+
+
+
+//-------------------------------------------------------------------------------------//
+extern HP hp;
+extern HP hp_boss;
+extern SDL_Surface * hp_border;
+extern SDL_Surface* hp_border_boss;
+
+
+namespace HpFunc
+{
+	void prepareHpMain();
+	void prepareHpBoss();
+	
+	bool prepareMainHpBorder();
+	bool prepareBossHpBorder();
+}
+
+
+
+
+
+
+
+
+
+
+
+

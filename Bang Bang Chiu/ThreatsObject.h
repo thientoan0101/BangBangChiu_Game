@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "Control.h"
 #include "CommonFunction.h"
 #include "BaseObject.h"
 #include "AmoObject.h"
@@ -27,6 +27,15 @@
 
 #define MAX_STEP 30
 #define NUM_THREAT 4
+
+
+extern bool activeBoss;
+extern bool activeSubBoss;
+
+
+
+
+
 class ThreatObject : public BaseObject
 {
 private:
@@ -101,3 +110,16 @@ public: // friend functions:
 	void HandleMoveSub(ThreatObject* &pBoss);
 
 };
+
+
+
+extern vector<ThreatObject*> listThreats;
+extern vector<ThreatObject*> listSub;
+extern ThreatObject* pBoss;
+extern int numThreats;
+
+
+namespace ThreatFunc
+{
+	void prepareThreats();
+}

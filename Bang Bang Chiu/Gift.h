@@ -11,6 +11,13 @@
 #define DELTA_DROP_ROCKET 14000
 
 
+extern bool create;
+
+extern int num_rocket;				 // số lượng rocket
+extern int num_blood;
+
+
+
 class Gift :public BaseObject {
 public:
 	enum GiftType {												// Loại vật phẩm
@@ -41,3 +48,18 @@ protected:
 	int type_;														// Kiểu vật phẩm
 	bool is_move_;													// Xác định có được phép di chuyển hay không
 };
+
+
+
+// bien toan cuc : toan them
+extern Gift* gift_rocket;
+extern Gift* gift_hp;
+
+
+
+namespace GiftFunc
+{
+	void prepareGiftRocket();
+	void prepareGiftHP();
+
+}

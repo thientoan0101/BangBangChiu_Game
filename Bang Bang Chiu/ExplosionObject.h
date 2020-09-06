@@ -5,17 +5,19 @@
 #include "AmoObject.h"
 #include "MainObject.h"
 #include "ThreatsObject.h"
-const int EXP_WIDTH = 165;
-const int EXP_HEIGHT = 165;
 
-const int BIG_EXP_WIDTH = 159;
-const int BIG_EXP_HEIGHT = 208;
 
-const int SMALL_EXP_WIDTH = 99;
-const int SMALL_EXP_HEIGHT = 99;
+extern const int EXP_WIDTH;;
+extern const int EXP_HEIGHT;
 
-const int UPGRADE_WIDTH = 150;
-const int UPGRADE_HEIGHT = 125;
+extern const int BIG_EXP_WIDTH;
+extern const int BIG_EXP_HEIGHT;
+
+extern const int SMALL_EXP_WIDTH;
+extern const int SMALL_EXP_HEIGHT;
+
+extern const int UPGRADE_WIDTH;
+extern const int UPGRADE_HEIGHT;
 
 #define EAT_EXP_WIDTH 249
 #define EAT_EXP_HEIGHT 256
@@ -55,3 +57,23 @@ public:
 
 
 };
+
+
+
+//-------------------------------------------------------------------------------------------//
+extern ExplosionObject exp_subboss;
+extern ExplosionObject explo_main;
+
+
+
+namespace ExplosionFunc
+{
+	bool prepareExpSub();
+	bool prepareExpMain();
+}
+
+
+
+
+
+

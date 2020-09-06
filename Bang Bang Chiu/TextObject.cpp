@@ -1,5 +1,11 @@
 #include "TextObject.h"
 
+
+TTF_Font* g_font_text = NULL;
+
+
+
+
 void TextObject::setColor(const int& type) {
 	if (type == RED_COLOR) {
 		SDL_Color temp = { 255,0,0 };
@@ -23,16 +29,4 @@ void TextObject::CreateGameText(TTF_Font* font, SDL_Surface* des) {
 	showObject(des);
 }
 
-int TextObject::InitFont() {
-	//==================Font==================
-	if (TTF_Init() == -1) {
-		cout << "\n=================Khong the Init Font=================\n";
-		return false;
-	}
-	//Import font to Programming
-	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
-	if (g_font_text == NULL) {
-		cout << "\n=================Loi font=================\n";
-		return false;
-	}
-}
+

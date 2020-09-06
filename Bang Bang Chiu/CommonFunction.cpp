@@ -1,5 +1,16 @@
 #include "CommonFunction.h"
 
+const int WIDTH_LONG_BACKGROUND = 7680;
+const int WIDTH_SHORT_BACKGROUND = 1200;
+const int HEIGHT_BACKGROUND = 600;
+const int SCREEN_HEIGHT = 600;
+const int SCREEN_WIDTH = 1200;
+const int SCREEN_BPP = 32;
+const int NUM_THREAT = 3;
+const int SPEED_BACKGROUND = 2;
+
+
+
 SDL_Surface* g_screen = NULL;					//quan ly man hinh
 SDL_Surface* g_bkground = NULL;					//quan ly background
 SDL_Event	g_event;

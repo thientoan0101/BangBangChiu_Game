@@ -1,6 +1,16 @@
 ﻿#include "ThreatsObject.h"
 
 
+bool activeBoss = false;
+bool activeSubBoss = false;
+
+
+vector<ThreatObject*> listThreats;
+vector<ThreatObject*> listSub(2);
+ThreatObject* pBoss;
+int numThreats;
+
+
 
 
 ThreatObject::ThreatObject()
@@ -378,11 +388,11 @@ void createListThreatObjects(vector<ThreatObject*> &listThreats, const int &leve
 	//vector<ThreatObject*> listThreats;
 	int num0, num1, num2, num3;
 	switch (level)
-	{
-	case 1: num0 = 3;	num1 = 1; num2 = 1; num3 = 0;	break;
-	case 2: num0 = 1;	num1 = 2; num2 = 2; num3 = 0;	break;
-	case 3: num0 = 0;	num1 = 2; num2 = 2; num3 = 1;	break;
-	case 4: num0 = 0;	num1 = 2; num2 = 1; num3 = 2;	break;
+	{	
+	case 1: num0 = 1;	num1 = 2; num2 = 2; num3 = 0;	break;
+	case 2: num0 = 0;	num1 = 2; num2 = 2; num3 = 1;	break;
+	case 3: num0 = 0;	num1 = 2; num2 = 1; num3 = 2;	break;
+	case 4: num0 = 3;	num1 = 1; num2 = 1; num3 = 1;	break;
 	default:
 		break;
 	}
@@ -437,25 +447,25 @@ void destroyThreatObjects(vector<ThreatObject*> &list)
 
 
 
-void createBoss(ThreatObject* &pBoss, const int &type)
+void createBoss(ThreatObject* &pBoss, const int &level)
 {
 	int width, height;
-	switch (type)
+	switch (level)
 	{
-	case 4:
+	case 1:
 		width = WIDTH_BOSS_4;	height = HEIGHT_BOSS_4;
-		pBoss->loadImgObject("boss_4.png");
-		//pThreat->_blood = 1;
+		pBoss->loadImgObject("boss_1.png");
+		pBoss->_threat_type = 4;
 		break;
-	case 5:
+	case 2:
 		width = WIDTH_BOSS_5;	height = HEIGHT_BOSS_5;
-		pBoss->loadImgObject("boss_5.png");
-		//pThreat->_blood = 1;
+		pBoss->loadImgObject("boss_2.png");
+		pBoss->_threat_type = 5;
 		break;
-	case 6:
+	case 3:
 		width = WIDTH_BOSS_6;	height = HEIGHT_BOSS_6;
-		pBoss->loadImgObject("boss_6.png");
-		//pThreat->_blood = 1;
+		pBoss->loadImgObject("boss_3.png");
+		pBoss->_threat_type = 6;
 		break;
 	
 	default:
@@ -464,7 +474,7 @@ void createBoss(ThreatObject* &pBoss, const int &type)
 	
 	pBoss->rect_.w = width;
 	pBoss->rect_.h = height;
-	pBoss->_threat_type = type;
+	//pBoss->_threat_type = type;
 
 
 	int rng_y = rand() % SCREEN_HEIGHT - height;
@@ -498,3 +508,22 @@ void createSubBoss(ThreatObject* &pSubBoss, ThreatObject* &pBoss)
 
 
 
+
+
+
+//---------------------------------------------------------------------------------------------//
+
+void ThreatFunc::prepareThreats()
+{
+	pBoss = new ThreatObject;
+	createListThreatObjects(listThreats, level, numThreats);
+	createBoss(pBoss, level);
+
+	//vector<ThreatObject*> listSub(2);
+
+	for (int i = 0; i < listSub.size(); i++)
+	{
+		listSub[i] = new ThreatObject;
+		createSubBoss(listSub[i], pBoss);
+	}
+}

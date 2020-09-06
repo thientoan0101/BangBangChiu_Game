@@ -1,5 +1,10 @@
 #include"MainObject.h"
 
+MainObject mainObject;
+
+
+
+
 void MainObject::setAmoList(vector<AmoObject*> amoList) { _pAmoList = amoList; }
 
 vector<AmoObject*> MainObject::getAmoList() const { return _pAmoList; }
@@ -37,8 +42,8 @@ void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, 
 			pAmo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
 			pAmo->loadImgObject("bullet.png");
 			pAmo->setType(AmoObject::BULLET);
-
-			/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+			Mix_PlayChannel(-1, g_sound_bullet[0], 0);					// chay ko lap.
+			
 
 			pAmo->setRect(this->rect_.x + this->rect_.w , this->rect_.y + this->rect_.h * 0.5);
 			pAmo->setIsMove(true);
@@ -53,8 +58,8 @@ void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, 
 				pAmo->setWidthHeight(WIDTH_ROCKET, HEIGHT_ROCKET);
 				pAmo->loadImgObject("rocket.png");
 				pAmo->setType(AmoObject::ROCKET);
-
-				/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+				Mix_PlayChannel(-1, g_sound_bullet[1], 0);					// am thanh unti
+				
 
 				pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y * 0.9);
 				pAmo->setIsMove(true);
@@ -137,4 +142,20 @@ void MainObject::removeAmo(const int& index) {
 				p_amo = NULL;
 			}
 		}
+}
+
+
+
+
+//--------------------------------------------------------------------------//
+
+bool MainFunc::prepareMain()
+{
+	mainObject.setRect(100, SCREEN_HEIGHT / 2);
+	bool ret = mainObject.loadImgObject("main.png");					//main
+	if (!ret)
+	{
+		return 0;
+	}
+
 }

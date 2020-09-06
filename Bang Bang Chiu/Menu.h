@@ -1,23 +1,24 @@
 #pragma once
 #include"TextObject.h"
 #include"CommonFunction.h"
+#include "Audio.h"
 #include<iostream>
 
 using namespace std;
 
 //Main Menu
-static SDL_Surface* g_img_menu = NULL;
-const string local_img_bk = "menubk.jpg";
-const int FIRST_COLOR = TextObject::RED_COLOR;
-const int SECOND_COLOR = TextObject::BLUE_COLOR;
-const int totalItem = 4;
-const int totalItemOption = 5;
-static TTF_Font* g_font_Menu = NULL;
-const int font_size = 40;
-const string font_local = "menu.ttf";
+extern SDL_Surface* g_img_menu; 
+extern const string local_img_bk;
+extern const int FIRST_COLOR;
+extern const int SECOND_COLOR;
+extern const int totalItem; 
+extern const int totalItemOption;
+extern TTF_Font* g_font_Menu;
+extern const int font_size;
+extern const string font_local;
 
-const int x_menu_pixel = 120;
-const int y_menu_pixel = 90;
+extern const int x_menu_pixel;
+extern const int y_menu_pixel;
 
 class Menu
 {

@@ -1,5 +1,21 @@
 ﻿#include"HPObject.h"
 
+HP hp;
+HP hp_boss;
+SDL_Surface * hp_border;
+SDL_Surface* hp_border_boss;
+
+
+const int X_POS_HP_BORDER_BOSS = SCREEN_WIDTH - 350;					// X CỦA THANH MÁU BOSS
+const int X_POS_HP_BOSS = SCREEN_WIDTH - 344;						    // X CỦA THANH MÁU BOSS
+const int Y_POS_HP_BOSS = Y_POS_HP_MAIN;								// Y CUA THANH MAU BOSS
+
+unsigned int die_num = 0;												// biến đếm số lần main trúng đạn
+unsigned int die_num_boss = 0;
+
+int DAME_OF_MAIN = 1;
+const int LIFE_OF_THREAT = DAME_OF_MAIN * 2;							// mau cua threat
+
 HP::HP() {
 	rect_.x = 0;
 	rect_.y = 0;
@@ -105,3 +121,45 @@ void HP::decreaseHP_BOSS() {
 //	_number_threat--;
 //	if (_pos_list_threat.size() >= 0) _pos_list_threat.pop_back();
 //}
+
+
+
+
+
+
+//-------------------------------------------------------------------------------//
+
+
+void HpFunc::prepareHpMain()
+{
+	hp.init();
+	hp.setRect(X_POS_HP_MAIN, Y_POS_HP_MAIN);
+}
+
+void HpFunc::prepareHpBoss()
+{
+	hp_boss.init_BOSS();
+	hp_boss.setRect(X_POS_HP_BOSS, Y_POS_HP_BOSS + 1);
+
+}
+
+
+
+bool HpFunc::prepareMainHpBorder()
+{
+	hp_border = SDLCommonFunc::loadImage("HP_border.png");
+	if (hp_border == NULL)
+		return 0;
+	return true;
+}
+
+
+
+bool HpFunc::prepareBossHpBorder()
+{
+	hp_border_boss = SDLCommonFunc::loadImage("HP_border_boss.png");
+	if (hp_border_boss == NULL)
+		return false;
+	return true;
+}
+

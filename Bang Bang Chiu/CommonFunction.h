@@ -7,18 +7,20 @@
 #include <string>
 #include <SDL_image.h>
 #include <ctime>
+#include<iostream>
 
 #undef main
 using namespace std;
 
-const int WIDTH_LONG_BACKGROUND = 7200;					// background lon
-const int WIDTH_SHORT_BACKGROUND = 1200;				// background nho
-const int HEIGHT_BACKGROUND = 600;
-const int SCREEN_HEIGHT = 600;
-const int SCREEN_WIDTH = 1200;
-const int SCREEN_BPP = 32;								// chi so bit per pixel
-const int NUM_THREAT = 3;
-const int SPEED_BACKGROUND = 2;
+extern const int WIDTH_LONG_BACKGROUND;					// background lon
+extern const int WIDTH_SHORT_BACKGROUND;				// background nho
+extern const int HEIGHT_BACKGROUND;
+extern const int SCREEN_HEIGHT;
+extern const int SCREEN_WIDTH;
+extern const int SCREEN_BPP;								// chi so bit per pixel
+extern const int NUM_THREAT;
+extern const int SPEED_BACKGROUND;
+
 
 extern SDL_Surface* g_screen;					//quan ly man hinh
 extern SDL_Surface* g_bkground;					//quan ly background

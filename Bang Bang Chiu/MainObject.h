@@ -7,7 +7,7 @@
 #include"CommonFunction.h"
 #include"BaseObject.h"
 #include"AmoObject.h"
-
+#include "Audio.h"
 
 // define some const
 #define WIDTH_MAIN_OBJECT 155
@@ -48,3 +48,15 @@ private:
 
 #endif // !_MAINOBJECT_H_
 #pragma once
+
+
+
+//--------------------------------------------------------------------------//
+extern MainObject mainObject;
+
+
+
+namespace MainFunc
+{
+	bool prepareMain();
+}

@@ -6,11 +6,12 @@ Mix_Chunk* g_sound_ex_boss = NULL;
 Mix_Chunk* g_sound_ex_main = NULL;
 Mix_Chunk* g_sound_injured = NULL;
 Mix_Chunk* g_sound_ready = NULL;
-
+Mix_Chunk* g_music = NULL;
 
 void AudioFunction::prepareAudioFile()
 {
-	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)	//return false;
+	//if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)	//return false;
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
 		return;
 
 
@@ -22,10 +23,15 @@ void AudioFunction::prepareAudioFile()
 	g_sound_ex_boss = Mix_LoadWAV("boss_died.wav");
 	g_sound_ex_main = Mix_LoadWAV("main_died.wav");
 	g_sound_ready = Mix_LoadWAV("ready.wav");
-	if (g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_injured == NULL || g_sound_ex_boss == NULL || g_sound_ex_main == NULL)
+	g_music = Mix_LoadWAV("soundtrack_menu.wav");
+	if (g_music == NULL || g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_injured == NULL || g_sound_ex_boss == NULL || g_sound_ex_main == NULL)
 	{
 		//return false;
 		return;
 	}
+
+	
+	
+	
 }
 

@@ -21,7 +21,7 @@ extern Mix_Chunk* g_sound_ex_boss;
 extern Mix_Chunk* g_sound_ex_main;
 extern Mix_Chunk* g_sound_injured;
 extern Mix_Chunk* g_sound_ready;
-
+extern Mix_Chunk* g_music;
 // Audio Prototype:
 
 namespace AudioFunction 
