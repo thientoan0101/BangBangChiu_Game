@@ -15,6 +15,9 @@ SDL_Surface* g_screen = NULL;					//quan ly man hinh
 SDL_Surface* g_bkground = NULL;					//quan ly background
 SDL_Event	g_event;
 
+HWND hWnd;
+
+
 
 
 SDL_Rect SDLCommonFunc::applySurface(SDL_Surface* src, SDL_Surface* des, int x, int y)			// Load image vao screen.

@@ -26,6 +26,9 @@ extern SDL_Surface* g_screen;					//quan ly man hinh
 extern SDL_Surface* g_bkground;					//quan ly background
 extern SDL_Event	g_event;
 
+extern HWND hWnd;
+
+
 namespace SDLCommonFunc
 {
 	SDL_Surface* loadImage(string file);
