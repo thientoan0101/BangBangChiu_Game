@@ -24,5 +24,6 @@ public:
 	void setText(const string& text) { str_val_ = text; }
 	void setColor(const int& type);
 	void CreateGameText(TTF_Font* font, SDL_Surface* des);
+	static int InitFont();
 
 };

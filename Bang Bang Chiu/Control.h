@@ -14,6 +14,7 @@
 #include"Random.h"
 #include"TextObject.h"
 #include"Menu.h"
+#include"Score.h"
 
 
 
@@ -29,6 +30,5 @@ namespace ControlFunc
 	bool prepareGame();
 	int playCampaign();
 	bool playScore();
-
 	void endGame();
 }

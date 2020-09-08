@@ -91,7 +91,11 @@ void ControlFunc::setup()
 
 int ControlFunc::playCampaign()
 {
+	//Bien luu diem: 
+	//unsigned int score = 0;
 
+	Score score;
+	score.inputHighScoreFromFile();
 
 	// Trong luc play game:
 	while (!is_quit)
@@ -289,7 +293,7 @@ int ControlFunc::playCampaign()
 						die_num += DAME_OF_THREAT;
 						if (die_num >= LIFE) {
 							Mix_PlayChannel(-1, g_sound_ex_main, 0);
-
+							score.outHighScoreToFile(score.getScore());
 
 
 					//		WinLoseFunc::initWinLoseBox();
@@ -331,7 +335,7 @@ int ControlFunc::playCampaign()
 			//check collision
 			bool isColi = SDLCommonFunc::checkCollision(mainObject.getRect(), listThreats[i]->getRect());
 			if (isColi) {
-				/*score_value += 100;*/
+				/*score += 100;*/
 				for (int ex = 0; ex < NUM_THREAT; ex++) {
 					//main explosion animation
 					int x_explo_main = (mainObject.getRect().x + mainObject.getRect().w * 0.5) - EXP_WIDTH * 0.5;
@@ -357,7 +361,7 @@ int ControlFunc::playCampaign()
 				die_num += DAME_COLLISION;
 				if (die_num >= LIFE) {
 					Mix_PlayChannel(-1, g_sound_ex_main, 0);
-
+					score.outHighScoreToFile(score.getScore());
 
 
 				//	WinLoseFunc::initWinLoseBox();
@@ -405,6 +409,7 @@ int ControlFunc::playCampaign()
 					bool ret_col = SDLCommonFunc::checkCollision(p_amo->getRect(), listThreats[i]->getRect());
 					if (ret_col)
 					{
+						score.setScore(score.getScore() + 100);
 						// Audio:
 
 						Mix_PlayChannel(-1, g_sound_injured, 0);
@@ -492,7 +497,7 @@ int ControlFunc::playCampaign()
 							die_num += DAME_OF_THREAT;
 							if (die_num >= LIFE) {
 								Mix_PlayChannel(-1, g_sound_ex_main, 0);
-
+								score.outHighScoreToFile(score.getScore());
 
 
 					//			WinLoseFunc::initWinLoseBox();
@@ -549,7 +554,7 @@ int ControlFunc::playCampaign()
 							die_num += DAME_OF_BOSS;
 							if (die_num >= LIFE) {
 								Mix_PlayChannel(-1, g_sound_ex_main, 0);
-
+								score.outHighScoreToFile(score.getScore());
 
 
 					//			WinLoseFunc::initWinLoseBox();
@@ -593,6 +598,7 @@ int ControlFunc::playCampaign()
 						bool ret_col = SDLCommonFunc::checkCollision(p_amo->getRect(), listSub[i]->getRect());
 						if (ret_col)
 						{
+							score.setScore(score.getScore() + 100);
 							// moi them:
 
 							Mix_PlayChannel(-1, g_sound_injured, 0);
@@ -648,7 +654,9 @@ int ControlFunc::playCampaign()
 							if (p_amo->getType() != AmoObject::ROCKET) pMain->removeAmo(im);
 
 							if (die_num_boss >= LIFE_BOSS) {
+								score.setScore(score.getScore() + 1000);
 								Mix_PlayChannel(-1, g_sound_ex_boss, 0);
+								score.outHighScoreToFile(score.getScore());
 								//if (MessageBox(NULL, "", "YOU WIN", MB_OK) == IDOK) {
 									//free memory
 									//SDL_Quit();
@@ -669,14 +677,21 @@ int ControlFunc::playCampaign()
 					}
 				}
 
-
-
 			}
 		}
-
-
-		if (SDL_Flip(g_screen) == -1)
+		//Hien thi mark_value len man hinh
+		string str_score = to_string(score.getScore());
+		string Scorestr("Score: ");
+		Scorestr += str_score;
+		TextObject scoregame;
+		scoregame.setText(Scorestr);
+		scoregame.setColor(TextObject::RED_COLOR);
+		scoregame.setRect(600, 5);
+		scoregame.CreateGameText(g_font_text, g_screen);
+		
+		if (SDL_Flip(g_screen) == -1) {
 			return 0;
+		}
 	}
 
 }
@@ -687,6 +702,7 @@ int ControlFunc::playCampaign()
 
 void ControlFunc::endGame()
 {
+
 	for (int i = 0; i < listThreats.size(); i++)
 	{
 		delete listThreats[i];

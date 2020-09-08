@@ -3,7 +3,7 @@
 
 //static SDL_Surface* g_img_menu = NULL;
 SDL_Surface* g_img_menu = NULL;
-const string local_img_bk = "menubk.jpg";
+const string local_img_bk = "menubk2.png";
 const int FIRST_COLOR = TextObject::RED_COLOR;
 const int SECOND_COLOR = TextObject::BLUE_COLOR;
 const int totalItem = 4;
@@ -13,8 +13,11 @@ TTF_Font* g_font_Menu = NULL;
 const int font_size = 40;
 const string font_local = "menu.ttf";
 
-const int x_menu_pixel = 120;
-const int y_menu_pixel = 90;
+const int x_menu_pixel = 520;
+const int y_menu_pixel = 200;
+
+const int x_level_pixel = 535;
+const int y_level_pixel = 170;
 
 int Menu::showMenu(SDL_Surface* des) {
 
@@ -48,10 +51,10 @@ int Menu::showMenu(SDL_Surface* des) {
 	pos_arr[1].x = x_menu_pixel;
 	pos_arr[1].y = y_menu_pixel + font_size + 3 ;
 
-	pos_arr[2].x = x_menu_pixel;
+	pos_arr[2].x = x_menu_pixel+ 30;
 	pos_arr[2].y = pos_arr[1].y + font_size + 3;
 
-	pos_arr[3].x = x_menu_pixel;
+	pos_arr[3].x = x_menu_pixel + 45;
 	pos_arr[3].y = pos_arr[2].y + font_size + 3;
 
 	//text_menu luu giu string de hien thi text
@@ -183,19 +186,19 @@ int Menu::showMenuOption(SDL_Surface* des) {
 	//pos_arr luu giu vi tri
 	SDL_Rect pos_arr[totalItemOption];
 
-	pos_arr[0].x = x_menu_pixel;
-	pos_arr[0].y = y_menu_pixel;
+	pos_arr[0].x = x_level_pixel;
+	pos_arr[0].y = y_level_pixel;
 
-	pos_arr[1].x = x_menu_pixel;
-	pos_arr[1].y = y_menu_pixel + font_size + 3;
+	pos_arr[1].x = x_level_pixel;
+	pos_arr[1].y = y_level_pixel + font_size + 3;
 
-	pos_arr[2].x = x_menu_pixel;
+	pos_arr[2].x = x_level_pixel;
 	pos_arr[2].y = pos_arr[1].y + font_size + 3;
 
-	pos_arr[3].x = x_menu_pixel;
+	pos_arr[3].x = x_level_pixel;
 	pos_arr[3].y = pos_arr[2].y + font_size + 3;
 
-	pos_arr[4].x = x_menu_pixel;
+	pos_arr[4].x = x_level_pixel + 22;
 	pos_arr[4].y = pos_arr[3].y + font_size + 3;
 
 	//text_menu luu giu string de hien thi text

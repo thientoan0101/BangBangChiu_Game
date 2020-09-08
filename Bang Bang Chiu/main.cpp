@@ -46,16 +46,7 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 
 
 	//==================Font==================
-	if (TTF_Init() == -1) {
-		cout << "\nKhong the Init Font\n";
-		return false;
-	}
-	//Import font to Programming
-	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
-	if (g_font_text == NULL) {
-		cout << "\n=================Loi font=================\n";
-		return false;
-	}
+	TextObject::InitFont();
 	
 	AudioFunction::prepareAudioFile();										// khoi tao file audio
 
