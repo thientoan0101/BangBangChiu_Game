@@ -1,8 +1,8 @@
 #ifndef _AMOOBJECT_H_
 #define _AMOOBJECT_H_
 
-#define WIDTH_LASER 38
-#define HEIGHT_LASER 7
+#define WIDTH_LASER 250
+#define HEIGHT_LASER 15
 
 #define WIDTH_SPHERE 20
 #define HEIGHT_SPHERE 20
@@ -23,7 +23,7 @@
 #define HEIGHT_BULLET 29
 
 #define AMO_THREAT_SPEED 10
-#define AMO_BOSS_SPEED 10
+#define AMO_BOSS_SPEED 5
 #define AMO_MAIN_SPEED 15
 #define NUM_ROCKET 3
 

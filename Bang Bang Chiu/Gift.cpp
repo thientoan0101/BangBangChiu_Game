@@ -2,12 +2,14 @@
 
 Gift* gift_rocket;
 Gift* gift_hp;
+Gift* gift_upgr_main;
 
 
 bool create = false;
 
 int num_rocket = 0;					// số lượng rocket
-int num_blood = 0;					// số lượng hồi máu
+int num_blood = 0;				// số lượng hồi máu
+int time_of_lv2 = 0;
 
 
 
@@ -37,6 +39,14 @@ void Gift::handleMove(const int& x_border, const int& y_border) {
 }
 
 
+void createGift(const char* name, Gift*& gift, const int& type) {
+	gift->loadImgObject(name);
+	gift->setIsMove(true);
+	gift->setXVal(GIFT_SPEED);
+	gift->setType(type);
+	gift->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 100));
+}
+
 
 
 //------------------------------------------------------------------------//
@@ -44,12 +54,7 @@ void Gift::handleMove(const int& x_border, const int& y_border) {
 void GiftFunc::prepareGiftRocket()
 {
 	gift_rocket = new Gift();
-
-	gift_rocket->loadImgObject("gift.png");
-	gift_rocket->setIsMove(true);
-	gift_rocket->setXVal(GIFT_SPEED);
-	gift_rocket->setType(Gift::UPGRADE_AMO);
-	gift_rocket->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200));
+	createGift("gift.png", gift_rocket, Gift::UPGRADE_AMO);
 }
 
 
@@ -57,10 +62,11 @@ void GiftFunc::prepareGiftRocket()
 void GiftFunc::prepareGiftHP()
 {
 	gift_hp = new Gift();
+	createGift("HP_gift.png", gift_hp, Gift::HP);
+}
 
-	gift_hp->loadImgObject("HP_gift.png");
-	gift_hp->setIsMove(true);
-	gift_hp->setXVal(GIFT_SPEED);
-	gift_hp->setType(Gift::HP);
-	gift_hp->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200)); 
+void GiftFunc::prepareGiftUpgrade()
+{
+	gift_upgr_main = new Gift();
+	createGift("gift_up_main.png", gift_upgr_main, Gift::UPGRADE_SPACESHIP);
 }

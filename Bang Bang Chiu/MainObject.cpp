@@ -16,6 +16,7 @@ MainObject::MainObject() {
 	rect_.h = HEIGHT_MAIN_OBJECT;
 	_xVal = 0;
 	_yVal = 0;
+	_type = LEVEL_1;
 }
 MainObject::~MainObject() {
 
@@ -25,46 +26,82 @@ void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, 
 	if (events.type == SDL_KEYDOWN) {
 		switch (events.key.keysym.sym) {
 		case SDLK_UP: {
-			_yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			else _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_DOWN: {
-			_yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			else _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_LEFT: {
-			_xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			else _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_RIGHT: {
-			_xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			else _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_SPACE: {
-			DAME_OF_MAIN = 1;
-			AmoObject* pAmo = new AmoObject();
-			pAmo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
-			pAmo->loadImgObject("bullet.png");
-			pAmo->setType(AmoObject::BULLET);
-			Mix_PlayChannel(-1, g_sound_bullet[0], 0);					// chay ko lap.
-			
+			if (this->getType() == LEVEL_1) {
+				DAME_OF_MAIN = 1;
+				AmoObject* pAmo = new AmoObject();
+				pAmo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
+				pAmo->loadImgObject("bullet.png");
+				pAmo->setType(AmoObject::BULLET);
 
-			pAmo->setRect(this->rect_.x + this->rect_.w , this->rect_.y + this->rect_.h * 0.5);
-			pAmo->setIsMove(true);
-			pAmo->setX_Val(AMO_MAIN_SPEED);
-			_pAmoList.push_back(pAmo);
+				/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+
+				pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y + this->rect_.h * 0.5);
+				pAmo->setIsMove(true);
+				pAmo->setX_Val(AMO_MAIN_SPEED);
+				_pAmoList.push_back(pAmo);
+			}
+			else {
+				DAME_OF_MAIN = 5;
+				AmoObject* pAmo = new AmoObject();
+				pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+				pAmo->loadImgObject("lazer.png");
+				pAmo->setType(AmoObject::LAZER);
+
+				/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+
+				pAmo->setRect(this->rect_.x + WIDTH_MAIN_OBJECT_LV2, this->rect_.y + 5);
+				pAmo->setIsMove(true);
+				pAmo->setX_Val(AMO_MAIN_SPEED);
+				_pAmoList.push_back(pAmo);
+			}
 			break;
 		}
 		case SDLK_e: {
 			if (rocket_num > 0) {
-				DAME_OF_MAIN = 1;
-				AmoObject* pAmo = new AmoObject();
-				pAmo->setWidthHeight(WIDTH_ROCKET, HEIGHT_ROCKET);
-				pAmo->loadImgObject("rocket.png");
-				pAmo->setType(AmoObject::ROCKET);
-				Mix_PlayChannel(-1, g_sound_bullet[1], 0);					// am thanh unti
-				
+				if (this->getType() == LEVEL_1) {
+					DAME_OF_MAIN = 1;
+					AmoObject* pAmo = new AmoObject();
+					pAmo->setWidthHeight(WIDTH_ROCKET, HEIGHT_ROCKET);
+					pAmo->loadImgObject("rocket.png");
+					pAmo->setType(AmoObject::ROCKET);
 
-				pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y * 0.9);
-				pAmo->setIsMove(true);
-				pAmo->setX_Val(AMO_MAIN_SPEED);
-				_pAmoList.push_back(pAmo);
+					/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+
+					pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y * 0.9);
+					pAmo->setIsMove(true);
+					pAmo->setX_Val(AMO_MAIN_SPEED);
+					_pAmoList.push_back(pAmo);
+				}
+				else {
+					DAME_OF_MAIN = 1;
+					AmoObject* pAmo = new AmoObject();
+					pAmo->setWidthHeight(WIDTH_ULTI_LV2, HEIGHT_ULTI_LV2);
+					pAmo->loadImgObject("unti_lv2.png");
+					pAmo->setType(AmoObject::ROCKET);
+
+					/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+
+					pAmo->setRect(this->rect_.x, this->rect_.y * 0.9);
+					pAmo->setIsMove(true);
+					pAmo->setX_Val(AMO_MAIN_SPEED);
+					_pAmoList.push_back(pAmo);
+				}
 				rocket_num--;
 			}
 			break;
@@ -81,16 +118,20 @@ void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, 
 	else if (events.type == SDL_KEYUP) {
 		switch (events.key.keysym.sym) {
 		case SDLK_UP: {
-			_yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			else _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_DOWN: {
-			_yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+			else _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_LEFT: {
-			_xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			else _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		} case SDLK_RIGHT: {
-			_xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			if (this->getType() == LEVEL_1) _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+			else _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
 			break;
 		}
 		}
@@ -127,9 +168,16 @@ void MainObject::makeAmo(SDL_Surface* g_Something) {
 
 void MainObject::handleMove() {
 	rect_.x += _xVal;
-	if (rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH) rect_.x -= _xVal;
-	rect_.y += _yVal;
-	if (rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT) rect_.y -= _yVal;
+	if (this->getType() == LEVEL_1) {
+		if (rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH) rect_.x -= _xVal;
+		rect_.y += _yVal;
+		if (rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT) rect_.y -= _yVal;
+	}
+	else {
+		if (rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT_LV2 > SCREEN_WIDTH) rect_.x -= _xVal;
+		rect_.y += _yVal;
+		if (rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT_LV2 > SCREEN_HEIGHT) rect_.y -= _yVal;
+	}
 }
 
 void MainObject::removeAmo(const int& index) {
@@ -153,6 +201,7 @@ bool MainFunc::prepareMain()
 {
 	mainObject.setRect(100, SCREEN_HEIGHT / 2);
 	bool ret = mainObject.loadImgObject("main.png");					//main
+	mainObject.setType(MainObject::LEVEL_1);
 	if (!ret)
 	{
 		return 0;

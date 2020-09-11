@@ -7,14 +7,18 @@
 #define GIFT_HEIGHT 53
 #define GIFT_HP_WIDTH 55
 #define GIFT_HP_HEIGHT 46
-#define DELTA_DROP_HP 8000
-#define DELTA_DROP_ROCKET 14000
+#define GIFT_UPGRADE_WIDTH 60
+#define GIFT_UPGRADE_HEIGHT 44
+#define DELTA_DROP_HP 4000
+#define DELTA_DROP_ROCKET 10000
+#define DELTA_DROP_UPGRADE 15000
 
 
 extern bool create;
 
 extern int num_rocket;				 // số lượng rocket
 extern int num_blood;
+extern int time_of_lv2;
 
 
 
@@ -54,12 +58,13 @@ protected:
 // bien toan cuc : toan them
 extern Gift* gift_rocket;
 extern Gift* gift_hp;
+extern Gift* gift_upgr_main;
 
 
-
+void createGift(const char* name, Gift*& gift, const int& type);
 namespace GiftFunc
 {
 	void prepareGiftRocket();
 	void prepareGiftHP();
-
+	void prepareGiftUpgrade();
 }

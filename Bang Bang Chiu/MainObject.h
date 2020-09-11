@@ -12,6 +12,11 @@
 // define some const
 #define WIDTH_MAIN_OBJECT 155
 #define HEIGHT_MAIN_OBJECT 80
+#define WIDTH_MAIN_OBJECT_LV2 200
+#define HEIGHT_MAIN_OBJECT_LV2 78
+#define WIDTH_ULTI_LV2 608
+#define HEIGHT_ULTI_LV2 140
+#define LIMIT_TIME_LV2 1000
 
 #define MAIN_SPEED 10
 
@@ -22,6 +27,11 @@ public:
 	MainObject();
 	// destructor
 	~MainObject();
+
+	enum Type {
+		LEVEL_1, LEVEL_2
+	};
+
 
 	// handle user input
 	void handleInput(SDL_Event, int&, int&, int&);
@@ -41,7 +51,12 @@ public:
 	// delete an amo
 	void removeAmo(const int&);
 
+	// type of main
+	void setType(const int& type) { _type = type; }
+	int getType() { return _type; }
+
 private:
+	int _type;
 	int _xVal, _yVal;
 	vector<AmoObject*> _pAmoList;
 };

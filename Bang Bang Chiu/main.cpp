@@ -321,7 +321,7 @@ int main(int arc, char* argv[])
 
 	int resultGame = ControlFunc::playCampaign();
 	int catchMess, msgboxID;
-	switch (resultGame)
+ 	switch (resultGame)
 	{
 	case -1:	// lose
 		//if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {

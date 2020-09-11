@@ -36,7 +36,7 @@ bool ControlFunc::prepareGame()
 
 	GiftFunc::prepareGiftRocket();											// khoi tao Gift
 	GiftFunc::prepareGiftHP();						
-
+	GiftFunc::prepareGiftUpgrade();
 	
 
 	return isSuccess;
@@ -57,9 +57,10 @@ void ControlFunc::setup()
 	is_quit = false;
 
 	// khoi tao bien Gift:
-	create = false;
+	create = true;
 	num_rocket = 0;
 	num_blood = 0;
+	time_of_lv2 = 0;
 
 	// khoi tao bien HP:
 	die_num = 0;
@@ -149,10 +150,10 @@ int ControlFunc::playCampaign()
 		// --------------------------- THEM GIFT ---------------------------
 
 	// Tao Gift rocket
-		if (create && rand() % 200 == 0) {
+		if (create && rand() % DELTA_DROP_ROCKET == 0) {
 			gift_rocket->setIsMove(true);
-			gift_rocket->setType(rand() % 4);
-			gift_rocket->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200));
+			gift_rocket->setType(Gift::UPGRADE_AMO);
+			gift_rocket->setRect(rand() % DELTA_DROP_ROCKET, rand() % (SCREEN_HEIGHT - gift_rocket->getRect().h));
 			create = false;
 		}
 		if (gift_rocket->getIsMove()) {
@@ -163,10 +164,10 @@ int ControlFunc::playCampaign()
 			create = true;
 
 		// Tao Gift hp
-		if (create && rand() % 400 == 0) {
+		if (create && rand() % DELTA_DROP_HP == 0) {
 			gift_hp->setIsMove(true);
-			gift_hp->setType(rand() % 4);
-			gift_hp->setRect(rand() % 400 + SCREEN_WIDTH, rand() % (SCREEN_HEIGHT - 200));
+			gift_hp->setType(Gift::HP);
+			gift_hp->setRect(rand() % DELTA_DROP_HP, rand() % (SCREEN_HEIGHT - gift_hp->getRect().h));
 			create = false;
 		}
 		if (gift_hp->getIsMove()) {
@@ -176,7 +177,19 @@ int ControlFunc::playCampaign()
 		else create = true;
 
 
-
+	// Tao Gift upgrade máy bay
+	if (create && rand() % DELTA_DROP_UPGRADE == 0) {
+		gift_upgr_main->setIsMove(true);
+		gift_upgr_main->setType(Gift::UPGRADE_SPACESHIP);
+		gift_upgr_main->setRect(rand() % DELTA_DROP_UPGRADE, rand() % (SCREEN_HEIGHT - gift_upgr_main->getRect().h));
+		create = false;
+	}
+	if (gift_upgr_main->getIsMove()) {
+		gift_upgr_main->showObject(g_screen);
+		gift_upgr_main->handleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
+	else create = true;
+	//==============================================================
 
 		bool ret;
 
@@ -243,6 +256,60 @@ int ControlFunc::playCampaign()
 			gift_hp->setRect(rand() % GIFT_HP_WIDTH + SCREEN_WIDTH + DELTA_DROP_HP, rand() % (SCREEN_HEIGHT - GIFT_HP_HEIGHT));
 
 		}
+
+
+		// hiệu ứng ăn quà upgrade
+		if (SDLCommonFunc::checkCollision(mainObject.getRect(), gift_upgr_main->getRect())) {
+			//this for main
+			ExplosionObject main_eat_item;
+
+			bool ret = mainObject.loadImgObject("main_lv2.png");				//main
+			if (!ret)
+			{
+				return 0;
+			}
+			mainObject.setType(MainObject::LEVEL_2);
+			mainObject.setWidthHeight(WIDTH_MAIN_OBJECT_LV2, HEIGHT_MAIN_OBJECT_LV2);
+
+			// ăn item được rocket
+			ret = main_eat_item.loadImgObject("eat_item.png");
+
+
+			main_eat_item.set_clip_eat_item();
+			if (!ret) return 0;
+
+			for (int ex = 0; ex < 4; ex++) {
+
+				int x_explo = (mainObject.getRect().x + mainObject.getRect().w * 0.5) - EXP_WIDTH * 0.5;
+				int y_explo = (mainObject.getRect().y + mainObject.getRect().h * 0.5) - EXP_HEIGHT * 0.5;
+
+				//upload explosion
+				main_eat_item.set_frame(ex);
+				main_eat_item.setRect(x_explo, y_explo);
+				main_eat_item.showEx(g_screen);
+				//update screen
+				if (SDL_Flip(g_screen) == -1) return 0;
+			}
+			gift_upgr_main->setRect(rand() % GIFT_UPGRADE_WIDTH + SCREEN_WIDTH + DELTA_DROP_UPGRADE, rand() % SCREEN_HEIGHT);
+
+		}
+
+
+		// check khi nào hết hạn lv2
+		if (mainObject.getType() == MainObject::LEVEL_2) time_of_lv2++;
+		if (time_of_lv2 == LIMIT_TIME_LV2) {
+			time_of_lv2 = 0;
+			bool ret = mainObject.loadImgObject("main.png");				//main
+			if (!ret)
+			{
+				return 0;
+			}
+			mainObject.setType(MainObject::LEVEL_1);
+			mainObject.setWidthHeight(WIDTH_MAIN_OBJECT, HEIGHT_MAIN_OBJECT);
+		}
+		//+++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 
 		// show hp
