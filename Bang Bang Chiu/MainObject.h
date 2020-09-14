@@ -34,7 +34,7 @@ public:
 
 
 	// handle user input
-	void handleInput(SDL_Event, int&, int&, int&);
+	void handleInput(SDL_Event&, int&, int&, int&);
 
 	// handle moves of mainObject when user input from keyboard
 	void handleMove();

@@ -22,7 +22,7 @@ MainObject::~MainObject() {
 
 }
 
-void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, int& DAME_OF_MAIN) {
+void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num, int& DAME_OF_MAIN) {
 	if (events.type == SDL_KEYDOWN) {
 		switch (events.key.keysym.sym) {
 		case SDLK_UP: {
@@ -116,25 +116,25 @@ void MainObject::handleInput(SDL_Event events, int& rocket_num, int& blood_num, 
 		}
 	}
 	else if (events.type == SDL_KEYUP) {
-		switch (events.key.keysym.sym) {
-		case SDLK_UP: {
-			if (this->getType() == LEVEL_1) _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
-			else _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
-			break;
-		} case SDLK_DOWN: {
-			if (this->getType() == LEVEL_1) _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
-			else _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
-			break;
-		} case SDLK_LEFT: {
-			if (this->getType() == LEVEL_1) _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
-			else _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
-			break;
-		} case SDLK_RIGHT: {
-			if (this->getType() == LEVEL_1) _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
-			else _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
-			break;
-		}
-		}
+	switch (events.key.keysym.sym) {
+	case SDLK_UP: {
+		if (this->getType() == LEVEL_1) _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+		else _yVal += HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+		break;
+	} case SDLK_DOWN: {
+		if (this->getType() == LEVEL_1) _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+		else _yVal -= HEIGHT_MAIN_OBJECT / MAIN_SPEED;
+		break;
+	} case SDLK_LEFT: {
+		if (this->getType() == LEVEL_1) _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+		else _xVal += WIDTH_MAIN_OBJECT / MAIN_SPEED;
+		break;
+	} case SDLK_RIGHT: {
+		if (this->getType() == LEVEL_1) _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+		else _xVal -= WIDTH_MAIN_OBJECT / MAIN_SPEED;
+		break;
+	}
+	}
 	} /*else if (events.type == SDL_MOUSEBUTTONDOWN) {
 		AmoObject* pAmo = new AmoObject();
 		if(events.button.button == SDL_BUTTON_LEFT){

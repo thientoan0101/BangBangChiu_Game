@@ -28,8 +28,8 @@ ExplosionObject::ExplosionObject()
 
 ExplosionObject::~ExplosionObject()
 {
-
-
+	frame_ = 0;
+	
 }
 
 

@@ -20,6 +20,9 @@ HP::HP() {
 	rect_.x = 0;
 	rect_.y = 0;
 	rect_.w = LIFE;
+	_number = 0;
+	_number_boss = 0;
+	_number_threat = 0;
 }
 
 HP::~HP(){}

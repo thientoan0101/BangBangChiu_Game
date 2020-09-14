@@ -79,10 +79,8 @@ void ControlFunc::setup()
 	listSub.clear();
 	listSub.resize(2);
 
-
 	//SDL_Event new_event;
-	//g_event.type = SDL_NOEVENT;
-
+	/*g_event.type = SDL_NOEVENT;*/
 }
 
 
@@ -760,7 +758,7 @@ int ControlFunc::playCampaign()
 			return 0;
 		}
 	}
-
+	return true;
 }
 
 
