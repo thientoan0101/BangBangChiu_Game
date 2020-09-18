@@ -40,8 +40,8 @@ public:
 	void render_boss(SDL_Surface*);
 	void render_threat(SDL_Surface*);
 
-	void init();
-	void init_BOSS();
+	void init(int n = 0);
+	void init_BOSS(int n = 0);
 	void init_threat();
 
 	void decreaseHP();

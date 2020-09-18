@@ -45,12 +45,15 @@ public:
 	bool getIsMove() { return is_move_; }							// Lấy giá trị có được phép di chuyển hay không: true - di chuyển được, false - không được phép di chuyển
 	void setIsMove(const bool& val) { is_move_ = val; }				// Đặt giá trị có được phép di chuyển hay không
 	int getType() { return type_; }									// Lấy giá trị của loại vật phẩm
-	void setType(const int& type) { type_ = type; }					// Đặt kiểu của vật phẩm
+	void setType(const int& type) { type_ = type; }
+	bool getIsCreate() { return is_create_; }
+	void setIsCreate(const bool& is_create) { is_create_ = is_create; }// Đặt kiểu của vật phẩm
 
 protected:
 	int x_val_, y_val_;												// Tốc độ của vật phẩm theo chiều ngang, dọc
 	int type_;														// Kiểu vật phẩm
 	bool is_move_;													// Xác định có được phép di chuyển hay không
+	bool is_create_;
 };
 
 

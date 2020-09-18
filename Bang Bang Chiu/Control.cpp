@@ -1,6 +1,5 @@
 ﻿#include "Control.h"
 
-
 int level = 1;
 bool is_quit = false;
 
@@ -96,6 +95,9 @@ int ControlFunc::playCampaign()
 	/*Score score;*/
 	score.inputHighScoreFromFile();
 
+	int type = 1;
+	loadGame(type, level, score);
+
 	// Trong luc play game:
 	while (!is_quit)
 	{
@@ -110,6 +112,21 @@ int ControlFunc::playCampaign()
 		}
 
 
+
+		if (g_event.type == SDL_KEYDOWN && g_event.key.keysym.sym == SDLK_ESCAPE) {
+			if (MessageBox(NULL, "Do you want to save game?", "Game over", MB_OK) == IDOK) {
+				saveGame(1, level, score);
+
+				/*SDL_Quit();
+				return 1;*/
+
+				//free memory
+				/*delete[] listThreats;
+				CleanUp();*/
+
+				return 1;
+			}
+		}
 
 
 

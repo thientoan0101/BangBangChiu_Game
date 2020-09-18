@@ -66,25 +66,27 @@ void HP::render_boss(SDL_Surface* des) {
 //	}
 //}
 
-void HP::init() {
+void HP::init(int n) {
 	loadImgObject("HP.png");
-	_number = LIFE;
+	die_num = n;
+	_number = LIFE - die_num;
 	if (_pos_list.size() > 0) _pos_list.clear();
 
 	int count = X_POS_HP_MAIN + 60; // CÁI NÀY NÓ CÓ Ý NGHĨA SẼ PUSH_BACK TỪNG VỊ TRÍ MÀ MỖI CỘT MÁU NHỎ SẼ XUẤT HIỆN SAU ĐÓ TẠO THÀNH 1 THANH MÁU TO
-	for (int i = 0; i < LIFE; i ++) {
+	for (int i = 0; i < _number; i++) {
 		addPos(count);
 		count += 2;
 	}
 }
 
-void HP::init_BOSS() {
+void HP::init_BOSS(int n) {
 	loadImgObject("HP_boss.png");
-	_number_boss = LIFE_BOSS;
+	die_num_boss = n;
+	_number_boss = LIFE_BOSS - die_num_boss;
 	if (_pos_list_boss.size() > 0) _pos_list_boss.clear();
 
 	int count = X_POS_HP_BOSS + LIFE_BOSS * 2; // CÁI NÀY NÓ CÓ Ý NGHĨA SẼ PUSH_BACK TỪNG VỊ TRÍ MÀ MỖI CỘT MÁU NHỎ SẼ XUẤT HIỆN SAU ĐÓ TẠO THÀNH 1 THANH MÁU TO
-	for (int i = 0; i < LIFE_BOSS; i++) {
+	for (int i = 0; i < _number_boss; i++) {
 		addPos_boss(count);
 		count -= 2;
 	}

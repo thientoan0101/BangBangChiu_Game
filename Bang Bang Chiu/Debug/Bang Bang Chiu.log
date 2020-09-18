@@ -1,3 +1,23 @@
-﻿  Menu.cpp
-C:\Users\Le Van Dong\Desktop\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Bang Bang Chiu.vcxproj -> C:\Users\Le Van Dong\Desktop\OOP-Project\Debug\Bang Bang Chiu.exe
+﻿  Control.cpp
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(227,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(228,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(260,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(261,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(298,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(299,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(344,21): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(354,22): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(423,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(424,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(430,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(431,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(486,24): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(544,22): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(559,23): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(616,23): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(675,25): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(711,25): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(788,20): warning C4018: '<': signed/unsigned mismatch
+E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(793,20): warning C4018: '<': signed/unsigned mismatch
+  Bang Bang Chiu.vcxproj -> E:\New folder\GitHub\OOP-Project\Debug\Bang Bang Chiu.exe

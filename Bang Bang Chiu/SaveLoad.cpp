@@ -1,14 +1,100 @@
-﻿#include "SaveLoad.h"
+﻿#include <fstream>
+#include <vector>
 
-#include <fstream>
+#include "SaveLoad.h"
+
+
+extern MainObject mainObject;
+extern unsigned int die_num;
+extern unsigned int die_num_boss;
+extern int numThreats;
+extern vector<ThreatObject*> listThreats;
+extern vector<ThreatObject*> listSub;
+extern ThreatObject* pBoss;
+
+extern HP hp;
+extern HP hp_boss;
+
+extern int time_of_lv2;
+
+
+
+
+void loadGame(int& type_boss, int& level, Score& score) {
+	Reset(type_boss, level, score);
+	load(type_boss, level, score);
+}
+
+
+
+
+
+// ---------------------------------- Reset Data ----------------------------------
+
+void Reset(int& type_boss, int& level, Score& score) {
+	/*for (int threat = 0; threat < numThreats; threat++) {
+		if (listThreats[threat] != NULL) {
+			delete listThreats[threat];
+			listThreats[threat] = NULL;
+		}
+	}*/
+	listThreats.clear();
+
+	/*for (int subBoss = 0; subBoss < listSub.size(); subBoss++) {
+		if (listSub[subBoss] != NULL) {
+			delete listSub[subBoss];
+			listSub[subBoss] = NULL;
+		}
+	}*/
+	listSub.clear();
+
+	if (gift_upgr_main) {
+		delete gift_upgr_main;
+		gift_upgr_main = NULL;
+	}
+
+	if (gift_hp) {
+		delete gift_hp;
+		gift_hp = NULL;
+	}
+
+	if (gift_rocket) {
+		delete gift_rocket;
+		gift_rocket = NULL;
+	}
+
+	level = 0;
+
+	/*for (int gift = 0; gift < listGifts.size(); gift++) {
+		if (listGifts[gift] != NULL) {
+			delete listGifts[gift];
+			listGifts[gift] = NULL;
+		}
+	}
+	listGifts.clear();*/
+}
+
+
+
+
+
+
+
+
+
 
 
 // ---------------------------------- Save Game ----------------------------------
 
 
-void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane, unsigned int die_num, vector<ThreatObject*> list_Threats, int numThreat, ThreatObject* pBoss, int type_boss, unsigned int die_num_boss, vector<ThreatObject*> listSubBoss, vector<Gift*> listGifts, int level) {
+void saveGame(int type_boss, int level, Score& score) {
 	ofstream file("Continue_Game.txt");
 
+	vector<Gift*> listGifts;
+
+	listGifts.push_back(gift_upgr_main);
+	listGifts.push_back(gift_hp);
+	listGifts.push_back(gift_rocket);
 
 	// ---------------------------------- Global ----------------------------------
 
@@ -17,41 +103,37 @@ void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane
 	file << level << endl;
 
 	// Khong hieu
-	/*file << activeBoss << endl;
+	file << activeBoss << endl;
 	file << activeSubBoss << endl;
-	file << bkgn_x << endl;
+	/*file << bkgn_x << endl;
 	file << is_run_screen << endl;
 	file << is_quit << endl;*/
 
 
+	// time_of_lv2
+	file << time_of_lv2 << endl;
 
-
-
+	// Score
+	file << score.getScore() << endl;
 
 
 	// ---------------------------------- Main ----------------------------------
 
 
 	// Vi tri cua Main
-	file << main.getRect().x << " " << main.getRect().y << endl;
+	file << mainObject.getRect().x << " " << mainObject.getRect().y << endl;
 
 	// Mau cua Main
-	file << main_HP << endl;
-
-	// Cap do may bay cua Main
-	/*file << main_typePlane << endl;*/
-
-	// So lan Main trung dan
 	file << die_num << endl;
 
-	// Loai dan duoc cua Main
-	/*file << main_typeAmo << endl;*/
+	// Cap do may bay cua Main
+	file << mainObject.getType() << endl;
 
 	// So luong dan duoc cua Main
-	file << main.getAmoList().size() << endl;
+	file << mainObject.getAmoList().size() << endl;
 
 	// Vi tri dan duoc cua Main + is_move
-	vector<AmoObject*> amo_list = main.getAmoList();
+	vector<AmoObject*> amo_list = mainObject.getAmoList();
 	for (int amo = 0; amo < amo_list.size(); amo++) {
 		file << amo_list[amo]->getRect().x << " " << amo_list[amo]->getRect().y << endl;
 		file << amo_list[amo]->getIsMove() << endl;
@@ -68,22 +150,22 @@ void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane
 
 
 	// So luong Thread
-	file << numThreat << endl;
+	/*file << listThreats.size() << endl;*/
 
 	// Vi tri Threat + is_move + loai + toc do + active_oscillation + step
 	// Dan duoc cua Threat
-	for (int threat = 0; threat < list_Threats.size(); threat++) {
-		file << list_Threats[threat]->getRect().x << " " << list_Threats[threat]->getRect().y << " " << endl;
-		file << /*list_Threats[threat]->getIsMove() << " " <<*/ list_Threats[threat]->getType() << endl;
-		file << list_Threats[threat]->get_x_delta() << " " << list_Threats[threat]->get_y_delta() << endl;
-		file << list_Threats[threat]->getOscillation() << endl;
-		/*file << list_Threats[threat]->getStep() << endl;*/
+	for (int threat = 0; threat < listThreats.size(); threat++) {
+		file << listThreats[threat]->getRect().x << " " << listThreats[threat]->getRect().y << endl;
+		file << /*listThreats[threat]->getIsMove() << " " <<*/ listThreats[threat]->getType() << endl;
+		file << listThreats[threat]->get_x_delta() << " " << listThreats[threat]->get_y_delta() << endl;
+		file << listThreats[threat]->getOscillation() << endl;
+		/*file << listThreats[threat]->getStep() << endl;*/
 
 		// So luong dan duoc cua threat
-		file << list_Threats[threat]->GetAmoList().size() << endl;
+		file << listThreats[threat]->GetAmoList().size() << endl;
 
 		// Vi tri dan duoc cua Threat + is_move + type + toc do
-		amo_list = list_Threats[threat]->GetAmoList();
+		amo_list = listThreats[threat]->GetAmoList();
 		for (int amo = 0; amo < amo_list.size(); amo++) {
 			file << amo_list[amo]->getRect().x << " " << amo_list[amo]->getRect().y << endl;
 			file << amo_list[amo]->getIsMove() << " " << amo_list[amo]->getType() << endl;
@@ -100,32 +182,29 @@ void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane
 	// ---------------------------------- Boss ----------------------------------
 
 
-	// Vi tri cua Boss
-	file << pBoss->getRect().x << " " << pBoss->getRect().y << endl;
+	//// Vi tri cua Boss
+	//file << pBoss->getRect().x << " " << pBoss->getRect().y << endl;
 
-	// Mau cua Boss
-	//file << hp << endl;
+	//// Mau cua Boss
+	///*file << die_num_boss << endl;*/
 
-	// So lan Boss trung dan
-	file << die_num_boss << endl;
+	//// Loai cua Boss
+	//file << type_boss << endl;
 
-	// Loai cua Boss
-	file << type_boss << endl;
+	//// Toc do cua Boss
+	//file << pBoss->get_x_delta() << " " << pBoss->get_y_delta() << endl;
 
-	// Toc do cua Boss
-	file << pBoss->get_x_delta() << " " << pBoss->get_y_delta() << endl;
+	//// So luong dan duoc cua Boss
+	//file << pBoss->GetAmoList().size() << endl;
 
-	// So luong dan duoc cua Boss
-	file << pBoss->GetAmoList().size() << endl;
-
-	// Vi tri dan duoc cua Boss + is_move + type + toc do
-	amo_list = pBoss->GetAmoList();
-	for (int amo = 0; amo < amo_list.size(); amo++) {
-		file << amo_list[amo]->getRect().x << " " << amo_list[amo]->getRect().y << endl;
-		file << amo_list[amo]->getIsMove() << " " << amo_list[amo]->getType() << endl;
-		/*file << amo_list[amo]->get_x_delta() << " " << amo_list[amo]->get_y_delta() << endl;*/
-	}
-	amo_list.clear();
+	//// Vi tri dan duoc cua Boss + is_move + type + toc do
+	//amo_list = pBoss->GetAmoList();
+	//for (int amo = 0; amo < amo_list.size(); amo++) {
+	//	file << amo_list[amo]->getRect().x << " " << amo_list[amo]->getRect().y << endl;
+	//	file << amo_list[amo]->getIsMove() << " " << amo_list[amo]->getType() << endl;
+	//	/*file << amo_list[amo]->get_x_delta() << " " << amo_list[amo]->get_y_delta() << endl;*/
+	//}
+	//amo_list.clear();
 
 
 
@@ -136,19 +215,19 @@ void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane
 
 
 	// So luong Sub Boss
-	file << listSubBoss.size() << endl;
+	file << listSub.size() << endl;
 
 	// Vi tri cua Sub Boss + is_move + type + toc do
-	for (int subBoss = 0; subBoss < listSubBoss.size(); subBoss++) {
-		file << listSubBoss[subBoss]->getRect().x << " " << listSubBoss[subBoss]->getRect().y << endl;
-		file << /*listSubBoss[subBoss]->getIsMove() << " " <<*/ listSubBoss[subBoss]->getType() << endl;
-		file << listSubBoss[subBoss]->get_x_delta() << " " << listSubBoss[subBoss]->get_y_delta() << endl;
+	for (int subBoss = 0; subBoss < listSub.size(); subBoss++) {
+		file << listSub[subBoss]->getRect().x << " " << listSub[subBoss]->getRect().y << endl;
+		file << /*listSub[subBoss]->getIsMove() << " " <<*/ listSub[subBoss]->getType() << endl;
+		file << listSub[subBoss]->get_x_delta() << " " << listSub[subBoss]->get_y_delta() << endl;
 
 		// So luong dan duoc cua Sub Boss
-		file << listSubBoss[subBoss]->GetAmoList().size() << endl;
+		file << listSub[subBoss]->GetAmoList().size() << endl;
 
 		// Vi tri dan duoc cua Sub Boss + is_move + type + toc do
-		amo_list = listSubBoss[subBoss]->GetAmoList();
+		amo_list = listSub[subBoss]->GetAmoList();
 		for (int amo = 0; amo < amo_list.size(); amo++) {
 			file << amo_list[amo]->getRect().x << " " << amo_list[amo]->getRect().y << endl;
 			file << amo_list[amo]->getIsMove() << " " << amo_list[amo]->getType() << endl;
@@ -175,7 +254,7 @@ void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane
 		file << listGifts[gift]->getXVal() << " " << listGifts[gift]->getYVal() << endl;
 		file << listGifts[gift]->getIsCreate() << endl;
 	}
-
+	listGifts.clear();
 
 
 
@@ -218,10 +297,11 @@ void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane
 // ---------------------------------- Load Game ----------------------------------
 
 
-void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlane, unsigned int& die_num, vector<ThreatObject*>& list_Threats, int& numThreat, ThreatObject* pBoss, int& type_boss, unsigned int& die_num_boss, vector<ThreatObject*>& listSubBoss, vector<Gift*>& listGifts, int& level) {
+void load(int& type_boss, int& level, Score& score) {
 	ifstream file("Continue_Game.txt");
 	int x, y, b, type, x_val, y_val, HP, num_amo, numSubBoss, numGift;
 	vector<AmoObject*> amo_list;
+	vector<Gift*> listGifts;
 
 
 	// ---------------------------------- Global ----------------------------------
@@ -231,16 +311,20 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 	file >> level;
 
 	// Khong hieu
-	/*file >> activeBoss;
+	file >> activeBoss;
 	file >> activeSubBoss;
-	file >> bkgn_x;
+	/*file >> bkgn_x;
 	file >> is_run_screen;
-	file >> is_quit*/
+	file >> is_quit;*/
 
 
+	// time_of_lv2
+	file >> time_of_lv2;
 
-
-
+	// Score
+	int temp_score = 0;
+	file >> temp_score;
+	score.setScore(temp_score);
 
 
 	// ---------------------------------- Main ----------------------------------
@@ -248,25 +332,26 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 
 	// Vi tri cua Main
 	file >> x >> y;
-	main.setRect(x, y);
+	mainObject.setRect(x, y);
 
 	// Mau cua Main
-	file >> main_HP;
-	/*main.setHP(main_HP);*/
+	file >> die_num;
+	hp.init(die_num);
 
 	// Cap do may bay cua Main
-	/*file >> main_typePlane;*/
-	/*main.setType(main_typePlane);*/
+	int type_main;
+	file >> type_main;
+	mainObject.setType(type_main);
+
 	// Load hinh
-	/*switch (main_typePlane) {
-
-	}*/
-
-	// So lan Main bi trung dan
-	file >> die_num;
-
-	// Loai dan duoc cua Main
-	/*file >> main_typeAmo;*/
+	switch (type_main) {
+	case MainObject::LEVEL_1:
+		mainObject.loadImgObject("main.png");
+		break;
+	case MainObject::LEVEL_2:
+		mainObject.loadImgObject("main_lv2.png");
+		break;
+	}
 
 	// So luong dan duoc cua Main
 	file >> num_amo;
@@ -278,16 +363,30 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 		AmoObject* p_amo = new AmoObject();
 		p_amo->setRect(x, y);
 		p_amo->setIsMove(b);
-		p_amo->setType(main_typeAmo);
 
-		// Load hinh:
-		/*switch (main_typeAmo) {
 
-		}*/
+		switch (type_main) {
+		case MainObject::LEVEL_1:
+			p_amo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
+			p_amo->loadImgObject("bullet.png");
+			p_amo->setType(AmoObject::BULLET);
+
+			p_amo->setX_Val(AMO_MAIN_SPEED);
+
+			break;
+		case MainObject::LEVEL_2:
+			p_amo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+			p_amo->loadImgObject("lazer.png");
+			p_amo->setType(AmoObject::LAZER);
+
+			p_amo->setX_Val(AMO_MAIN_SPEED);
+
+			break;
+		}
 
 		amo_list.push_back(p_amo);
 	}
-	main.setAmoList(amo_list);
+	mainObject.setAmoList(amo_list);
 	amo_list.clear();
 
 
@@ -301,12 +400,12 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 
 
 	// So luong Threat
-	file >> numThreat;
+	/*file >> numThreats;*/
 
 	// Vi tri Threat + is_move + loai + toc do + step
-	createListThreatObjects(list_Threats, level, numThreat);
+	createListThreatObjects(listThreats, level, numThreats);
 
-	for (int threat = 0; threat < numThreat; threat++) {
+	for (int threat = 0; threat < numThreats; threat++) {
 		bool active_oscillation;
 		int step;
 
@@ -316,10 +415,10 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 		file >> active_oscillation;
 		/*file >> step;*/
 
-		list_Threats[threat]->setRect(x, y);
-		/*list_Threats[threat]->setIsMove(b);*/
-		list_Threats[threat]->setType(type);
-		list_Threats[threat]->set_x_delta(x_val); list_Threats[threat]->set_y_delta(y_val);
+		listThreats[threat]->setRect(x, y);
+		/*listThreats[threat]->setIsMove(b);*/
+		listThreats[threat]->setType(type);
+		listThreats[threat]->set_x_delta(x_val); listThreats[threat]->set_y_delta(y_val);
 
 		file >> num_amo;
 		for (int amo = 0; amo < num_amo; amo++) {
@@ -327,7 +426,7 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 			file >> b >> type;
 			/*file >> x_val >> y_val;*/
 
-			AmoObject* p_amo = list_Threats[threat]->GetAmoList()[amo];
+			AmoObject* p_amo = listThreats[threat]->GetAmoList()[amo];
 			p_amo->setRect(x, y);
 			p_amo->setIsMove(b);
 			p_amo->setType(type);
@@ -344,39 +443,37 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 	// ---------------------------------- Boss ----------------------------------
 
 
-	// Vi tri cua Boss
-	file >> x >> y;
-	pBoss->setRect(x, y);
+	//// Vi tri cua Boss
+	//file >> x >> y;
+	//pBoss->setRect(x, y);
 
-	//Mau cua Boss
-	/*file >> HP;*/
+	//// Mau cua Boss
+	///*file >> die_num_boss;*/
+	////hp_boss.init(die_num_boss);
 
-	// So lan Boss trung dan
-	file >> die_num_boss;
+	//// Loai cua Boss
+	//file >> type_boss;
 
-	// Loai cua Boss
-	file >> type_boss;
+	//// Toc do cua Boss
+	//file >> x_val >> y_val;
+	//pBoss->set_x_delta(x_val); pBoss->set_y_delta(y_val);
 
-	// Toc do cua Boss
-	file >> x_val >> y_val;
-	pBoss->set_x_delta(x_val); pBoss->set_y_delta(y_val);
+	//// so luong dan duoc cua Boss
+	//file >> num_amo;
 
-	// so luong dan duoc cua Boss
-	file >> num_amo;
+	//// Vi tri dan duoc cua Boss + is_move + type + toc do
+	//createBoss(pBoss, level);
+	//for (int amo = 0; amo < num_amo; amo++) {
+	//	file >> x >> y;
+	//	file >> b >> type;
+	//	/*file >> x_val >> y_val;*/
 
-	// Vi tri dan duoc cua Boss + is_move + type + toc do
-	createBoss(pBoss, 4 /*level*/);
-	for (int amo = 0; amo < num_amo; amo++) {
-		file >> x >> y;
-		file >> b >> type;
-		/*file >> x_val >> y_val;*/
-
-		AmoObject* p_amo = pBoss->GetAmoList()[amo];
-		p_amo->setRect(x, y);
-		p_amo->setIsMove(b);
-		p_amo->setType(type);
-		/*p_amo->setX_Val(x_val); p_amo->setY_Val(y_val);*/
-	}
+	//	AmoObject* p_amo = pBoss->GetAmoList()[amo];
+	//	p_amo->setRect(x, y);
+	//	p_amo->setIsMove(b);
+	//	p_amo->setType(type);
+	//	/*p_amo->setX_Val(x_val); p_amo->setY_Val(y_val);*/
+	//}
 
 
 
@@ -389,20 +486,22 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 
 	// So luong Sub Boss
 	file >> numSubBoss;
+	if (numSubBoss < 0)
+		numSubBoss = 0;
 
 	// Vi tri cua SubBoss
-	listSubBoss.resize(numSubBoss);
-	for (int subBoss = 0; subBoss < numSubBoss; subBoss++) { // lỗi ở đây
-		listSubBoss[subBoss] = new ThreatObject;
-		createSubBoss(listSubBoss[subBoss], pBoss);
+	listSub.resize(numSubBoss);
+	for (int subBoss = 0; subBoss < listSub.size(); subBoss++) {
+		listSub[subBoss] = new ThreatObject;
+		createSubBoss(listSub[subBoss], pBoss);
 
 		file >> x >> y;
 		file /*>> b*/ >> type;
 		file >> x_val >> y_val;
 
-		listSubBoss[subBoss]->setRect(x, y);
-		/*listSubBoss[subBoss]->setIsMove(b);*/ listSubBoss[subBoss]->setType(type);
-		listSubBoss[subBoss]->set_x_delta(x_val); listSubBoss[subBoss]->set_y_delta(y_val);
+		listSub[subBoss]->setRect(x, y);
+		/*listSub[subBoss]->setIsMove(b);*/ listSub[subBoss]->setType(type);
+		listSub[subBoss]->set_x_delta(x_val); listSub[subBoss]->set_y_delta(y_val);
 
 		file >> num_amo;
 		for (int amo = 0; amo < num_amo; amo++) {
@@ -410,7 +509,7 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 			file >> b >> type;
 			/*file >> x_val >> y_val;*/
 
-			AmoObject* p_amo = listSubBoss[subBoss]->GetAmoList()[amo];
+			AmoObject* p_amo = listSub[subBoss]->GetAmoList()[amo];
 			p_amo->setRect(x, y);
 			p_amo->setIsMove(b);
 			p_amo->setType(type);
@@ -441,16 +540,30 @@ void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlan
 		file >> x_val >> y_val;
 		file >> create;
 
+		switch (type) {
+		case Gift::UPGRADE_AMO:
+			createGift("gift.png", p_gift, Gift::UPGRADE_AMO);
+			break;
+		case Gift::UPGRADE_SPACESHIP:
+			createGift("gift_up_main.png", p_gift, Gift::UPGRADE_SPACESHIP);
+			break;
+		case Gift::HP:
+			createGift("HP_gift.png", p_gift, Gift::HP);
+			break;
+		}
+
 		p_gift->setRect(x, y);
-		p_gift->setIsMove(b); p_gift->setType(type);
-		p_gift->setXVal(x_val); p_gift->setYVal(y_val);
+		/*p_gift->setIsMove(b); p_gift->setType(type);*/
+		/*p_gift->setXVal(x_val); p_gift->setYVal(y_val);*/
 		p_gift->setIsCreate(create);
 
 		listGifts.push_back(p_gift);
 	}
 
 
-
+	gift_upgr_main = listGifts[0];
+	gift_hp = listGifts[1];
+	gift_rocket = listGifts[2];
 
 
 

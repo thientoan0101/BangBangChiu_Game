@@ -139,6 +139,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="SaveLoad.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ThreatsObject.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="MainObject.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="SaveLoad.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ThreatsObject.h" />

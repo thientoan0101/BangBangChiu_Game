@@ -2,9 +2,14 @@
 
 #include "MainObject.h"
 #include "ThreatsObject.h"
+#include "MainObject.h"
 #include "Gift.h"
+#include "Score.h"
 
 using namespace std;
 
-void saveGame(MainObject main, int main_HP, int main_typeAmo, int main_typePlane, unsigned int die_num, vector<ThreatObject*> list_Threats, int numThreat, ThreatObject* pBoss, int type_boss, unsigned int die_num_boss, vector<ThreatObject*> listSubBoss, vector<Gift*> listGifts, int level);
-void loadGame(MainObject& main, int main_HP, int main_typeAmo, int main_typePlane, unsigned int& die_num, vector<ThreatObject*>& list_Threats, int& numThreat, ThreatObject* pBoss, int& type_boss, unsigned int& die_num_boss, vector<ThreatObject*>& listSubBoss, vector<Gift*>& listGifts, int& level);
+void Reset(int& type_boss, int& level, Score& score);
+void saveGame(int type_boss, int level, Score& score);
+void load(int& type_boss, int& level, Score& score);
+
+void loadGame(int& type_boss, int& level, Score& score);
