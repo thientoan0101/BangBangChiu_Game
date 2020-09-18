@@ -7,7 +7,7 @@ const int SCREEN_HEIGHT = 600;
 const int SCREEN_WIDTH = 1200;
 const int SCREEN_BPP = 32;
 const int NUM_THREAT = 3;
-const int SPEED_BACKGROUND = 2;
+const int SPEED_BACKGROUND = 15;
 
 
 

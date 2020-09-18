@@ -2,7 +2,8 @@
 
 int level = 1;
 bool is_quit = false;
-
+bool resume = false;
+bool newGame = false;
 
 
 bool ControlFunc::prepareGame()
@@ -54,6 +55,8 @@ void ControlFunc::setup(const int &lv)
 	// khoi tao bien trong control:
 	level = lv;
 	is_quit = false;
+	resume = false;
+	newGame = false;
 
 	// khoi tao bien Gift:
 	create = true;
@@ -79,7 +82,7 @@ void ControlFunc::setup(const int &lv)
 	listSub.resize(2);
 
 	mainObject.setXY_Val(0, 0);
-
+	mainObject.setType(MainObject::LEVEL_1);
 }
 
 
@@ -96,7 +99,11 @@ int ControlFunc::playCampaign()
 	score.inputHighScoreFromFile();
 
 	int type = 1;
-	loadGame(type, level, score);
+	if(resume) loadGame(type, level, score);
+	
+	
+	if (newGame) score.setScore(0);
+
 
 	// Trong luc play game:
 	while (!is_quit)
@@ -115,7 +122,7 @@ int ControlFunc::playCampaign()
 
 		if (g_event.type == SDL_KEYDOWN && g_event.key.keysym.sym == SDLK_ESCAPE) {
 			if (MessageBox(NULL, "Do you want to save game?", "Game over", MB_OK) == IDOK) {
-				saveGame(1, level, score);
+				saveGame(type, level, score);
 
 				/*SDL_Quit();
 				return 1;*/
@@ -373,7 +380,7 @@ int ControlFunc::playCampaign()
 
 						// check hp
 						die_num += DAME_OF_THREAT;
-						if (die_num >= LIFE) {
+						if (mainObject.isDead()/*die_num >= LIFE*/) {
 							Mix_PlayChannel(-1, g_sound_ex_main, 0);
 							score.outHighScoreToFile(score.getScore());
 
@@ -441,7 +448,7 @@ int ControlFunc::playCampaign()
 
 				// check hp
 				die_num += DAME_COLLISION;
-				if (die_num >= LIFE) {
+				if (mainObject.isDead()/*die_num >= LIFE*/) {
 					Mix_PlayChannel(-1, g_sound_ex_main, 0);
 					score.outHighScoreToFile(score.getScore());
 
@@ -577,7 +584,7 @@ int ControlFunc::playCampaign()
 
 							// check hp
 							die_num += DAME_OF_THREAT;
-							if (die_num >= LIFE) {
+							if (mainObject.isDead()/*die_num >= LIFE*/) {
 								Mix_PlayChannel(-1, g_sound_ex_main, 0);
 								score.outHighScoreToFile(score.getScore());
 
@@ -634,7 +641,7 @@ int ControlFunc::playCampaign()
 
 							// check hp
 							die_num += DAME_OF_BOSS;
-							if (die_num >= LIFE) {
+							if (mainObject.isDead()/*die_num >= LIFE*/) {
 								Mix_PlayChannel(-1, g_sound_ex_main, 0);
 								score.outHighScoreToFile(score.getScore());
 

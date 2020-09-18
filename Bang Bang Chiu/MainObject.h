@@ -8,6 +8,7 @@
 #include"BaseObject.h"
 #include"AmoObject.h"
 #include "Audio.h"
+#include"HPObject.h"
 
 // define some const
 #define WIDTH_MAIN_OBJECT 155
@@ -60,6 +61,8 @@ public:
 	// type of main
 	void setType(const int& type) { _type = type; }
 	int getType() { return _type; }
+
+	bool isDead() { return die_num >= LIFE; }
 
 private:
 	int _type;

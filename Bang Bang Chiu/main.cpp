@@ -123,6 +123,7 @@ int main(int arc, char* argv[])
 
 	int ret_menu = Menu::showMenu(g_screen);
 
+
 	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh totalItem la exit
 		if (Mix_Playing(-1))																		// dung phat soundtrack
 		{
@@ -133,7 +134,8 @@ int main(int arc, char* argv[])
 		return 0;
 	}
 	else if (ret_menu == 0) {//Play game
-		level = 1; // Khi bam Play Game mac dinh se choi level 1
+		/*level = 1;*/ // Khi bam Play Game mac dinh se choi level 1
+		newGame = true;
 		if (Mix_Playing(-1))																		// tam dung phat soundtrack
 		{
 			Mix_Pause(-1);
@@ -141,6 +143,8 @@ int main(int arc, char* argv[])
 	}
 	else if (ret_menu == 1) {//Load game
 		//todo
+		resume = true;
+
 		if (Mix_Playing(-1))																		// tam dung phat soundtrack
 		{
 			Mix_Pause(-1);
@@ -188,6 +192,7 @@ int main(int arc, char* argv[])
 
 			break;
 		case IDCONTINUE:
+			mainObject.setRect(100, SCREEN_HEIGHT / 2);
 			goto Menu;
 			break;
 		}
@@ -201,6 +206,7 @@ int main(int arc, char* argv[])
 			if (level == 4) level = 1;
 			else level++;
 			ControlFunc::setup(level);
+			mainObject.setRect(100, SCREEN_HEIGHT / 2);
 			goto Prepare;
 		case IDNO:
 			goto Menu;

@@ -24,6 +24,8 @@
 
 extern int level;
 extern bool is_quit;
+extern bool resume;
+extern bool newGame;
 
 namespace ControlFunc
 {

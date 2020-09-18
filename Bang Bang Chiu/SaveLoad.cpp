@@ -310,6 +310,10 @@ void load(int& type_boss, int& level, Score& score) {
 	// Level dang choi
 	file >> level;
 
+	bool ret;
+	ret = BackgroundFunc::prepareBackground(level);							// load background theo man
+	if (ret == 0) exit(EXIT_FAILURE);
+
 	// Khong hieu
 	file >> activeBoss;
 	file >> activeSubBoss;

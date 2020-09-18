@@ -61,11 +61,11 @@ int Menu::showMenu(SDL_Surface* des) {
 
 	TextObject text_menu[totalItem];
 	text_menu[0].setColor(FIRST_COLOR);       //Set mau
-	text_menu[0].setText("Play Game");                  //Set text
+	text_menu[0].setText("New Game");                  //Set text
 	text_menu[0].setRect(pos_arr[0].x, pos_arr[0].y);   //Set vi tri
 
 	text_menu[1].setColor(FIRST_COLOR);       //Set mau
-	text_menu[1].setText("Load Game");                  //Set text
+	text_menu[1].setText("Resume");                  //Set text
 	text_menu[1].setRect(pos_arr[1].x, pos_arr[1].y);   //Set vi tri
 
 	text_menu[2].setColor(FIRST_COLOR);       //Set mau

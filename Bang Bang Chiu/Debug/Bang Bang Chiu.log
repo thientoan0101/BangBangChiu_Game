@@ -1,23 +1,29 @@
 ﻿  Control.cpp
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(227,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(228,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(260,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(261,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(298,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(299,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(344,21): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(354,22): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(423,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(424,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(430,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(431,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(486,24): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(544,22): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(559,23): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(616,23): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(675,25): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(711,25): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(788,20): warning C4018: '<': signed/unsigned mismatch
-E:\New folder\GitHub\OOP-Project\Bang Bang Chiu\Control.cpp(793,20): warning C4018: '<': signed/unsigned mismatch
-  Bang Bang Chiu.vcxproj -> E:\New folder\GitHub\OOP-Project\Debug\Bang Bang Chiu.exe
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(234,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(235,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(267,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(268,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(305,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(306,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(351,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(361,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(430,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(431,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(437,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(438,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(493,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(551,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(566,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(623,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(682,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(718,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(795,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(800,20): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(34,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(98,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(174,6): warning C4102: 'Play': unreferenced label
+  Generating Code...
+  Bang Bang Chiu.vcxproj -> C:\Users\84918\Desktop\add\OOP-Project\Debug\Bang Bang Chiu.exe
