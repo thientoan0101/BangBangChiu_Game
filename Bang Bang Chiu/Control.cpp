@@ -86,14 +86,14 @@ void ControlFunc::setup(const int &lv)
 
 
 
-
+Score score;
 
 int ControlFunc::playCampaign()
 {
 	//Bien luu diem: 
 	//unsigned int score = 0;
 
-	Score score;
+	/*Score score;*/
 	score.inputHighScoreFromFile();
 
 	// Trong luc play game:

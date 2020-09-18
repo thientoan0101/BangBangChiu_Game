@@ -69,7 +69,7 @@ int Menu::showMenu(SDL_Surface* des) {
 	text_menu[1].setRect(pos_arr[1].x, pos_arr[1].y);   //Set vi tri
 
 	text_menu[2].setColor(FIRST_COLOR);       //Set mau
-	text_menu[2].setText("Option");                  //Set text
+	text_menu[2].setText("Guide");                  //Set text
 	text_menu[2].setRect(pos_arr[2].x, pos_arr[2].y);   //Set vi tri
 
 	text_menu[3].setColor(FIRST_COLOR);
@@ -301,4 +301,224 @@ int Menu::showMenuOption(SDL_Surface* des) {
 	}
 
 	return 0;
+}
+
+int Menu::showGuide(SDL_Surface* des) {
+	int x_value = 200;
+	int y_value = 20;
+	int xMouse = 0;
+	int yMouse = 0;
+	TextObject::InitFont();
+	SDL_Surface* img_guide;
+	img_guide = SDLCommonFunc::loadImage("guide.png");
+	if (img_guide == NULL) {
+		cout << "\n==============Khong the load anh Menu. Kiem tra lai ten file va duong dan==============\n";
+		return 0;
+	}
+
+	TextObject guide[6];
+	guide[0].setText("Sub Boss: 100 point | Boss: 100 points | Super Boss: 1000 points");
+	guide[0].setColor(TextObject::RED_COLOR);
+	guide[0].setRect(x_value + 110, y_value + 20);
+
+	guide[1].setText("Restore full HP");
+	guide[1].setColor(TextObject::RED_COLOR);
+	guide[1].setRect(x_value + 110, y_value + 80);
+
+	guide[2].setText("Increase one SupperSkill. You only have maximum 3 SupperSkill");
+	guide[2].setColor(TextObject::RED_COLOR);
+	guide[2].setRect(x_value + 110, y_value + 180);
+
+	guide[3].setText("300 dame point and through any boss");
+	guide[3].setColor(TextObject::RED_COLOR);
+	guide[3].setRect(x_value + 110, y_value + 330);
+
+	guide[4].setText("You are become Superman, the bullet increase dame point. Lasted for 30s");
+	guide[4].setColor(TextObject::RED_COLOR);
+	guide[4].setRect(x_value + 110, y_value + 240);
+
+	guide[5].setText("BACK");
+	guide[5].setColor(TextObject::RED_COLOR);
+	guide[5].setRect(x_value - 190, y_value);
+
+	bool selected[6] = { 0,0 };
+	SDL_Event m_event;
+	SDL_Surface* icon_subboss;
+	SDL_Surface* icon_heart;
+	SDL_Surface* icon_gift;
+	SDL_Surface* icon_superSkill;
+	SDL_Surface* icon_superman;
+	icon_subboss = SDLCommonFunc::loadImage("sub_boss.png");
+	icon_heart = SDLCommonFunc::loadImage("HP_gift.png");
+	icon_gift = SDLCommonFunc::loadImage("gift.png");
+	icon_superSkill = SDLCommonFunc::loadImage("rocket.png");
+	icon_superman = SDLCommonFunc::loadImage("gift_up_main.png");
+	while (true)
+	{
+		//Show man hinh menu
+		SDLCommonFunc::applySurface(img_guide, des, 0, 0);
+		//Hien thi text menu
+		for (int i = 0; i < 6; i++) {
+			guide[i].CreateGameText(g_font_text, des);
+		}
+
+		//Show icon
+		SDLCommonFunc::applySurface(icon_subboss, des, x_value - 20, y_value);
+		SDLCommonFunc::applySurface(icon_heart, des, x_value, y_value + 70);
+		SDLCommonFunc::applySurface(icon_gift, des, x_value, y_value + 140);
+		SDLCommonFunc::applySurface(icon_superman, des, x_value, y_value + 230);
+		SDLCommonFunc::applySurface(icon_superSkill, des, x_value - 50, y_value + 280);
+		
+
+		while (SDL_PollEvent(&m_event))
+		{
+			switch (m_event.type)
+			{
+			case SDL_QUIT:
+			{
+				//Thoat khoi chuong trinh
+				if (Mix_PlayingMusic())											// dung phat soundtrack
+				{
+					Mix_HaltMusic();
+				}
+				return 0; // return totalItem vi EXIT luon o cuoi menu
+			}
+			case SDL_MOUSEMOTION:
+			{
+				//Lay toa do con chuot
+				xMouse = m_event.motion.x;
+				yMouse = m_event.motion.y;
+
+				SDL_Rect rectmenu = guide[5].getRect();
+				if (CheckFocusWithRect(xMouse, yMouse, rectmenu)) {
+					if (selected[5] == false) {
+						selected[5] = 1;
+						guide[5].setColor(SECOND_COLOR);
+					}
+				}
+				else {
+					if (selected[5] == true) {
+						selected[5] = 0;
+						guide[5].setColor(FIRST_COLOR);
+					}
+				}
+
+				break;
+			}
+			case SDL_MOUSEBUTTONDOWN:
+			{
+				xMouse = m_event.button.x;
+				yMouse = m_event.button.y;
+				SDL_Rect rectmenu = guide[5].getRect();
+				if (CheckFocusWithRect(xMouse, yMouse, rectmenu)) {
+					return 5;
+				}
+				break;
+			}
+			case SDL_KEYDOWN:
+			{
+				if (m_event.key.keysym.sym == SDLK_ESCAPE) return 6 - 1;
+				break;
+			}
+			default:
+				break;
+			}
+			SDL_Flip(des);
+		}
+	}
+}
+
+int Menu::showAuthor(SDL_Surface* des) {
+	Mix_PlayChannel(-1, g_music, 0);
+	int xMouse = 0;
+	int yMouse = 0;
+	/*TTF_Font* author_font = NULL;
+	author_font = TTF_OpenFont("calibri.ttf", 20);
+	if (author_font == NULL) {
+		cout << "\n=================Loi font Menu=================\n";
+		return 0;
+	}*/
+	TextObject::InitFont();
+
+	SDL_Surface* img_author;
+	img_author = SDLCommonFunc::loadImage("author.jpg");
+	if (img_author == NULL) {
+		cout << "\n==============Khong the load anh Menu. Kiem tra lai ten file va duong dan==============\n";
+		return 0;
+	}
+
+	TextObject author;
+	author.setColor(TextObject::RED_COLOR);
+	author.setText("LET'S GO");
+	author.setRect(550, 480);
+	bool selected = { 0, };
+	SDL_Event m_event;
+	while (true)
+	{
+		//Show man hinh menu
+		SDLCommonFunc::applySurface(img_author, des, 0, 0);
+
+		author.CreateGameText(g_font_text, des);
+
+		//Bat su kien
+		while (SDL_PollEvent(&m_event))
+		{
+			switch (m_event.type)
+			{
+			case SDL_QUIT:
+			{
+				//Thoat khoi chuong trinh
+				if (Mix_PlayingMusic())											// dung phat soundtrack
+				{
+					Mix_HaltMusic();
+				}
+				return -1; // return totalItem vi EXIT luon o cuoi menu
+			}
+			case SDL_MOUSEMOTION:
+			{
+				//Lay toa do con chuot
+				xMouse = m_event.motion.x;
+				yMouse = m_event.motion.y;
+
+					SDL_Rect rectmenu = author.getRect();
+					if (CheckFocusWithRect(xMouse, yMouse, rectmenu)) {
+						if (selected == false) {
+							selected = 1;
+							author.setColor(SECOND_COLOR);
+						}
+					}
+					else {
+						if (selected == true) {
+							selected = 0;
+							author.setColor(FIRST_COLOR);
+						}
+					}
+				}
+
+				break;
+			
+			case SDL_MOUSEBUTTONDOWN:
+			{
+				xMouse = m_event.button.x;
+				yMouse = m_event.button.y;
+					SDL_Rect rectmenu = author.getRect();
+					if (CheckFocusWithRect(xMouse, yMouse, rectmenu)) {
+						return 0;
+					}
+				}
+				break;
+			
+			case SDL_KEYDOWN:
+			{
+				if (m_event.key.keysym.sym == SDLK_ESCAPE) return - 1;
+				break;
+			}
+			default:
+				break;
+			}
+			SDL_Flip(des);
+		}
+
+
+	}
 }

@@ -1,6 +1,6 @@
 #include "CommonFunction.h"
 
-const int WIDTH_LONG_BACKGROUND = 7680;
+const int WIDTH_LONG_BACKGROUND = 7200;
 const int WIDTH_SHORT_BACKGROUND = 1200;
 const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_HEIGHT = 600;
@@ -16,9 +16,6 @@ SDL_Surface* g_bkground = NULL;					//quan ly background
 SDL_Event	g_event;
 
 HWND hWnd;
-
-
-
 
 SDL_Rect SDLCommonFunc::applySurface(SDL_Surface* src, SDL_Surface* des, int x, int y)			// Load image vao screen.
 {

@@ -26,5 +26,7 @@ public:
 	static int showMenu(SDL_Surface* des);
 	static bool CheckFocusWithRect(const int& x, const int& y, SDL_Rect& rect);
 	static int showMenuOption(SDL_Surface* des);
+	static int showGuide(SDL_Surface* des);
+	static int showAuthor(SDL_Surface* des);
 };
 

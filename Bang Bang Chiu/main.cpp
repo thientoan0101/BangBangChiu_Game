@@ -110,6 +110,11 @@ int main(int arc, char* argv[])
 	
 	if (Init() == false)
 		return 0;
+	int ret_author = Menu::showAuthor(g_screen);
+	if (ret_author == -1) {
+		return 0;
+	}
+	
 
 	Menu:
 	//Truoc khi choi game => can show menu
@@ -141,18 +146,13 @@ int main(int arc, char* argv[])
 			Mix_Pause(-1);
 		}
 	}
-	else if (ret_menu == 2) {//Options
-		int ret_menu_option = Menu::showMenuOption(g_screen);
-		if (ret_menu_option == totalItemOption - 1) {
+	else if (ret_menu == 2) {//Guide
+		int ret_menu_guide = Menu::showGuide(g_screen);
+		if (ret_menu_guide == 6 - 1) {
 			goto Menu;
 		}
-		else if (ret_menu_option == 0) level = 1;
-		else if (ret_menu_option == 1) level = 2;
-		else if (ret_menu_option == 2) level = 3;
-		else if (ret_menu_option == 3) level = 4;
-		if (Mix_Playing(-1))																		// tam dung phat soundtrack
-		{
-			Mix_Pause(-1);
+		else {
+			return 0;
 		}
 	}
 
