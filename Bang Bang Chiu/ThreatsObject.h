@@ -22,6 +22,8 @@
 #define HEIGHT_BOSS_5 101
 #define WIDTH_BOSS_6 80
 #define HEIGHT_BOSS_6 33
+#define WIDTH_BOSS_7 179
+#define HEIGHT_BOSS_7 231
 #define WIDTH_SUB_BOSS 95
 #define HEIGHT_SUB_BOSS 45
 
@@ -59,6 +61,7 @@ public: // distribute:
 		BOSS_1 = 4,
 		BOSS_2 = 5,
 		BOSS_3 = 6,
+		BOSS_4 = 7,
 		SUB = 10
 	};
 
@@ -122,4 +125,6 @@ extern int numThreats;
 namespace ThreatFunc
 {
 	void prepareThreats();
+	void freeThreats();
+	void prepareBoss();
 }

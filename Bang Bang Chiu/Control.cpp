@@ -42,7 +42,7 @@ bool ControlFunc::prepareGame()
 	return isSuccess;
 }
 
-void ControlFunc::setup()
+void ControlFunc::setup(const int &lv)
 {
 	
 	
@@ -53,7 +53,7 @@ void ControlFunc::setup()
 	g_bkground = NULL;
 	
 	// khoi tao bien trong control:
-	level = 1;
+	level = lv;
 	is_quit = false;
 
 	// khoi tao bien Gift:
@@ -79,8 +79,8 @@ void ControlFunc::setup()
 	listSub.clear();
 	listSub.resize(2);
 
-	//SDL_Event new_event;
-	/*g_event.type = SDL_NOEVENT;*/
+	mainObject.setXY_Val(0, 0);
+
 }
 
 

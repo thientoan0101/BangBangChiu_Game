@@ -42,6 +42,12 @@ public:
 	// an amolist ready for war
 	void setAmoList(vector<AmoObject*>);
 
+	// set xVal, yVal:
+	void setXY_Val(const int & x_Val, const int& y_Val)
+	{
+		_xVal = x_Val;	_yVal = y_Val;
+	}
+
 	// get list of amo after handled by using function (setAmoList)
 	vector<AmoObject*> getAmoList() const;
 

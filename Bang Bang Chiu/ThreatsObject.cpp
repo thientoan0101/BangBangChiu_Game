@@ -80,6 +80,8 @@ void ThreatObject::HandleMove(const int &x_border, const int &y_border)
 		this->set_x_delta(2 + SPEED_BACKGROUND);		this->set_y_delta(2);	letRunToEnd = false;	break;
 	case 6:
 		this->set_x_delta(1 + SPEED_BACKGROUND);		this->set_y_delta(1);	letRunToEnd = false;	break;
+	case 7:
+		this->set_x_delta(2 + SPEED_BACKGROUND);		this->set_y_delta(2);	letRunToEnd = false;	break;
 	case 10:
 		this->set_x_delta(1 + SPEED_BACKGROUND);		this->set_y_delta(1);	letRunToEnd = false;	break;
 	default:
@@ -259,6 +261,9 @@ void ThreatObject::initAmo_boss(AmoObject* p_amo)
 	case 6:
 		ret = p_amo->loadImgObject("31.png");
 		break;
+	case 7:
+		ret = p_amo->loadImgObject("33.png");
+		break;
 	case 10:
 		ret = p_amo->loadImgObject("32.png");
 		break;
@@ -392,7 +397,7 @@ void createListThreatObjects(vector<ThreatObject*> &listThreats, const int &leve
 	case 1: num0 = 1;	num1 = 2; num2 = 2; num3 = 0;	break;
 	case 2: num0 = 0;	num1 = 2; num2 = 2; num3 = 1;	break;
 	case 3: num0 = 0;	num1 = 2; num2 = 1; num3 = 2;	break;
-	case 4: num0 = 3;	num1 = 1; num2 = 1; num3 = 1;	break;
+	case 4: num0 = 0;	num1 = 1; num2 = 2; num3 = 2;	break;
 	default:
 		break;
 	}
@@ -467,7 +472,11 @@ void createBoss(ThreatObject* &pBoss, const int &level)
 		pBoss->loadImgObject("boss_3.png");
 		pBoss->_threat_type = 6;
 		break;
-	
+	case 4:
+		width = WIDTH_BOSS_7;	height = HEIGHT_BOSS_7;
+		pBoss->loadImgObject("boss_4.png");
+		pBoss->_threat_type = 7;
+		break;
 	default:
 		break;
 	}
@@ -488,17 +497,26 @@ void createBoss(ThreatObject* &pBoss, const int &level)
 
 void createSubBoss(ThreatObject* &pSubBoss, ThreatObject* &pBoss)
 {
-	
+	/*switch (level)
+	{
+	case 1:
+		pSubBoss->loadImgObject("sub_boss_1.png");
+	case 2:
+		pSubBoss->loadImgObject("sub_boss_2.png");
+	case 3:
+		pSubBoss->loadImgObject("sub_boss_3.png");
+	case 4:
+		pSubBoss->loadImgObject("sub_boss_4.png");
+	default:
+		break;
+	}*/
 	pSubBoss->loadImgObject("sub_boss.png");
 	pSubBoss->rect_.w = WIDTH_SUB_BOSS;
 	pSubBoss->rect_.h = HEIGHT_SUB_BOSS;
 	pSubBoss->_threat_type = 10;
-	//pThreat->_blood = 1;
-
 	
-	do {
-		pSubBoss->setRect(pBoss->rect_.x - pBoss->rect_.w / 5, pBoss->rect_.y + pBoss->rect_.h / 2);
-	} while (pBoss->rect_.y < 0 || pBoss->rect_.y > SCREEN_HEIGHT - pSubBoss->rect_.h);
+
+	pSubBoss->setRect(pBoss->rect_.x - pBoss->rect_.w / 5, pBoss->rect_.y + pBoss->rect_.h / 2);
 	pSubBoss->set_x_delta(1 + SPEED_BACKGROUND);
 	pSubBoss->set_y_delta(1);
 	AmoObject *p_amo = new AmoObject();
@@ -526,4 +544,28 @@ void ThreatFunc::prepareThreats()
 		listSub[i] = new ThreatObject;
 		createSubBoss(listSub[i], pBoss);
 	}
+
+
+}
+
+
+void ThreatFunc::freeThreats()
+{
+	for (int i = 0; i < listThreats.size(); i++)
+	{
+		delete listThreats[i];
+	}
+	cout << "test goto" << endl;
+	for (int i = 0; i < listSub.size(); i++)
+	{
+		delete listSub[i];
+	}
+	delete pBoss;
+}
+
+
+void ThreatFunc::prepareBoss()
+{
+	createBoss(pBoss, level);
+
 }

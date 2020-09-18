@@ -23,7 +23,7 @@
 #define HEIGHT_BULLET 29
 
 #define AMO_THREAT_SPEED 10
-#define AMO_BOSS_SPEED 5
+#define AMO_BOSS_SPEED 7
 #define AMO_MAIN_SPEED 15
 #define NUM_ROCKET 3
 

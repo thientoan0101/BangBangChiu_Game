@@ -26,9 +26,9 @@ extern bool is_quit;
 
 namespace ControlFunc
 {
-	void setup();
+	void setup(const int &lv = 1);
 	bool prepareGame();
 	int playCampaign();
-	bool playScore();
+	
 	void endGame();
 }

@@ -49,7 +49,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 				pAmo->loadImgObject("bullet.png");
 				pAmo->setType(AmoObject::BULLET);
 
-				/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+				Mix_PlayChannel(-1, g_sound_bullet[0], 0);
 
 				pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y + this->rect_.h * 0.5);
 				pAmo->setIsMove(true);
@@ -62,8 +62,8 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 				pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
 				pAmo->loadImgObject("lazer.png");
 				pAmo->setType(AmoObject::LAZER);
-
-				/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+				Mix_PlayChannel(-1, g_sound_bullet[0], 0);
+				
 
 				pAmo->setRect(this->rect_.x + WIDTH_MAIN_OBJECT_LV2, this->rect_.y + 5);
 				pAmo->setIsMove(true);
@@ -81,7 +81,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 					pAmo->loadImgObject("rocket.png");
 					pAmo->setType(AmoObject::ROCKET);
 
-					/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+					Mix_PlayChannel(-1, g_sound_bullet[1], 0);
 
 					pAmo->setRect(this->rect_.x + this->rect_.w, this->rect_.y * 0.9);
 					pAmo->setIsMove(true);
@@ -94,8 +94,8 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 					pAmo->setWidthHeight(WIDTH_ULTI_LV2, HEIGHT_ULTI_LV2);
 					pAmo->loadImgObject("unti_lv2.png");
 					pAmo->setType(AmoObject::ROCKET);
-
-					/*Mix_PlayChannel(-1, bullet_sound[0], 0);*/
+					Mix_PlayChannel(-1, g_sound_bullet[1], 0);
+					
 
 					pAmo->setRect(this->rect_.x, this->rect_.y * 0.9);
 					pAmo->setIsMove(true);
@@ -200,8 +200,8 @@ void MainObject::removeAmo(const int& index) {
 bool MainFunc::prepareMain()
 {
 	mainObject.setRect(100, SCREEN_HEIGHT / 2);
+	mainObject.setXY_Val(0, 0);
 	bool ret = mainObject.loadImgObject("main.png");					//main
-	mainObject.setType(MainObject::LEVEL_1);
 	if (!ret)
 	{
 		return 0;
