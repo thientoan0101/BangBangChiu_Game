@@ -143,7 +143,6 @@
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ThreatsObject.cpp" />
-    <ClCompile Include="WinLose.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmoObject.h" />
@@ -162,7 +161,6 @@
     <ClInclude Include="Score.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ThreatsObject.h" />
-    <ClInclude Include="WinLose.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />

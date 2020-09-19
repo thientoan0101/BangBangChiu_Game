@@ -11,53 +11,18 @@
 #include"Random.h"
 #include"TextObject.h"
 #include"Menu.h"
-
-
 #include "Control.h"
 #include"Background.h"
-#include "WinLose.h"
 #include <winuser.h>
 #undef main
 
 
-
-bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
-{														// Sau nay, nhung ham khoi tao font, audio se duoc tao o day.
-
-	srand(time(NULL));
-
-	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
-	{
-		return false;
-	}
-
-	g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);		// Thiet lap che do dinh dang video SDL trong windows.
-
-	if (g_screen == NULL)
-		return false;
-
-
-
-	//==================Font==================
-	TextObject::InitFont();
-	
-	AudioFunction::prepareAudioFile();										// khoi tao file audio
-
-	return true;
-}
-
-
-
 int main(int arc, char* argv[])
 {
-
+	if (ControlFunc::Init() == false)		return 0;
 	
-	if (Init() == false)
-		return 0;
 	int ret_author = Menu::showAuthor(g_screen);
-	if (ret_author == -1) {
-		return 0;
-	}
+	if (ret_author == -1) return 0;
 	
 
 	Menu:
@@ -66,8 +31,6 @@ int main(int arc, char* argv[])
 	ControlFunc::setup();
 
 	int ret_menu = Menu::showMenu(g_screen);
-
-
 	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh totalItem la exit
 		if (Mix_Playing(-1))																		// dung phat soundtrack
 		{
@@ -84,9 +47,7 @@ int main(int arc, char* argv[])
 		}
 	}
 	else if (ret_menu == 1) {//Load game
-	
 		resume = true;
-
 		if (Mix_Playing(-1))																		// tam dung phat soundtrack
 		{
 			Mix_Pause(-1);
@@ -111,8 +72,7 @@ int main(int arc, char* argv[])
 		ControlFunc::endGame();
 		return 0;
 	}
-
-
+	
 	Play:
 	
 	int resultGame = ControlFunc::playCampaign();
@@ -121,7 +81,6 @@ int main(int arc, char* argv[])
 	{
 	case -1:
 		msgboxID = MessageBox(NULL, "Do you want to play again?", "GAME OVER", MB_ICONQUESTION | MB_CANCELTRYCONTINUE | MB_DEFBUTTON2);
-
 		switch (msgboxID)
 		{
 		case IDCANCEL:
@@ -131,24 +90,20 @@ int main(int arc, char* argv[])
 		case IDTRYAGAIN:
 			ControlFunc::setup(level);
 			goto Prepare;
-
 			break;
-		case IDCONTINUE:
-		
+		case IDCONTINUE:		
 			goto Menu;
 			break;
 		}
 		break;
 	case 2: // win
-
 		catchMess = ::MessageBox(hWnd, "Play Next level?", "YOU WIN", MB_YESNO);
 		switch (catchMess)
 		{
 		case IDYES:
 			if (level == 4) level = 1;
 			else level++;
-			ControlFunc::setup(level);
-		
+			ControlFunc::setup(level);		
 			goto Prepare;
 		case IDNO:
 			goto Menu;
@@ -164,7 +119,6 @@ int main(int arc, char* argv[])
 		ControlFunc::endGame();
 		return 0;
 	}
-	
-	
+
 	return 1;
 }

@@ -6,6 +6,29 @@ bool resume = false;
 bool newGame = false;
 
 
+bool ControlFunc::Init()	// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
+{														
+	srand(time(NULL));
+
+	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
+	{
+		return false;
+	}
+
+	g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);		// Thiet lap che do dinh dang video SDL trong windows.
+
+	if (g_screen == NULL)
+		return false;
+	   
+	//==================Font==================
+	TextObject::InitFont();
+	AudioFunction::prepareAudioFile();										// khoi tao file audio
+
+	return true;
+}
+
+
+
 bool ControlFunc::prepareGame()
 {
 	bool isSuccess = true;
@@ -42,7 +65,7 @@ bool ControlFunc::prepareGame()
 	return isSuccess;
 }
 
-void ControlFunc::setup(const int &lv)
+void ControlFunc::setup(const int &lv)				// khoi tao cac gia tri ban dau
 {
 	
 	
@@ -121,22 +144,38 @@ int ControlFunc::playCampaign()
 
 
 
-		if (g_event.type == SDL_KEYDOWN && g_event.key.keysym.sym == SDLK_ESCAPE) {
-			if (MessageBox(NULL, "Do you want to save game?", "Game over", MB_OK) == IDOK) {
+		if (g_event.type == SDL_KEYDOWN && g_event.key.keysym.sym == SDLK_s)
+		{
+			int catchMess = ::MessageBox(hWnd, "Do you want to save game?", "Save Game", MB_YESNO);
+			switch (catchMess)
+			{
+			case IDYES:
 				saveGame(type, level, score);
-
-				/*SDL_Quit();
-				return 1;*/
-
-				//free memory
-				/*delete[] listThreats;
-				CleanUp();*/
-
-				return 1;
+			case IDNO:
+				break;
+			default:
+				break;
 			}
+			//if (MessageBox(NULL, "Do you want to save game?", "Game over", MB_OK) == IDOK) {
+			//	saveGame(type, level, score);
+			//	//return 1;
+			//}
 		}
 
 
+		if (g_event.type == SDL_KEYDOWN && g_event.key.keysym.sym == SDLK_ESCAPE)
+		{
+			int catchMess = ::MessageBox(hWnd, "Do you want to back to Menu?", "Pause", MB_YESNO);
+			switch (catchMess)
+			{
+			case IDYES:
+				return 1;
+			case IDNO:
+				break;
+			default:
+				break;
+			}
+		}
 
 		// cap nhat lai background:
 		if (is_run_screen == true)

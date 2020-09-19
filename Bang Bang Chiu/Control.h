@@ -20,7 +20,7 @@
 
 
 #include"Background.h"
-#include "WinLose.h"
+
 
 extern int level;
 extern bool is_quit;
@@ -29,6 +29,7 @@ extern bool newGame;
 
 namespace ControlFunc
 {
+	bool Init();
 	void setup(const int &lv = 1);
 	bool prepareGame();
 	int playCampaign();
