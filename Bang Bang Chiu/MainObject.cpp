@@ -67,7 +67,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 
 				pAmo->setRect(this->rect_.x + WIDTH_MAIN_OBJECT_LV2, this->rect_.y + 5);
 				pAmo->setIsMove(true);
-				pAmo->setX_Val(AMO_MAIN_SPEED);
+				pAmo->setX_Val(AMO_MAIN_SPEED*3);
 				_pAmoList.push_back(pAmo);
 			}
 			break;

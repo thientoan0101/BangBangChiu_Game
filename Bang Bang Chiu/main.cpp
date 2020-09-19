@@ -13,19 +13,12 @@
 #include"Menu.h"
 
 
-// toan them:
 #include "Control.h"
 #include"Background.h"
 #include "WinLose.h"
 #include <winuser.h>
 #undef main
 
-//bool create = false;
-//// số lượng rocket
-//int num_rocket = 0;
-//int num_blood = 0;
-//int DAME_OF_MAIN = 1;
-//const int LIFE_OF_THREAT = DAME_OF_MAIN * 2; // mau cua threat
 
 
 bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu vien SDL voi kieu la: SDL_INIT_EVEYTHNG
@@ -54,59 +47,10 @@ bool Init()	// wait bo vao mot class nao do :)			// Khoi tao che do su dung thu 
 }
 
 
-int DisplayResourceNAMessageBox()
-{
-	int msgboxID = MessageBox(
-		NULL,
-		"Resource not available\nDo you want to try again?",
-		"Account Details",
-		MB_ICONQUESTION | MB_CANCELTRYCONTINUE | MB_DEFBUTTON2
-	);
-
-	switch (msgboxID)
-	{
-	case IDCANCEL:
-		// TODO: add code
-		break;
-	case IDTRYAGAIN:
-		// TODO: add code
-		break;
-	case IDCONTINUE:
-		// TODO: add code
-		break;
-	}
-
-	return msgboxID;
-}
 
 int main(int arc, char* argv[])
 {
-	
 
-	//int a = DisplayResourceNAMessageBox();
-
-
-
-
-
-	//int level = 1;
-	//cout << "chon level: ";	cin >> level;		// 1->4
-
-
-
-	// khởi tạo thời gian thực
-	srand(time(NULL));
-
-	//bool activeBoss = false;
-	//bool activeSubBoss = false;
-	//int bkgn_x = 0;
-	//bool is_run_screen = true;
-	//bool is_quit = false;
-	
-	
-	
-	
-	
 	
 	if (Init() == false)
 		return 0;
@@ -129,12 +73,10 @@ int main(int arc, char* argv[])
 		{
 			Mix_HaltChannel(-1);
 		}
-		//is_quit = true;
 		ControlFunc::endGame();
 		return 0;
 	}
 	else if (ret_menu == 0) {//Play game
-		/*level = 1;*/ // Khi bam Play Game mac dinh se choi level 1
 		newGame = true;
 		if (Mix_Playing(-1))																		// tam dung phat soundtrack
 		{
@@ -142,7 +84,7 @@ int main(int arc, char* argv[])
 		}
 	}
 	else if (ret_menu == 1) {//Load game
-		//todo
+	
 		resume = true;
 
 		if (Mix_Playing(-1))																		// tam dung phat soundtrack
@@ -172,7 +114,7 @@ int main(int arc, char* argv[])
 
 
 	Play:
-
+	
 	int resultGame = ControlFunc::playCampaign();
 	int catchMess, msgboxID;
  	switch (resultGame)
@@ -192,7 +134,7 @@ int main(int arc, char* argv[])
 
 			break;
 		case IDCONTINUE:
-			mainObject.setRect(100, SCREEN_HEIGHT / 2);
+		
 			goto Menu;
 			break;
 		}
@@ -206,7 +148,7 @@ int main(int arc, char* argv[])
 			if (level == 4) level = 1;
 			else level++;
 			ControlFunc::setup(level);
-			mainObject.setRect(100, SCREEN_HEIGHT / 2);
+		
 			goto Prepare;
 		case IDNO:
 			goto Menu;
@@ -215,6 +157,9 @@ int main(int arc, char* argv[])
 			return 0;
 		}
 		break;
+	case 1:
+		goto Menu;
+
 	default:
 		ControlFunc::endGame();
 		return 0;

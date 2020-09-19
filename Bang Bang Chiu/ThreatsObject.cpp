@@ -187,7 +187,7 @@ void ThreatObject::initAmo(AmoObject *p_amo)
 	switch (_threat_type)
 	{
 	case 0:
-		ret = p_amo->loadImgObject("32.png");
+		ret = p_amo->loadImgObject("33.png");
 		break;
 	case 1:
 		ret = p_amo->loadImgObject("33.png");
@@ -199,7 +199,7 @@ void ThreatObject::initAmo(AmoObject *p_amo)
 		ret = p_amo->loadImgObject("33.png");
 		break;
 	case 4:
-		ret = p_amo->loadImgObject("31.png");
+		ret = p_amo->loadImgObject("33.png");
 		break;
 	case 5:
 		ret = p_amo->loadImgObject("33.png");
@@ -240,29 +240,17 @@ void ThreatObject::initAmo_boss(AmoObject* p_amo)
 	bool ret;
 	switch (_threat_type)
 	{
-	case 0:
-		ret = p_amo->loadImgObject("32.png");
-		break;
-	case 1:
-		ret = p_amo->loadImgObject("33.png");
-		break;
-	case 2:
-		ret = p_amo->loadImgObject("33.png");
-		break;
-	case 3:
-		ret = p_amo->loadImgObject("33.png");
-		break;
 	case 4:
 		ret = p_amo->loadImgObject("31.png");
 		break;
 	case 5:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("32.png");
 		break;
 	case 6:
-		ret = p_amo->loadImgObject("31.png");
+		ret = p_amo->loadImgObject("34.png");
 		break;
 	case 7:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("35.png");
 		break;
 	case 10:
 		ret = p_amo->loadImgObject("32.png");
@@ -275,15 +263,13 @@ void ThreatObject::initAmo_boss(AmoObject* p_amo)
 
 	if (p_amo)
 	{
-		/*	bool ret = p_amo->loadImgObject("sphere2.png");*/
-			/*bool ret = p_amo->loadImgObject("33.png");*/
 		if (ret)
 		{
 			p_amo->setIsMove(true);
 			p_amo->setWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
 			p_amo->setType(AmoObject::SPHERE);
 			p_amo->setRect(rect_.x, rect_.y + rect_.h * 0.5);
-			p_amo->setX_Val(AMO_BOSS_SPEED);
+			p_amo->setX_Val(AMO_BOSS_SPEED*2);
 			_p_amo_list.push_back(p_amo);
 		}
 	}
@@ -323,17 +309,8 @@ void ThreatObject::MakeAmo(SDL_Surface* des, const int &x_limit, const int &y_li
 void ThreatObject::Reset(const int &xboder)
 {
 	rect_.x = xboder;
-	//srand(time(NULL));
 	rect_.y = rand() % SCREEN_HEIGHT - this->rect_.h;
 
-	/*for (int i = 0; i < _p_amo_list.size(); i++)
-	{
-		AmoObject* p_amo = _p_amo_list.at(i);
-		if (p_amo)
-		{
-			ResetAmo(p_amo);
-		}
-	}*/
 }
 
 
@@ -353,22 +330,18 @@ void createThreat(ThreatObject* &pThreat, const int &type, const int &index)
 	case 0:
 		width = WIDTH_THREAT_0;	height = HEIGHT_THREAT_0; 
 		pThreat->loadImgObject("threat_0.png");			
-		//pThreat->_blood = 1;
 		break;
 	case 1: 
 		width = WIDTH_THREAT_1;	height = HEIGHT_THREAT_1;
 		pThreat->loadImgObject("threat_1.png");		
-		//pThreat->_blood = 1;
 		break;
 	case 2:
 		width = WIDTH_THREAT_2;	height = HEIGHT_THREAT_2;
 		pThreat->loadImgObject("threat_2.png");		
-		//pThreat->_blood = 1;
 		break;
 	case 3:
 		width = WIDTH_THREAT_3;	height = HEIGHT_THREAT_3;
 		pThreat->loadImgObject("threat_3.png");		
-		//pThreat->_blood = 1;
 		break;
 	default:
 		break;
@@ -390,7 +363,6 @@ void createThreat(ThreatObject* &pThreat, const int &type, const int &index)
 
 void createListThreatObjects(vector<ThreatObject*> &listThreats, const int &level, int &numThreats)
 {
-	//vector<ThreatObject*> listThreats;
 	int num0, num1, num2, num3;
 	switch (level)
 	{	
@@ -444,7 +416,6 @@ void destroyThreatObjects(vector<ThreatObject*> &list)
 		{			
 			swap(list[i], list[list.size() - 1]);	
 			list.pop_back();		
-			//list.resize(list.size()-1);
 		}
 	}
 
@@ -483,12 +454,11 @@ void createBoss(ThreatObject* &pBoss, const int &level)
 	
 	pBoss->rect_.w = width;
 	pBoss->rect_.h = height;
-	//pBoss->_threat_type = type;
-
 
 	int rng_y = rand() % SCREEN_HEIGHT - height;
 	pBoss->setRect(SCREEN_WIDTH + 2 * rng_y, rng_y);
 	pBoss->set_x_delta(2 + SPEED_BACKGROUND);
+	pBoss->set_y_delta(2);
 	AmoObject *p_amo = new AmoObject();
 	pBoss->initAmo_boss(p_amo);
 }
@@ -497,19 +467,6 @@ void createBoss(ThreatObject* &pBoss, const int &level)
 
 void createSubBoss(ThreatObject* &pSubBoss, ThreatObject* &pBoss)
 {
-	/*switch (level)
-	{
-	case 1:
-		pSubBoss->loadImgObject("sub_boss_1.png");
-	case 2:
-		pSubBoss->loadImgObject("sub_boss_2.png");
-	case 3:
-		pSubBoss->loadImgObject("sub_boss_3.png");
-	case 4:
-		pSubBoss->loadImgObject("sub_boss_4.png");
-	default:
-		break;
-	}*/
 	pSubBoss->loadImgObject("sub_boss.png");
 	pSubBoss->rect_.w = WIDTH_SUB_BOSS;
 	pSubBoss->rect_.h = HEIGHT_SUB_BOSS;
@@ -555,7 +512,6 @@ void ThreatFunc::freeThreats()
 	{
 		delete listThreats[i];
 	}
-	cout << "test goto" << endl;
 	for (int i = 0; i < listSub.size(); i++)
 	{
 		delete listSub[i];

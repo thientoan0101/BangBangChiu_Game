@@ -83,6 +83,7 @@ void ControlFunc::setup(const int &lv)
 
 	mainObject.setXY_Val(0, 0);
 	mainObject.setType(MainObject::LEVEL_1);
+	g_event.type = SDL_NOEVENT;
 }
 
 
@@ -384,16 +385,7 @@ int ControlFunc::playCampaign()
 							Mix_PlayChannel(-1, g_sound_ex_main, 0);
 							score.outHighScoreToFile(score.getScore());
 
-
-					//		WinLoseFunc::initWinLoseBox();
-
-
-
-
-
-							//if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
-								//free memory
-								//SDL_Quit();
+							mainObject.setXY_Val(0, 0);
 								return -1;
 							//}
 						}
@@ -401,6 +393,7 @@ int ControlFunc::playCampaign()
 							for (int i = 0; i < DAME_OF_THREAT; i++) hp.decreaseHP();
 							hp.render(g_screen);
 							if (SDL_Flip(g_screen) == -1) {
+
 								//free memory
 								//SDL_Quit();
 								return 0;
@@ -452,18 +445,7 @@ int ControlFunc::playCampaign()
 					Mix_PlayChannel(-1, g_sound_ex_main, 0);
 					score.outHighScoreToFile(score.getScore());
 
-
-				//	WinLoseFunc::initWinLoseBox();
-
-
-
-
-
-					
-
-					//if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
-						//free memory
-						//SDL_Quit();
+					mainObject.setXY_Val(0, 0);
 						return -1;
 					//}
 				}
@@ -588,17 +570,9 @@ int ControlFunc::playCampaign()
 								Mix_PlayChannel(-1, g_sound_ex_main, 0);
 								score.outHighScoreToFile(score.getScore());
 
-
-					//			WinLoseFunc::initWinLoseBox();
-
-
-
-
-						//		if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
-									//free memory
-									//SDL_Quit();
-									return -1;
-							//	}
+								mainObject.setXY_Val(0, 0);
+								return -1;
+							
 							}
 							else {
 								for (int i = 0; i < DAME_OF_THREAT; i++) hp.decreaseHP();
@@ -645,17 +619,7 @@ int ControlFunc::playCampaign()
 								Mix_PlayChannel(-1, g_sound_ex_main, 0);
 								score.outHighScoreToFile(score.getScore());
 
-
-					//			WinLoseFunc::initWinLoseBox();
-
-
-
-
-
-
-								//if (MessageBox(NULL, "", "GAME OVER", MB_OK) == IDOK) {
-									//free memory
-									//SDL_Quit();
+								mainObject.setXY_Val(0, 0);
 									return -1;
 								//}
 							}
@@ -663,8 +627,6 @@ int ControlFunc::playCampaign()
 								for (int i = 0; i < DAME_OF_BOSS; i++) hp.decreaseHP();
 								hp.render(g_screen);
 								if (SDL_Flip(g_screen) == -1) {
-									//free memory
-									//SDL_Quit();
 									return 0;
 								}
 								// delete threat_amo when it collision main
@@ -700,7 +662,7 @@ int ControlFunc::playCampaign()
 								exp_subboss.set_frame(ex);
 								exp_subboss.setRect(x_pos, y_pos);
 								exp_subboss.showExSmall(g_screen);
-
+								
 								if (SDL_Flip(g_screen) == -1)
 									return 0;
 							}
@@ -736,7 +698,7 @@ int ControlFunc::playCampaign()
 								exp_subboss.set_frame(ex);
 								exp_subboss.setRect(x_pos, y_pos);
 								exp_subboss.showExSmall(g_screen);
-
+							
 								if (SDL_Flip(g_screen) == -1)
 									return 0;
 							}
@@ -746,9 +708,7 @@ int ControlFunc::playCampaign()
 								score.setScore(score.getScore() + 1000);
 								Mix_PlayChannel(-1, g_sound_ex_boss, 0);
 								score.outHighScoreToFile(score.getScore());
-								//if (MessageBox(NULL, "", "YOU WIN", MB_OK) == IDOK) {
-									//free memory
-									//SDL_Quit();
+								mainObject.setXY_Val(0, 0);
 									return 2;
 								//}
 							}
@@ -756,8 +716,7 @@ int ControlFunc::playCampaign()
 								for (int i = 0; i < DAME_OF_MAIN; i++) hp_boss.decreaseHP_BOSS();
 								hp_boss.render_boss(g_screen);
 								if (SDL_Flip(g_screen) == -1) {
-									//free memory
-									//SDL_Quit();
+							
 									return 0;
 								}
 								Mix_PlayChannel(-1, g_sound_injured, 0);
@@ -796,7 +755,7 @@ void ControlFunc::endGame()
 	{
 		delete listThreats[i];
 	}
-	cout << "test goto" << endl;
+
 	for (int i = 0; i < listSub.size(); i++)
 	{
 		delete listSub[i];
