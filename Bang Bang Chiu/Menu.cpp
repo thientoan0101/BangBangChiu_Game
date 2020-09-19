@@ -48,10 +48,10 @@ int Menu::showMenu(SDL_Surface* des) {
 	pos_arr[0].x = x_menu_pixel;
 	pos_arr[0].y = y_menu_pixel;
 
-	pos_arr[1].x = x_menu_pixel;
+	pos_arr[1].x = x_menu_pixel + 15;
 	pos_arr[1].y = y_menu_pixel + font_size + 3 ;
 
-	pos_arr[2].x = x_menu_pixel+ 30;
+	pos_arr[2].x = x_menu_pixel + 30;
 	pos_arr[2].y = pos_arr[1].y + font_size + 3;
 
 	pos_arr[3].x = x_menu_pixel + 45;
@@ -305,7 +305,8 @@ int Menu::showMenuOption(SDL_Surface* des) {
 
 int Menu::showGuide(SDL_Surface* des) {
 	int x_value = 200;
-	int y_value = 20;
+	int y_value = 10;
+	const int totalItemGuide = 10;
 	int xMouse = 0;
 	int yMouse = 0;
 	TextObject::InitFont();
@@ -316,59 +317,88 @@ int Menu::showGuide(SDL_Surface* des) {
 		return 0;
 	}
 
-	TextObject guide[6];
+	TextObject guide[totalItemGuide];
 	guide[0].setText("Sub Boss: 100 point | Boss: 100 points | Super Boss: 1000 points");
 	guide[0].setColor(TextObject::RED_COLOR);
-	guide[0].setRect(x_value + 110, y_value + 20);
+	guide[0].setRect(x_value + 110, y_value);
 
 	guide[1].setText("Restore full HP");
 	guide[1].setColor(TextObject::RED_COLOR);
-	guide[1].setRect(x_value + 110, y_value + 80);
+	guide[1].setRect(x_value + 110, y_value + 50);
 
 	guide[2].setText("Increase one SupperSkill. You only have maximum 3 SupperSkill");
 	guide[2].setColor(TextObject::RED_COLOR);
-	guide[2].setRect(x_value + 110, y_value + 180);
+	guide[2].setRect(x_value + 110, y_value + 100);
 
 	guide[3].setText("300 dame point and through any boss");
 	guide[3].setColor(TextObject::RED_COLOR);
-	guide[3].setRect(x_value + 110, y_value + 330);
+	guide[3].setRect(x_value + 110, y_value + 145);
 
-	guide[4].setText("You are become Superman, the bullet increase dame point. Lasted for 30s");
+	guide[4].setText("You are become Superman, the bullet increase dame point. Lasted for 13s");
 	guide[4].setColor(TextObject::RED_COLOR);
-	guide[4].setRect(x_value + 110, y_value + 240);
+	guide[4].setRect(x_value + 110, y_value + 190);
 
-	guide[5].setText("BACK");
+	guide[5].setText("Pause Game");
 	guide[5].setColor(TextObject::RED_COLOR);
-	guide[5].setRect(x_value - 190, y_value);
+	guide[5].setRect(x_value + 110, y_value + 250);
 
-	bool selected[6] = { 0,0 };
+	guide[6].setText("Save game");
+	guide[6].setColor(TextObject::RED_COLOR);
+	guide[6].setRect(x_value + 110, y_value + 330);
+
+	guide[7].setText("Move:");
+	guide[7].setColor(TextObject::RED_COLOR);
+	guide[7].setRect(x_value + 570, y_value + 250);
+
+	guide[8].setText("Shoot:");
+	guide[8].setColor(TextObject::RED_COLOR);
+	guide[8].setRect(x_value + 570, y_value + 330);
+
+	guide[9].setText("BACK");
+	guide[9].setColor(TextObject::RED_COLOR);
+	guide[9].setRect(x_value - 190, y_value);
+
+	bool selected[totalItemGuide] = { 0,0 };
 	SDL_Event m_event;
 	SDL_Surface* icon_subboss;
 	SDL_Surface* icon_heart;
 	SDL_Surface* icon_gift;
 	SDL_Surface* icon_superSkill;
 	SDL_Surface* icon_superman;
-	icon_subboss = SDLCommonFunc::loadImage("sub_boss.png");
-	icon_heart = SDLCommonFunc::loadImage("HP_gift.png");
-	icon_gift = SDLCommonFunc::loadImage("gift.png");
-	icon_superSkill = SDLCommonFunc::loadImage("rocket.png");
-	icon_superman = SDLCommonFunc::loadImage("gift_up_main.png");
+	SDL_Surface* icon_phim;
+	SDL_Surface* icon_space;
+	SDL_Surface* icon_a;
+	SDL_Surface* icon_esc;
+	icon_subboss = SDLCommonFunc::loadImage("subboss_icon.png");
+	icon_heart = SDLCommonFunc::loadImage("HPgift_icon.png");
+	icon_gift = SDLCommonFunc::loadImage("gift_icon.png");
+	icon_superSkill = SDLCommonFunc::loadImage("rocket_icon.png");
+	icon_superman = SDLCommonFunc::loadImage("giftupmain_icon.png");
+	icon_phim = SDLCommonFunc::loadImage("phim.png");
+	icon_space = SDLCommonFunc::loadImage("space.png");
+	icon_a = SDLCommonFunc::loadImage("button_a_icon.png");
+	icon_esc = SDLCommonFunc::loadImage("button_esc_icon.png");
 	while (true)
 	{
 		//Show man hinh menu
 		SDLCommonFunc::applySurface(img_guide, des, 0, 0);
 		//Hien thi text menu
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < totalItemGuide; i++) {
 			guide[i].CreateGameText(g_font_text, des);
 		}
 
 		//Show icon
 		SDLCommonFunc::applySurface(icon_subboss, des, x_value - 20, y_value);
-		SDLCommonFunc::applySurface(icon_heart, des, x_value, y_value + 70);
-		SDLCommonFunc::applySurface(icon_gift, des, x_value, y_value + 140);
-		SDLCommonFunc::applySurface(icon_superman, des, x_value, y_value + 230);
-		SDLCommonFunc::applySurface(icon_superSkill, des, x_value - 50, y_value + 280);
-		
+		SDLCommonFunc::applySurface(icon_heart, des, x_value, y_value + 50);
+		SDLCommonFunc::applySurface(icon_gift, des, x_value, y_value + 100);
+		SDLCommonFunc::applySurface(icon_superman, des, x_value, y_value + 140);
+		SDLCommonFunc::applySurface(icon_superSkill, des, x_value, y_value + 180);
+		SDLCommonFunc::applySurface(icon_phim, des, x_value + 750, y_value + 230);
+		SDLCommonFunc::applySurface(icon_space, des, x_value + 650, y_value + 310);
+		SDLCommonFunc::applySurface(icon_a, des, x_value + 250, y_value + 240);
+		SDLCommonFunc::applySurface(icon_esc, des, x_value + 250, y_value + 320);
+
+
 
 		while (SDL_PollEvent(&m_event))
 		{
@@ -389,17 +419,17 @@ int Menu::showGuide(SDL_Surface* des) {
 				xMouse = m_event.motion.x;
 				yMouse = m_event.motion.y;
 
-				SDL_Rect rectmenu = guide[5].getRect();
+				SDL_Rect rectmenu = guide[totalItemGuide - 1].getRect();
 				if (CheckFocusWithRect(xMouse, yMouse, rectmenu)) {
-					if (selected[5] == false) {
-						selected[5] = 1;
-						guide[5].setColor(SECOND_COLOR);
+					if (selected[totalItemGuide - 1] == false) {
+						selected[totalItemGuide - 1] = 1;
+						guide[totalItemGuide - 1].setColor(SECOND_COLOR);
 					}
 				}
 				else {
-					if (selected[5] == true) {
-						selected[5] = 0;
-						guide[5].setColor(FIRST_COLOR);
+					if (selected[totalItemGuide - 1] == true) {
+						selected[totalItemGuide - 1] = 0;
+						guide[totalItemGuide - 1].setColor(FIRST_COLOR);
 					}
 				}
 
@@ -409,15 +439,15 @@ int Menu::showGuide(SDL_Surface* des) {
 			{
 				xMouse = m_event.button.x;
 				yMouse = m_event.button.y;
-				SDL_Rect rectmenu = guide[5].getRect();
+				SDL_Rect rectmenu = guide[totalItemGuide - 1].getRect();
 				if (CheckFocusWithRect(xMouse, yMouse, rectmenu)) {
-					return 5;
+					return totalItemGuide - 1;
 				}
 				break;
 			}
 			case SDL_KEYDOWN:
 			{
-				if (m_event.key.keysym.sym == SDLK_ESCAPE) return 6 - 1;
+				if (m_event.key.keysym.sym == SDLK_ESCAPE) return totalItemGuide - 1;
 				break;
 			}
 			default:
