@@ -55,7 +55,7 @@ int main(int arc, char* argv[])
 	}
 	else if (ret_menu == 2) {//Guide
 		int ret_menu_guide = Menu::showGuide(g_screen);
-		if (ret_menu_guide == 9) {
+		if (ret_menu_guide == 10) {
 			goto Menu;
 		}
 		else {
@@ -92,6 +92,7 @@ int main(int arc, char* argv[])
 			goto Prepare;
 			break;
 		case IDCONTINUE:		
+			score.setScore(0);
 			goto Menu;
 			break;
 		}

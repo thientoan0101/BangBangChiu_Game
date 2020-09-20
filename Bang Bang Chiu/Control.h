@@ -16,9 +16,6 @@
 #include"Menu.h"
 #include"Score.h"
 #include "SaveLoad.h"
-
-
-
 #include"Background.h"
 
 
@@ -26,6 +23,7 @@ extern int level;
 extern bool is_quit;
 extern bool resume;
 extern bool newGame;
+static Score score;
 
 namespace ControlFunc
 {

@@ -32,7 +32,6 @@ bool ControlFunc::Init()	// Khoi tao che do su dung thu vien SDL voi kieu la: SD
 bool ControlFunc::prepareGame()
 {
 	bool isSuccess = true;
-
 	bool ret;
 	ret = BackgroundFunc::prepareBackground(level);							// load background theo man
 	if (ret == 0)	isSuccess = false;	
@@ -111,15 +110,13 @@ void ControlFunc::setup(const int &lv)				// khoi tao cac gia tri ban dau
 
 
 
-
-Score score;
-
 int ControlFunc::playCampaign()
 {
 	//Bien luu diem: 
 	//unsigned int score = 0;
 
 	/*Score score;*/
+
 	score.inputHighScoreFromFile();
 
 	int type = 1;

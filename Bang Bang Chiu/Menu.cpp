@@ -306,7 +306,7 @@ int Menu::showMenuOption(SDL_Surface* des) {
 int Menu::showGuide(SDL_Surface* des) {
 	int x_value = 200;
 	int y_value = 10;
-	const int totalItemGuide = 10;
+	const int totalItemGuide = 11;
 	int xMouse = 0;
 	int yMouse = 0;
 	TextObject::InitFont();
@@ -332,11 +332,11 @@ int Menu::showGuide(SDL_Surface* des) {
 
 	guide[3].setText("300 dame point and through any boss");
 	guide[3].setColor(TextObject::RED_COLOR);
-	guide[3].setRect(x_value + 110, y_value + 145);
+	guide[3].setRect(x_value + 110, y_value + 190);
 
 	guide[4].setText("You are become Superman, the bullet increase dame point. Lasted for 13s");
 	guide[4].setColor(TextObject::RED_COLOR);
-	guide[4].setRect(x_value + 110, y_value + 190);
+	guide[4].setRect(x_value + 110, y_value + 145);
 
 	guide[5].setText("Pause Game");
 	guide[5].setColor(TextObject::RED_COLOR);
@@ -344,19 +344,23 @@ int Menu::showGuide(SDL_Surface* des) {
 
 	guide[6].setText("Save game");
 	guide[6].setColor(TextObject::RED_COLOR);
-	guide[6].setRect(x_value + 110, y_value + 330);
+	guide[6].setRect(x_value + 110, y_value + 297);
 
-	guide[7].setText("Move:");
+	guide[7].setText("Supper Skill");
 	guide[7].setColor(TextObject::RED_COLOR);
-	guide[7].setRect(x_value + 570, y_value + 250);
+	guide[7].setRect(x_value + 110, y_value + 340);
 
-	guide[8].setText("Shoot:");
+	guide[8].setText("Move:");
 	guide[8].setColor(TextObject::RED_COLOR);
-	guide[8].setRect(x_value + 570, y_value + 330);
+	guide[8].setRect(x_value + 570, y_value + 250);
 
-	guide[9].setText("BACK");
+	guide[9].setText("Shoot:");
 	guide[9].setColor(TextObject::RED_COLOR);
-	guide[9].setRect(x_value - 190, y_value);
+	guide[9].setRect(x_value + 570, y_value + 330);
+
+	guide[10].setText("BACK");
+	guide[10].setColor(TextObject::RED_COLOR);
+	guide[10].setRect(x_value - 190, y_value);
 
 	bool selected[totalItemGuide] = { 0,0 };
 	SDL_Event m_event;
@@ -369,6 +373,7 @@ int Menu::showGuide(SDL_Surface* des) {
 	SDL_Surface* icon_space;
 	SDL_Surface* icon_s;
 	SDL_Surface* icon_esc;
+	SDL_Surface* icon_e;
 	icon_subboss = SDLCommonFunc::loadImage("subboss_icon.png");
 	icon_heart = SDLCommonFunc::loadImage("HPgift_icon.png");
 	icon_gift = SDLCommonFunc::loadImage("gift_icon.png");
@@ -378,6 +383,7 @@ int Menu::showGuide(SDL_Surface* des) {
 	icon_space = SDLCommonFunc::loadImage("space.png");
 	icon_s = SDLCommonFunc::loadImage("button_s_icon.png");
 	icon_esc = SDLCommonFunc::loadImage("button_esc_icon.png");
+	icon_e = SDLCommonFunc::loadImage("button_e_icon.png");
 	while (true)
 	{
 		//Show man hinh menu
@@ -386,7 +392,7 @@ int Menu::showGuide(SDL_Surface* des) {
 		for (int i = 0; i < totalItemGuide; i++) {
 			guide[i].CreateGameText(g_font_text, des);
 		}
-
+		//340
 		//Show icon
 		SDLCommonFunc::applySurface(icon_subboss, des, x_value - 20, y_value);
 		SDLCommonFunc::applySurface(icon_heart, des, x_value, y_value + 50);
@@ -395,8 +401,9 @@ int Menu::showGuide(SDL_Surface* des) {
 		SDLCommonFunc::applySurface(icon_superSkill, des, x_value, y_value + 180);
 		SDLCommonFunc::applySurface(icon_phim, des, x_value + 750, y_value + 230);
 		SDLCommonFunc::applySurface(icon_space, des, x_value + 650, y_value + 310);
-		SDLCommonFunc::applySurface(icon_s, des, x_value + 250, y_value + 320);
+		SDLCommonFunc::applySurface(icon_s, des, x_value + 250, y_value + 290);
 		SDLCommonFunc::applySurface(icon_esc, des, x_value + 250, y_value + 240);
+		SDLCommonFunc::applySurface(icon_e, des, x_value + 250, y_value + 340);
 
 
 

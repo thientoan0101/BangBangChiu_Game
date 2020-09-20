@@ -1,2 +1,4 @@
-﻿  Background.cpp
+﻿  main.cpp
+C:\Users\Le Van Dong\Desktop\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Le Van Dong\Desktop\OOP-Project\Bang Bang Chiu\main.cpp(76,6): warning C4102: 'Play': unreferenced label
   Bang Bang Chiu.vcxproj -> C:\Users\Le Van Dong\Desktop\OOP-Project\Debug\Bang Bang Chiu.exe
