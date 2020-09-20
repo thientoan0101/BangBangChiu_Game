@@ -3,7 +3,7 @@
 
 //static SDL_Surface* g_img_menu = NULL;
 SDL_Surface* g_img_menu = NULL;
-const string local_img_bk = "menubk2.png";
+const string local_img_bk = "./image/menubk2.png";
 const int FIRST_COLOR = TextObject::RED_COLOR;
 const int SECOND_COLOR = TextObject::BLUE_COLOR;
 const int totalItem = 4;
@@ -11,7 +11,7 @@ const int totalItemOption = 5;
 //static TTF_Font* g_font_Menu = NULL;
 TTF_Font* g_font_Menu = NULL;
 const int font_size = 40;
-const string font_local = "menu.ttf";
+const string font_local = "./font/menu.ttf";
 
 const int x_menu_pixel = 520;
 const int y_menu_pixel = 200;
@@ -311,7 +311,7 @@ int Menu::showGuide(SDL_Surface* des) {
 	int yMouse = 0;
 	TextObject::InitFont();
 	SDL_Surface* img_guide;
-	img_guide = SDLCommonFunc::loadImage("guide.png");
+	img_guide = SDLCommonFunc::loadImage("./image/guide.png");
 	if (img_guide == NULL) {
 		cout << "\n==============Khong the load anh Menu. Kiem tra lai ten file va duong dan==============\n";
 		return 0;
@@ -374,16 +374,16 @@ int Menu::showGuide(SDL_Surface* des) {
 	SDL_Surface* icon_s;
 	SDL_Surface* icon_esc;
 	SDL_Surface* icon_e;
-	icon_subboss = SDLCommonFunc::loadImage("subboss_icon.png");
-	icon_heart = SDLCommonFunc::loadImage("HPgift_icon.png");
-	icon_gift = SDLCommonFunc::loadImage("gift_icon.png");
-	icon_superSkill = SDLCommonFunc::loadImage("rocket_icon.png");
-	icon_superman = SDLCommonFunc::loadImage("giftupmain_icon.png");
-	icon_phim = SDLCommonFunc::loadImage("phim.png");
-	icon_space = SDLCommonFunc::loadImage("space.png");
-	icon_s = SDLCommonFunc::loadImage("button_s_icon.png");
-	icon_esc = SDLCommonFunc::loadImage("button_esc_icon.png");
-	icon_e = SDLCommonFunc::loadImage("button_e_icon.png");
+	icon_subboss = SDLCommonFunc::loadImage("./image/subboss_icon.png");
+	icon_heart = SDLCommonFunc::loadImage("./image/HPgift_icon.png");
+	icon_gift = SDLCommonFunc::loadImage("./image/gift_icon.png");
+	icon_superSkill = SDLCommonFunc::loadImage("./image/rocket_icon.png");
+	icon_superman = SDLCommonFunc::loadImage("./image/giftupmain_icon.png");
+	icon_phim = SDLCommonFunc::loadImage("./image/phim.png");
+	icon_space = SDLCommonFunc::loadImage("./image/space.png");
+	icon_s = SDLCommonFunc::loadImage("./image/button_s_icon.png");
+	icon_esc = SDLCommonFunc::loadImage("./image/button_esc_icon.png");
+	icon_e = SDLCommonFunc::loadImage("./image/button_e_icon.png");
 	while (true)
 	{
 		//Show man hinh menu
@@ -478,7 +478,7 @@ int Menu::showAuthor(SDL_Surface* des) {
 	TextObject::InitFont();
 
 	SDL_Surface* img_author;
-	img_author = SDLCommonFunc::loadImage("author.jpg");
+	img_author = SDLCommonFunc::loadImage("./image/author.jpg");
 	if (img_author == NULL) {
 		cout << "\n==============Khong the load anh Menu. Kiem tra lai ten file va duong dan==============\n";
 		return 0;

@@ -28,7 +28,7 @@ static Score score;
 namespace ControlFunc
 {
 	bool Init();
-	void setup(const int &lv = 1);
+	void setup(const int& lv);
 	bool prepareGame();
 	int playCampaign();
 	

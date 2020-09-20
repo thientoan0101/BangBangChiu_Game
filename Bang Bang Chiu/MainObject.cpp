@@ -46,7 +46,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 				DAME_OF_MAIN = 1;
 				AmoObject* pAmo = new AmoObject();
 				pAmo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
-				pAmo->loadImgObject("bullet.png");
+				pAmo->loadImgObject("./image/bullet.png");
 				pAmo->setType(AmoObject::BULLET);
 
 				Mix_PlayChannel(-1, g_sound_bullet[0], 0);
@@ -60,7 +60,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 				DAME_OF_MAIN = 5;
 				AmoObject* pAmo = new AmoObject();
 				pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-				pAmo->loadImgObject("lazer.png");
+				pAmo->loadImgObject("./image/lazer.png");
 				pAmo->setType(AmoObject::LAZER);
 				Mix_PlayChannel(-1, g_sound_bullet[0], 0);
 				
@@ -78,7 +78,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 					DAME_OF_MAIN = 1;
 					AmoObject* pAmo = new AmoObject();
 					pAmo->setWidthHeight(WIDTH_ROCKET, HEIGHT_ROCKET);
-					pAmo->loadImgObject("rocket.png");
+					pAmo->loadImgObject("./image/rocket.png");
 					pAmo->setType(AmoObject::ROCKET);
 
 					Mix_PlayChannel(-1, g_sound_bullet[1], 0);
@@ -92,7 +92,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 					DAME_OF_MAIN = 1;
 					AmoObject* pAmo = new AmoObject();
 					pAmo->setWidthHeight(WIDTH_ULTI_LV2, HEIGHT_ULTI_LV2);
-					pAmo->loadImgObject("unti_lv2.png");
+					pAmo->loadImgObject("./image/unti_lv2.png");
 					pAmo->setType(AmoObject::ROCKET);
 					Mix_PlayChannel(-1, g_sound_bullet[1], 0);
 					
@@ -135,18 +135,7 @@ void MainObject::handleInput(SDL_Event& events, int& rocket_num, int& blood_num,
 		break;
 	}
 	}
-	} /*else if (events.type == SDL_MOUSEBUTTONDOWN) {
-		AmoObject* pAmo = new AmoObject();
-		if(events.button.button == SDL_BUTTON_LEFT){
-			pAmo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			pAmo->loadImg("laser2.png");
-			pAmo->setType(AmoObject::LAZER);
-		}
-		pAmo->setRect(this->rect_.x + this->rect_.w *0.7, this->rect_.y + this->rect_.h * 0.02);
-		pAmo->setIsMove(true);
-		pAmo->setX_Val(20);
-		_pAmoList.push_back(pAmo);
-	}*/
+	}
 }
 
 void MainObject::makeAmo(SDL_Surface* g_Something) {
@@ -178,6 +167,7 @@ void MainObject::handleMove() {
 		rect_.y += _yVal;
 		if (rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT_LV2 > SCREEN_HEIGHT) rect_.y -= _yVal;
 	}
+	return;
 }
 
 void MainObject::removeAmo(const int& index) {
@@ -190,6 +180,7 @@ void MainObject::removeAmo(const int& index) {
 				p_amo = NULL;
 			}
 		}
+	return;
 }
 
 
@@ -201,10 +192,10 @@ bool MainFunc::prepareMain()
 {
 	mainObject.setRect(100, SCREEN_HEIGHT / 2);
 	mainObject.setXY_Val(0, 0);
-	bool ret = mainObject.loadImgObject("main.png");					//main
+	bool ret = mainObject.loadImgObject("./image/main.png");					//main
 	if (!ret)
 	{
-		return 0;
+		return false;
 	}
-
+	return true;
 }

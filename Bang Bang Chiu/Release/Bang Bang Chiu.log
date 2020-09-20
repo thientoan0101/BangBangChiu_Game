@@ -1,7 +1,80 @@
-﻿  Generating code
+﻿  AmoObject.cpp
+  Audio.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Background.cpp
+  BaseObject.cpp
+  CommonFunction.cpp
+  Control.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(11,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(270,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(271,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(303,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(304,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(341,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(342,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(387,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(397,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(458,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(459,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(465,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(466,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(510,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(568,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(583,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(632,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(679,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(715,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(789,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Control.cpp(794,20): warning C4018: '<': signed/unsigned mismatch
+  Explosion.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Gift.cpp
+  HPObject.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\HPObject.cpp(40,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\HPObject.cpp(49,21): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\main.cpp(77,6): warning C4102: 'Play': unreferenced label
+  MainObject.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(54,64): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(86,65): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(100,49): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(142,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(175,13): warning C4018: '<': signed/unsigned mismatch
+  Menu.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  SaveLoad.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(137,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(157,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(169,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(221,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(231,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(251,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(498,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(302,35): warning C4101: 'HP': unreferenced local variable
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\SaveLoad.cpp(414,7): warning C4101: 'step': unreferenced local variable
+  Score.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Score.cpp(33,20): warning C4018: '<': signed/unsigned mismatch
+  TextObject.cpp
+  ThreatsObject.cpp
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\Audio.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(35,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(228,36): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(271,36): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(288,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(301,37): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(319,34): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(412,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(499,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(511,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\ThreatsObject.cpp(515,20): warning C4018: '<': signed/unsigned mismatch
+  Generating code
   Previous IPDB not found, fall back to full compilation.
 C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\TextObject.cpp(44): warning C4715: 'TextObject::InitFont': not all control paths return a value
-C:\Users\84918\Desktop\add\OOP-Project\Bang Bang Chiu\MainObject.cpp(210): warning C4715: 'MainFunc::prepareMain': not all control paths return a value
   All 612 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Bang Bang Chiu.vcxproj -> C:\Users\84918\Desktop\add\OOP-Project\Release\Bang Bang Chiu.exe

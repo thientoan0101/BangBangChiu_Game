@@ -13,16 +13,16 @@ bool BackgroundFunc:: prepareBackground(const int &level)
 	switch (level)
 	{
 	case 1:
-		g_bkground = SDLCommonFunc::loadImage("bk1.png");		// level 1:
+		g_bkground = SDLCommonFunc::loadImage("./image/bk1.png");		// level 1:
 		break;
 	case 2: 
-		g_bkground = SDLCommonFunc::loadImage("bk2.png");		// level 2:
+		g_bkground = SDLCommonFunc::loadImage("./image/bk2.png");		// level 2:
 		break;
 	case 3:
-		g_bkground = SDLCommonFunc::loadImage("bk3.png");		// level 3:
+		g_bkground = SDLCommonFunc::loadImage("./image/bk3.png");		// level 3:
 		break;
 	case 4:
-		g_bkground = SDLCommonFunc::loadImage("bk4.png");		// level 4:
+		g_bkground = SDLCommonFunc::loadImage("./image/bk4.png");		// level 4:
 		break;
 	default:
 		break;

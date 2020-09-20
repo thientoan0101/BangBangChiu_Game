@@ -146,7 +146,7 @@ void ExplosionObject::showUpgrade(SDL_Surface* des)
 bool ExplosionFunc::prepareExpSub()
 {
 	bool ret;
-	ret = exp_subboss.loadImgObject("expo_small.png");
+	ret = exp_subboss.loadImgObject("./image/expo_small.png");
 	exp_subboss.set_clip_small();
 	return ret;
 }
@@ -155,7 +155,7 @@ bool ExplosionFunc::prepareExpSub()
 bool ExplosionFunc::prepareExpMain()
 {
 	bool ret;
-	ret = explo_main.loadImgObject("expo_small.png");
+	ret = explo_main.loadImgObject("./image/expo_small.png");
 	explo_main.set_clip_small();
 	return ret;
 }

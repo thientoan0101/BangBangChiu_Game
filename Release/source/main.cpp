@@ -19,6 +19,7 @@
 
 int main(int arc, char* argv[])
 {
+
 	if (ControlFunc::Init() == false)		return 0;
 	
 	int ret_author = Menu::showAuthor(g_screen);
@@ -28,11 +29,11 @@ int main(int arc, char* argv[])
 	Menu:
 	//Truoc khi choi game => can show menu
 
-	ControlFunc::setup();
+	ControlFunc::setup(level);
 
 	int ret_menu = Menu::showMenu(g_screen);
 	if (ret_menu == totalItem - 1) {//Vi trong ham showMenu, quy dinh totalItem la exit
-		if (Mix_Playing(-1))																		// dung phat soundtrack
+		if (Mix_Playing(-1)) //dung phat soundtrack
 		{
 			Mix_HaltChannel(-1);
 		}
@@ -74,7 +75,6 @@ int main(int arc, char* argv[])
 	}
 	
 	Play:
-	
 	int resultGame = ControlFunc::playCampaign();
 	int catchMess, msgboxID;
  	switch (resultGame)

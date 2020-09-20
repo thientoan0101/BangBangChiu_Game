@@ -36,7 +36,7 @@ int TextObject::InitFont() {
 		return false;
 	}
 	//Import font to Programming
-	g_font_text = TTF_OpenFont("BalsamiqSans-Regular.ttf", 20);
+	g_font_text = TTF_OpenFont("./font/BalsamiqSans-Regular.ttf", 20);
 	if (g_font_text == NULL) {
 		cout << "\n=================Loi font=================\n";
 		return false;

@@ -4,7 +4,7 @@ bool compare(int a, int b) { return a > b; }
 
 void Score::inputHighScoreFromFile() {
 	ifstream FileIn;
-	FileIn.open("Score.txt");
+	FileIn.open("./data/Score.txt");
 	if (FileIn.fail()) {
 		cout << "\n========================File luu diem khong ton tai, vui long tao file Score.txt========================";
 		exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ void Score::inputHighScoreFromFile() {
 
 void Score::outHighScoreToFile(int score) {
 	ofstream FileOut;
-	FileOut.open("Score.txt");
+	FileOut.open("./data/Score.txt");
 	_highScore.push_back(score);
 	sort(_highScore.begin(), _highScore.end(),compare);
 	//_highScore.resize(10,0);

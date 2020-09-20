@@ -54,7 +54,7 @@ void createGift(const char* name, Gift*& gift, const int& type) {
 void GiftFunc::prepareGiftRocket()
 {
 	gift_rocket = new Gift();
-	createGift("gift.png", gift_rocket, Gift::UPGRADE_AMO);
+	createGift("./image/gift.png", gift_rocket, Gift::UPGRADE_AMO);
 }
 
 
@@ -62,11 +62,11 @@ void GiftFunc::prepareGiftRocket()
 void GiftFunc::prepareGiftHP()
 {
 	gift_hp = new Gift();
-	createGift("HP_gift.png", gift_hp, Gift::HP);
+	createGift("./image/HP_gift.png", gift_hp, Gift::HP);
 }
 
 void GiftFunc::prepareGiftUpgrade()
 {
 	gift_upgr_main = new Gift();
-	createGift("gift_up_main.png", gift_upgr_main, Gift::UPGRADE_SPACESHIP);
+	createGift("./image/gift_up_main.png", gift_upgr_main, Gift::UPGRADE_SPACESHIP);
 }

@@ -88,7 +88,7 @@ void Reset(int& type_boss, int& level, Score& score) {
 
 
 void saveGame(int type_boss, int level, Score& score) {
-	ofstream file("Continue_Game.txt");
+	ofstream file("./data/Continue_Game.txt");
 
 	vector<Gift*> listGifts;
 
@@ -298,7 +298,7 @@ void saveGame(int type_boss, int level, Score& score) {
 
 
 void load(int& type_boss, int& level, Score& score) {
-	ifstream file("Continue_Game.txt");
+	ifstream file("./data/Continue_Game.txt");
 	int x, y, b, type, x_val, y_val, HP, num_amo, numSubBoss, numGift;
 	vector<AmoObject*> amo_list;
 	vector<Gift*> listGifts;
@@ -350,10 +350,10 @@ void load(int& type_boss, int& level, Score& score) {
 	// Load hinh
 	switch (type_main) {
 	case MainObject::LEVEL_1:
-		mainObject.loadImgObject("main.png");
+		mainObject.loadImgObject("./image/main.png");
 		break;
 	case MainObject::LEVEL_2:
-		mainObject.loadImgObject("main_lv2.png");
+		mainObject.loadImgObject("./image/main_lv2.png");
 		break;
 	}
 
@@ -372,7 +372,7 @@ void load(int& type_boss, int& level, Score& score) {
 		switch (type_main) {
 		case MainObject::LEVEL_1:
 			p_amo->setWidthHeight(WIDTH_BULLET, HEIGHT_BULLET);
-			p_amo->loadImgObject("bullet.png");
+			p_amo->loadImgObject("./image/bullet.png");
 			p_amo->setType(AmoObject::BULLET);
 
 			p_amo->setX_Val(AMO_MAIN_SPEED);
@@ -380,7 +380,7 @@ void load(int& type_boss, int& level, Score& score) {
 			break;
 		case MainObject::LEVEL_2:
 			p_amo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-			p_amo->loadImgObject("lazer.png");
+			p_amo->loadImgObject("./image/lazer.png");
 			p_amo->setType(AmoObject::LAZER);
 
 			p_amo->setX_Val(AMO_MAIN_SPEED);
@@ -546,13 +546,13 @@ void load(int& type_boss, int& level, Score& score) {
 
 		switch (type) {
 		case Gift::UPGRADE_AMO:
-			createGift("gift.png", p_gift, Gift::UPGRADE_AMO);
+			createGift("./image/gift.png", p_gift, Gift::UPGRADE_AMO);
 			break;
 		case Gift::UPGRADE_SPACESHIP:
-			createGift("gift_up_main.png", p_gift, Gift::UPGRADE_SPACESHIP);
+			createGift("./image/gift_up_main.png", p_gift, Gift::UPGRADE_SPACESHIP);
 			break;
 		case Gift::HP:
-			createGift("HP_gift.png", p_gift, Gift::HP);
+			createGift("./image/HP_gift.png", p_gift, Gift::HP);
 			break;
 		}
 

@@ -116,7 +116,6 @@ int ControlFunc::playCampaign()
 	//unsigned int score = 0;
 
 	/*Score score;*/
-
 	score.inputHighScoreFromFile();
 
 	int type = 1;
@@ -129,7 +128,7 @@ int ControlFunc::playCampaign()
 	// Trong luc play game:
 	while (!is_quit)
 	{
-		while (SDL_PollEvent(&g_event))
+		if (SDL_PollEvent(&g_event))//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		{
 			if (g_event.type == SDL_QUIT)
 			{
@@ -260,7 +259,7 @@ int ControlFunc::playCampaign()
 			// ăn item được rocket
 			num_rocket++;
 			if (num_rocket > NUM_ROCKET) num_rocket--;
-			ret = main_eat_item.loadImgObject("eat_item.png");
+			ret = main_eat_item.loadImgObject("./image/eat_item.png");
 
 
 			main_eat_item.set_clip_eat_item();
@@ -294,7 +293,7 @@ int ControlFunc::playCampaign()
 			die_num = 0;
 			hp.init();
 			hp.render(g_screen);
-			ret = main_eat_item.loadImgObject("exp_main.png");
+			ret = main_eat_item.loadImgObject("./image/exp_main.png");
 
 			main_eat_item.set_clip_small();
 			if (!ret) return 0;
@@ -322,7 +321,7 @@ int ControlFunc::playCampaign()
 			//this for main
 			ExplosionObject main_eat_item;
 
-			bool ret = mainObject.loadImgObject("main_lv2.png");				//main
+			bool ret = mainObject.loadImgObject("./image/main_lv2.png");				//main
 			if (!ret)
 			{
 				return 0;
@@ -331,7 +330,7 @@ int ControlFunc::playCampaign()
 			mainObject.setWidthHeight(WIDTH_MAIN_OBJECT_LV2, HEIGHT_MAIN_OBJECT_LV2);
 
 			// ăn item được rocket
-			ret = main_eat_item.loadImgObject("eat_item.png");
+			ret = main_eat_item.loadImgObject("./image/eat_item.png");
 
 
 			main_eat_item.set_clip_eat_item();
@@ -358,7 +357,7 @@ int ControlFunc::playCampaign()
 		if (mainObject.getType() == MainObject::LEVEL_2) time_of_lv2++;
 		if (time_of_lv2 == LIMIT_TIME_LV2) {
 			time_of_lv2 = 0;
-			bool ret = mainObject.loadImgObject("main.png");				//main
+			bool ret = mainObject.loadImgObject("./image/main.png");				//main
 			if (!ret)
 			{
 				return 0;

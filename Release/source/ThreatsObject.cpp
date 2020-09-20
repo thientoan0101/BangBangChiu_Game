@@ -187,28 +187,28 @@ void ThreatObject::initAmo(AmoObject *p_amo)
 	switch (_threat_type)
 	{
 	case 0:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("./image/33.png");
 		break;
 	case 1:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("./image/33.png");
 		break;
 	case 2:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("./image/33.png");
 		break;
 	case 3:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("./image/33.png");
 		break;
 	case 4:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("./image/33.png");
 		break;
 	case 5:
-		ret = p_amo->loadImgObject("33.png");
+		ret = p_amo->loadImgObject("./image/33.png");
 		break;
 	case 6:
-		ret = p_amo->loadImgObject("31.png");
+		ret = p_amo->loadImgObject("./image/31.png");
 		break;
 	case 10:
-		ret = p_amo->loadImgObject("32.png");
+		ret = p_amo->loadImgObject("./image/32.png");
 		break;
 	default:
 		break;
@@ -241,19 +241,19 @@ void ThreatObject::initAmo_boss(AmoObject* p_amo)
 	switch (_threat_type)
 	{
 	case 4:
-		ret = p_amo->loadImgObject("31.png");
+		ret = p_amo->loadImgObject("./image/31.png");
 		break;
 	case 5:
-		ret = p_amo->loadImgObject("32.png");
+		ret = p_amo->loadImgObject("./image/32.png");
 		break;
 	case 6:
-		ret = p_amo->loadImgObject("34.png");
+		ret = p_amo->loadImgObject("./image/34.png");
 		break;
 	case 7:
-		ret = p_amo->loadImgObject("35.png");
+		ret = p_amo->loadImgObject("./image/35.png");
 		break;
 	case 10:
-		ret = p_amo->loadImgObject("32.png");
+		ret = p_amo->loadImgObject("./image/32.png");
 		break;
 	default:
 		break;
@@ -329,19 +329,19 @@ void createThreat(ThreatObject* &pThreat, const int &type, const int &index)
 	{
 	case 0:
 		width = WIDTH_THREAT_0;	height = HEIGHT_THREAT_0; 
-		pThreat->loadImgObject("threat_0.png");			
+		pThreat->loadImgObject("./image/threat_0.png");			
 		break;
 	case 1: 
 		width = WIDTH_THREAT_1;	height = HEIGHT_THREAT_1;
-		pThreat->loadImgObject("threat_1.png");		
+		pThreat->loadImgObject("./image/threat_1.png");		
 		break;
 	case 2:
 		width = WIDTH_THREAT_2;	height = HEIGHT_THREAT_2;
-		pThreat->loadImgObject("threat_2.png");		
+		pThreat->loadImgObject("./image/threat_2.png");		
 		break;
 	case 3:
 		width = WIDTH_THREAT_3;	height = HEIGHT_THREAT_3;
-		pThreat->loadImgObject("threat_3.png");		
+		pThreat->loadImgObject("./image/threat_3.png");		
 		break;
 	default:
 		break;
@@ -430,22 +430,22 @@ void createBoss(ThreatObject* &pBoss, const int &level)
 	{
 	case 1:
 		width = WIDTH_BOSS_4;	height = HEIGHT_BOSS_4;
-		pBoss->loadImgObject("boss_1.png");
+		pBoss->loadImgObject("./image/boss_1.png");
 		pBoss->_threat_type = 4;
 		break;
 	case 2:
 		width = WIDTH_BOSS_5;	height = HEIGHT_BOSS_5;
-		pBoss->loadImgObject("boss_2.png");
+		pBoss->loadImgObject("./image/boss_2.png");
 		pBoss->_threat_type = 5;
 		break;
 	case 3:
 		width = WIDTH_BOSS_6;	height = HEIGHT_BOSS_6;
-		pBoss->loadImgObject("boss_3.png");
+		pBoss->loadImgObject("./image/boss_3.png");
 		pBoss->_threat_type = 6;
 		break;
 	case 4:
 		width = WIDTH_BOSS_7;	height = HEIGHT_BOSS_7;
-		pBoss->loadImgObject("boss_4.png");
+		pBoss->loadImgObject("./image/boss_4.png");
 		pBoss->_threat_type = 7;
 		break;
 	default:
@@ -467,7 +467,7 @@ void createBoss(ThreatObject* &pBoss, const int &level)
 
 void createSubBoss(ThreatObject* &pSubBoss, ThreatObject* &pBoss)
 {
-	pSubBoss->loadImgObject("sub_boss.png");
+	pSubBoss->loadImgObject("./image/sub_boss.png");
 	pSubBoss->rect_.w = WIDTH_SUB_BOSS;
 	pSubBoss->rect_.h = HEIGHT_SUB_BOSS;
 	pSubBoss->_threat_type = 10;
