@@ -367,7 +367,7 @@ int Menu::showGuide(SDL_Surface* des) {
 	SDL_Surface* icon_superman;
 	SDL_Surface* icon_phim;
 	SDL_Surface* icon_space;
-	SDL_Surface* icon_a;
+	SDL_Surface* icon_s;
 	SDL_Surface* icon_esc;
 	icon_subboss = SDLCommonFunc::loadImage("subboss_icon.png");
 	icon_heart = SDLCommonFunc::loadImage("HPgift_icon.png");
@@ -376,7 +376,7 @@ int Menu::showGuide(SDL_Surface* des) {
 	icon_superman = SDLCommonFunc::loadImage("giftupmain_icon.png");
 	icon_phim = SDLCommonFunc::loadImage("phim.png");
 	icon_space = SDLCommonFunc::loadImage("space.png");
-	icon_a = SDLCommonFunc::loadImage("button_a_icon.png");
+	icon_s = SDLCommonFunc::loadImage("button_s_icon.png");
 	icon_esc = SDLCommonFunc::loadImage("button_esc_icon.png");
 	while (true)
 	{
@@ -395,8 +395,8 @@ int Menu::showGuide(SDL_Surface* des) {
 		SDLCommonFunc::applySurface(icon_superSkill, des, x_value, y_value + 180);
 		SDLCommonFunc::applySurface(icon_phim, des, x_value + 750, y_value + 230);
 		SDLCommonFunc::applySurface(icon_space, des, x_value + 650, y_value + 310);
-		SDLCommonFunc::applySurface(icon_a, des, x_value + 250, y_value + 240);
-		SDLCommonFunc::applySurface(icon_esc, des, x_value + 250, y_value + 320);
+		SDLCommonFunc::applySurface(icon_s, des, x_value + 250, y_value + 320);
+		SDLCommonFunc::applySurface(icon_esc, des, x_value + 250, y_value + 240);
 
 
 
